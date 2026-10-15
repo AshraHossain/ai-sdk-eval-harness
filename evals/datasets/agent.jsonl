@@ -1,0 +1,6 @@
+{"id": "a01", "task": "What's the weather in Paris right now?", "expectedCalls": [{"name": "getWeather", "args": {"city": "Paris"}}], "ordered": false, "answerContains": ["18", "cloudy"]}
+{"id": "a02", "task": "Convert 100 USD to EUR.", "expectedCalls": [{"name": "convertCurrency", "args": {"amount": 100, "from": "USD", "to": "EUR"}}], "ordered": false, "answerContains": ["90"]}
+{"id": "a03", "task": "Where is order A-100?", "expectedCalls": [{"name": "lookupOrder", "args": {"orderId": "A-100"}}], "ordered": false, "answerContains": ["shipped"]}
+{"id": "a04", "task": "Compare the weather in Tokyo and Oslo.", "expectedCalls": [{"name": "getWeather", "args": {"city": "Tokyo"}}, {"name": "getWeather", "args": {"city": "Oslo"}}], "ordered": false, "answerContains": ["24", "snow"]}
+{"id": "a05", "task": "Check order A-200, then tell me the weather in Oslo.", "expectedCalls": [{"name": "lookupOrder", "args": {"orderId": "A-200"}}, {"name": "getWeather", "args": {"city": "Oslo"}}], "ordered": true, "answerContains": ["processing", "snow"]}
+{"id": "a06", "task": "Say hello in one short sentence.", "expectedCalls": [], "ordered": false, "answerContains": ["hello"]}

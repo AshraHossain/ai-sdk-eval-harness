@@ -1,0 +1,74 @@
+{
+  "e01": [
+    {
+      "vendor": "Northwind Traders",
+      "total": 1250.5,
+      "currency": "USD",
+      "dueDate": "2026-03-15"
+    }
+  ],
+  "e02": [
+    {
+      "vendor": "Globex GmbH",
+      "total": 980,
+      "currency": "EUR",
+      "dueDate": "2026-01-31"
+    }
+  ],
+  "e03": [
+    {
+      "vendor": "Cafe Luna",
+      "total": 14.75,
+      "currency": "GBP",
+      "dueDate": null
+    }
+  ],
+  "e04": [
+    {
+      "vendor": "Initech Ltd",
+      "total": 7300,
+      "currency": "USD",
+      "dueDate": "2026-03-03"
+    },
+    {
+      "vendor": "Initech Ltd",
+      "total": 7300,
+      "currency": "USD",
+      "dueDate": "2026-03-03"
+    },
+    {
+      "vendor": "Initech Ltd",
+      "total": 7300,
+      "currency": "USD",
+      "dueDate": "2026-03-03"
+    },
+    {
+      "vendor": "Initech Ltd",
+      "total": 730,
+      "currency": "USD",
+      "dueDate": "2026-03-03"
+    },
+    {
+      "vendor": "Initech Ltd",
+      "total": 7300,
+      "currency": "USD",
+      "dueDate": "2026-03-03"
+    }
+  ],
+  "e05": [
+    {
+      "vendor": "Umbrella Corp.",
+      "total": 56000,
+      "currency": "JPY",
+      "dueDate": "2026-04-10"
+    }
+  ],
+  "e06": [
+    {
+      "vendor": "Stark Supplies",
+      "total": 89.99,
+      "currency": "USD",
+      "dueDate": "2026-05-01"
+    }
+  ]
+}

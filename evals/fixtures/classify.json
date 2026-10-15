@@ -1,0 +1,38 @@
+{
+  "c01": [
+    {
+      "label": "billing",
+      "confidence": 0.93
+    }
+  ],
+  "c02": [
+    {
+      "label": "technical",
+      "confidence": 0.93
+    }
+  ],
+  "c03": [
+    {
+      "label": "account",
+      "confidence": 0.93
+    }
+  ],
+  "c04": [
+    {
+      "label": "other",
+      "confidence": 0.93
+    }
+  ],
+  "c05": [
+    {
+      "label": "billing",
+      "confidence": 0.93
+    }
+  ],
+  "c06": [
+    {
+      "label": "technical",
+      "confidence": 0.61
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{"id": "e01", "text": "Invoice from Northwind Traders. Total due: $1,250.50 USD. Payment due by 2026-03-15.", "expected": {"vendor": "Northwind Traders", "total": 1250.5, "currency": "USD", "dueDate": "2026-03-15"}}
+{"id": "e02", "text": "Bill: Globex GmbH - EUR 980.00 - due 31 Jan 2026.", "expected": {"vendor": "Globex GmbH", "total": 980, "currency": "EUR", "dueDate": "2026-01-31"}}
+{"id": "e03", "text": "Receipt from Cafe Luna, total 14.75 GBP, paid in full.", "expected": {"vendor": "Cafe Luna", "total": 14.75, "currency": "GBP", "dueDate": null}}
+{"id": "e04", "text": "Initech Ltd invoice #442, amount payable 7,300 USD, net 30 from 2026-02-01 (due 2026-03-03).", "expected": {"vendor": "Initech Ltd", "total": 7300, "currency": "USD", "dueDate": "2026-03-03"}}
+{"id": "e05", "text": "Umbrella Corp. - 56,000 JPY - due 2026-04-10.", "expected": {"vendor": "Umbrella Corp.", "total": 56000, "currency": "JPY", "dueDate": "2026-04-10"}}
+{"id": "e06", "text": "Stark Supplies invoice: total $89.99 USD, due 2026-05-01.", "expected": {"vendor": "Stark Supplies", "total": 89.99, "currency": "USD", "dueDate": "2026-05-01"}}

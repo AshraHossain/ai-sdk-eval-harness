@@ -1,0 +1,10 @@
+{
+  "default": { "minPassRate": 0.8, "maxFlakeRate": 0.2 },
+  "suites": {
+    "summarize": { "minPassRate": 0.85 },
+    "classify": { "minPassRate": 0.8 },
+    "extract": { "minPassRate": 0.85 },
+    "rag": { "minPassRate": 0.85 },
+    "agent": { "minPassRate": 0.9 }
+  }
+}

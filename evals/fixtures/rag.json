@@ -1,0 +1,74 @@
+{
+  "r01": [
+    {
+      "answerable": true,
+      "answer": "Customers can request a refund within 30 days of purchase.",
+      "citations": [
+        "d1"
+      ]
+    }
+  ],
+  "r02": [
+    {
+      "answerable": true,
+      "answer": "Standard shipping takes 3-5 business days.",
+      "citations": [
+        "d2"
+      ]
+    }
+  ],
+  "r03": [
+    {
+      "answerable": true,
+      "answer": "The Enterprise plan includes SSO.",
+      "citations": [
+        "p1"
+      ]
+    }
+  ],
+  "r04": [
+    {
+      "answerable": false,
+      "answer": "I don't know",
+      "citations": []
+    }
+  ],
+  "r05": [
+    {
+      "answerable": true,
+      "answer": "The company was founded in 2012.",
+      "citations": [
+        "f1"
+      ]
+    }
+  ],
+  "r06": [
+    {
+      "answerable": false,
+      "answer": "I don't know",
+      "citations": []
+    },
+    {
+      "answerable": true,
+      "answer": "The CEO is Jordan Lee.",
+      "citations": [
+        "f1"
+      ]
+    },
+    {
+      "answerable": false,
+      "answer": "I don't know",
+      "citations": []
+    },
+    {
+      "answerable": false,
+      "answer": "I don't know",
+      "citations": []
+    },
+    {
+      "answerable": false,
+      "answer": "I don't know",
+      "citations": []
+    }
+  ]
+}

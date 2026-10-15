@@ -1,0 +1,24 @@
+{
+  "s01": [
+    "A bad config push caused a 42-minute payments API outage on March 3. Engineers rolled back the change, and the team will add canary deploys and a config linter."
+  ],
+  "s02": [
+    "Acme's quarterly revenue rose 15 percent to $120 million on subscription growth. Operating margin improved to 22 percent and full-year guidance was raised to $470 million."
+  ],
+  "s03": [
+    "Version 2.4 adds dark mode and faster search indexing, fixes the duplicated CSV export rows bug, and removes Node 16 support."
+  ],
+  "s04": [
+    "The launch moves from June 1 to June 15 after QA found two blocking bugs. Priya owns the bug fixes and Marco will update customer communication."
+  ],
+  "s05": [
+    "A semantic cache cut median LLM inference latency by 38 percent on a support-chat workload, keeping answer quality within 2 percent of uncached responses; gains shrank on diverse queries.",
+    "A semantic cache cut median LLM inference latency by 38 percent on a support-chat workload, keeping answer quality within 2 percent of uncached responses; gains shrank on diverse queries.",
+    "This paper looks at many different strategies for caching in the context of large language model inference systems and discusses how caches might in some circumstances reduce latency for certain kinds of chat workloads, while noting that results can vary a great deal depending on the diversity of the queries that users send.",
+    "A semantic cache cut median LLM inference latency by 38 percent on a support-chat workload, keeping answer quality within 2 percent of uncached responses; gains shrank on diverse queries.",
+    "A semantic cache cut median LLM inference latency by 38 percent on a support-chat workload, keeping answer quality within 2 percent of uncached responses; gains shrank on diverse queries."
+  ],
+  "s06": [
+    "The city council approved $8 million to repair the Harbor Street bridge. Work starts in September, closing one lane for about ten months, and should extend the bridge's life by 30 years."
+  ]
+}

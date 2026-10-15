@@ -1,0 +1,7 @@
+{
+  "summarize": { "version": "1.0.0", "file": "summarize.jsonl" },
+  "classify": { "version": "1.0.0", "file": "classify.jsonl" },
+  "extract": { "version": "1.0.0", "file": "extract.jsonl" },
+  "rag": { "version": "1.0.0", "file": "rag.jsonl" },
+  "agent": { "version": "1.0.0", "file": "agent.jsonl" }
+}

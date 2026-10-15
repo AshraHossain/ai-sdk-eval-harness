@@ -1,0 +1,43 @@
+{
+  "name": "ai-sdk-eval-harness",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Eval harness for Vercel AI SDK features: golden datasets, deterministic + LLM-as-judge scorers, N-run flaky detection, CI gate.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.9"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "eval": "tsx evals/cli.ts",
+    "eval:gate": "tsx evals/cli.ts --mode mock --runs 5",
+    "eval:live": "EVAL_MODE=live tsx evals/cli.ts --runs 3",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^3.0.132",
+    "@ai-sdk/openai": "^3.0.129",
+    "ai": "^6.0.308",
+    "next": "^15.5.28",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "tsx": "^4.23.15",
+    "typescript": "5.9",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^3.2.7"
+  }
+}

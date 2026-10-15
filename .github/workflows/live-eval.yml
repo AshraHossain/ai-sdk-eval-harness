@@ -1,0 +1,57 @@
+name: Live eval
+
+# Manual only: calls real providers and spends tokens.
+on:
+  workflow_dispatch:
+    inputs:
+      runs:
+        description: Runs per case (N)
+        default: "3"
+      suites:
+        description: Comma-separated suites (blank = all)
+        default: ""
+      model:
+        description: "Model under test (provider:model)"
+        default: "anthropic:claude-haiku-5-5"
+      judge_model:
+        description: "Judge model (provider:model)"
+        default: "anthropic:claude-sonnet-5-5"
+
+permissions:
+  contents: read
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    env:
+      EVAL_MODE: live
+      EVAL_MODEL: ${{ inputs.model }}
+      EVAL_JUDGE_MODEL: ${{ inputs.judge_model }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Run live eval gate
+        env:
+          SUITES: ${{ inputs.suites }}
+          RUNS: ${{ inputs.runs }}
+        run: |
+          args=()
+          IFS=',' read -ra picked <<< "$SUITES"
+          for s in "${picked[@]}"; do [ -n "$s" ] && args+=(--suite "$s"); done
+          npx tsx evals/cli.ts --mode live --runs "$RUNS" "${args[@]}"
+      - name: Publish summary
+        if: always()
+        run: |
+          if [ -f reports/summary.md ]; then cat reports/summary.md >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-eval-reports
+          path: reports/
+          if-no-files-found: ignore

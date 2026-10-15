@@ -1,0 +1,118 @@
+{
+  "a01": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "getWeather",
+              "args": {
+                "city": "Paris"
+              }
+            }
+          ]
+        },
+        {
+          "text": "It is 18C and cloudy in Paris."
+        }
+      ]
+    }
+  ],
+  "a02": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "convertCurrency",
+              "args": {
+                "amount": 100,
+                "from": "USD",
+                "to": "EUR"
+              }
+            }
+          ]
+        },
+        {
+          "text": "100 USD is 90 EUR."
+        }
+      ]
+    }
+  ],
+  "a03": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "lookupOrder",
+              "args": {
+                "orderId": "A-100"
+              }
+            }
+          ]
+        },
+        {
+          "text": "Order A-100 has shipped and should arrive in 2 days."
+        }
+      ]
+    }
+  ],
+  "a04": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "getWeather",
+              "args": {
+                "city": "Tokyo"
+              }
+            },
+            {
+              "name": "getWeather",
+              "args": {
+                "city": "Oslo"
+              }
+            }
+          ]
+        },
+        {
+          "text": "Tokyo is sunny at 24C while Oslo has snow at 5C."
+        }
+      ]
+    }
+  ],
+  "a05": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "lookupOrder",
+              "args": {
+                "orderId": "A-200"
+              }
+            }
+          ]
+        },
+        {
+          "toolCalls": [
+            {
+              "name": "getWeather",
+              "args": {
+                "city": "Oslo"
+              }
+            }
+          ]
+        },
+        {
+          "text": "Order A-200 is still processing. Oslo has snow at 5C."
+        }
+      ]
+    }
+  ],
+  "a06": [
+    "Hello, nice to meet you!"
+  ]
+}
