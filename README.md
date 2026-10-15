@@ -42,7 +42,9 @@ cp .env.example .env     # set ANTHROPIC_API_KEY and/or OPENAI_API_KEY
 EVAL_MODE=live npm run eval -- --runs 3
 ```
 
-`EVAL_MODEL` and `EVAL_JUDGE_MODEL` take `provider:model` (`anthropic:` or `openai:`). Judges run at temperature 0 on a pinned model.
+`EVAL_MODEL` and `EVAL_JUDGE_MODEL` take `provider:model` (`anthropic:`, `openai:` or `bynara:`). Judges run at temperature 0 on a pinned model.
+The `bynara:` provider uses the [Bynara router](https://router.bynara.id) through an OpenAI-compatible chat-completions client (set `BYNARA_API_KEY`; override the endpoint with `BYNARA_BASE_URL`, default `https://router.bynara.id/v1`). Example: `EVAL_MODEL=bynara:<model-id> EVAL_MODE=live npm run eval`.
+
 The dashboard's "Run suite" button and `POST /api/eval` use live providers only if the **server** has `EVAL_MODE=live`.
 
 ## How it works
@@ -65,6 +67,6 @@ always-failing case (`classify/c06`) so the flake detector and reports are exerc
 ## CI (`.github/workflows`)
 
 - `ci.yml`: lint → typecheck → Vitest → eval gate (mock) → Playwright. Posts/updates a PR comment with the summary and uploads `reports/`.
-- `live-eval.yml`: manual (`workflow_dispatch`) live run; needs `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` repo secrets.
+- `live-eval.yml`: manual (`workflow_dispatch`) live run; needs `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` / `BYNARA_API_KEY` repo secrets (and optionally a `BYNARA_BASE_URL` repo variable).
 
 To make the gate block merges, mark the `checks` and `e2e` jobs as required in branch protection.

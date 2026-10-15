@@ -11,7 +11,7 @@ on:
         description: Comma-separated suites (blank = all)
         default: ""
       model:
-        description: "Model under test (provider:model)"
+        description: "Model under test (provider:model; anthropic, openai or bynara)"
         default: "anthropic:claude-haiku-5-5"
       judge_model:
         description: "Judge model (provider:model)"
@@ -29,6 +29,8 @@ jobs:
       EVAL_JUDGE_MODEL: ${{ inputs.judge_model }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      BYNARA_API_KEY: ${{ secrets.BYNARA_API_KEY }}
+      BYNARA_BASE_URL: ${{ vars.BYNARA_BASE_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

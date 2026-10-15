@@ -1,5 +1,5 @@
 import { anthropic } from "@ai-sdk/anthropic";
-import { openai } from "@ai-sdk/openai";
+import { createOpenAI, openai } from "@ai-sdk/openai";
 import type { LanguageModel } from "ai";
 
 export type EvalMode = "mock" | "live";
@@ -11,20 +11,41 @@ export function resolveMode(value = process.env.EVAL_MODE): EvalMode {
   return value === "live" ? "live" : "mock";
 }
 
-/** "provider:model" -> LanguageModel. Keys are read from ANTHROPIC_API_KEY / OPENAI_API_KEY by the providers. */
+export const BYNARA_DEFAULT_BASE_URL = "https://router.bynara.id/v1";
+
+/** provider -> env var holding its API key. */
+export const KEY_ENV: Record<string, string> = {
+  anthropic: "ANTHROPIC_API_KEY",
+  openai: "OPENAI_API_KEY",
+  bynara: "BYNARA_API_KEY",
+};
+
+const providerOf = (spec: string) => (spec.includes(":") ? spec.slice(0, spec.indexOf(":")) : "anthropic");
+
+/**
+ * "provider:model" -> LanguageModel. Providers: anthropic, openai, bynara.
+ * `bynara` talks to the Bynara router (https://router.bynara.id) and assumes an OpenAI-compatible
+ * chat-completions API; override the endpoint with BYNARA_BASE_URL.
+ */
 export function resolveModel(spec: string): LanguageModel {
   const idx = spec.indexOf(":");
   const provider = idx === -1 ? "anthropic" : spec.slice(0, idx);
   const id = idx === -1 ? spec : spec.slice(idx + 1);
   if (provider === "anthropic") return anthropic(id);
   if (provider === "openai") return openai(id);
-  throw new Error(`Unknown provider "${provider}" in model spec "${spec}" (use anthropic:<id> or openai:<id>)`);
+  if (provider === "bynara") {
+    return createOpenAI({
+      name: "bynara",
+      baseURL: process.env.BYNARA_BASE_URL || BYNARA_DEFAULT_BASE_URL,
+      apiKey: process.env.BYNARA_API_KEY,
+    }).chat(id);
+  }
+  throw new Error(`Unknown provider "${provider}" in model spec "${spec}" (use anthropic:<id>, openai:<id> or bynara:<id>)`);
 }
 
 export function assertLiveKeys(specs: string[]): void {
   for (const spec of specs) {
-    const provider = spec.includes(":") ? spec.split(":")[0] : "anthropic";
-    const key = provider === "openai" ? "OPENAI_API_KEY" : "ANTHROPIC_API_KEY";
-    if (!process.env[key]) throw new Error(`EVAL_MODE=live needs ${key} for model "${spec}"`);
+    const key = KEY_ENV[providerOf(spec)];
+    if (key && !process.env[key]) throw new Error(`EVAL_MODE=live needs ${key} for model "${spec}"`);
   }
 }
