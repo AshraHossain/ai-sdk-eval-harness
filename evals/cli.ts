@@ -29,6 +29,11 @@ for (const name of names) {
   const report = await executeSuite({ suite: name, runs, mode, outDir });
   await writeReport(report, outDir);
   console.log(`${name.padEnd(10)} pass ${(report.summary.passRate * 100).toFixed(1)}%  flaky ${report.summary.flakyCases}/${report.summary.cases}  (${report.durationMs}ms)`);
+  const errors = report.cases.flatMap((c) => c.runs.flatMap((r) => (r.error ? [r.error] : [])));
+  if (errors.length) {
+    const total = report.cases.reduce((n, c) => n + c.runs.length, 0);
+    console.error(`  ${errors.length}/${total} runs errored. First error: ${errors[0]}`);
+  }
   reports.push(report);
 }
 
