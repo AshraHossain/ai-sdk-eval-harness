@@ -43,7 +43,7 @@ EVAL_MODE=live npm run eval -- --runs 3
 ```
 
 `EVAL_MODEL` and `EVAL_JUDGE_MODEL` take `provider:model` (`anthropic:`, `openai:` or `bynara:`). Judges run at temperature 0 on a pinned model.
-The `bynara:` provider uses the [Bynara router](https://router.bynara.id) through an OpenAI-compatible chat-completions client (set `BYNARA_API_KEY`; override the endpoint with `BYNARA_BASE_URL`, default `https://router.bynara.id/v1`). Example: `EVAL_MODEL=bynara:<model-id> EVAL_MODE=live npm run eval`.
+The `bynara:` provider uses the [Bynara router](https://router.bynara.id) through an OpenAI-compatible chat-completions client (set `BYNARA_API_KEY`; override the endpoint with `BYNARA_BASE_URL`, default `https://router.bynara.id/v1`). A bare router-style id such as `openai/laguna-s-2.1` is routed to Bynara automatically. Example: `EVAL_MODEL=openai/laguna-s-2.1 EVAL_JUDGE_MODEL=openai/laguna-s-2.1 EVAL_MODE=live npm run eval`.
 
 The dashboard's "Run suite" button and `POST /api/eval` use live providers only if the **server** has `EVAL_MODE=live`.
 

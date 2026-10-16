@@ -20,7 +20,13 @@ export const KEY_ENV: Record<string, string> = {
   bynara: "BYNARA_API_KEY",
 };
 
-const providerOf = (spec: string) => (spec.includes(":") ? spec.slice(0, spec.indexOf(":")) : "anthropic");
+/** "provider:model"; a bare router-style id like "openai/laguna-s-2.1" goes to the Bynara router. */
+export function parseSpec(spec: string): { provider: string; id: string } {
+  const idx = spec.indexOf(":");
+  if (idx !== -1) return { provider: spec.slice(0, idx), id: spec.slice(idx + 1) };
+  return { provider: spec.includes("/") ? "bynara" : "anthropic", id: spec };
+}
+const providerOf = (spec: string) => parseSpec(spec).provider;
 
 /**
  * "provider:model" -> LanguageModel. Providers: anthropic, openai, bynara.
@@ -28,9 +34,7 @@ const providerOf = (spec: string) => (spec.includes(":") ? spec.slice(0, spec.in
  * chat-completions API; override the endpoint with BYNARA_BASE_URL.
  */
 export function resolveModel(spec: string): LanguageModel {
-  const idx = spec.indexOf(":");
-  const provider = idx === -1 ? "anthropic" : spec.slice(0, idx);
-  const id = idx === -1 ? spec : spec.slice(idx + 1);
+  const { provider, id } = parseSpec(spec);
   if (provider === "anthropic") return anthropic(id);
   if (provider === "openai") return openai(id);
   if (provider === "bynara") {
