@@ -66,7 +66,7 @@ export async function writeReport(report: SuiteReport, dir = REPORTS_DIR): Promi
 }
 
 export async function readReports(dir = REPORTS_DIR): Promise<SuiteReport[]> {
-  let files: string[] = [];
+  let files: string[];
   try {
     files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
   } catch {
