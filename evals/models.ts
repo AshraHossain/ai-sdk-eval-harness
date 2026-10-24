@@ -13,6 +13,7 @@ export function resolveMode(value = process.env.EVAL_MODE): EvalMode {
 
 export const BYNARA_DEFAULT_BASE_URL = "https://router.bynara.id/v1";
 export const OPENROUTER_DEFAULT_BASE_URL = "https://openrouter.ai/api/v1";
+export const NIM_DEFAULT_BASE_URL = "https://integrate.api.nvidia.com/v1";
 
 /** provider -> env var holding its API key. */
 export const KEY_ENV: Record<string, string> = {
@@ -20,6 +21,7 @@ export const KEY_ENV: Record<string, string> = {
   openai: "OPENAI_API_KEY",
   bynara: "BYNARA_API_KEY",
   openrouter: "OPENROUTER_API_KEY",
+  nim: "NVIDIA_API_KEY",
 };
 
 /** "provider:model"; a bare router-style id like "openai/laguna-s-2.1" goes to the Bynara router. */
@@ -53,7 +55,14 @@ export function resolveModel(spec: string): LanguageModel {
       apiKey: process.env.OPENROUTER_API_KEY,
     }).chat(id);
   }
-  throw new Error(`Unknown provider "${provider}" in model spec "${spec}" (use anthropic:<id>, openai:<id>, bynara:<id> or openrouter:<id>)`);
+  if (provider === "nim") {
+    return createOpenAI({
+      name: "nim",
+      baseURL: process.env.NIM_BASE_URL || NIM_DEFAULT_BASE_URL,
+      apiKey: process.env.NVIDIA_API_KEY,
+    }).chat(id);
+  }
+  throw new Error(`Unknown provider "${provider}" in model spec "${spec}" (use anthropic:<id>, openai:<id>, bynara:<id>, openrouter:<id> or nim:<id>)`);
 }
 
 export function assertLiveKeys(specs: string[]): void {
