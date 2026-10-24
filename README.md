@@ -23,6 +23,36 @@ to hit real providers.
 
 Each feature is a pure function `(model: LanguageModel, input) => result`, so the same code runs under a mock or a real model.
 
+## Architecture
+
+```mermaid
+flowchart LR
+  subgraph data["evals/ data"]
+    DS["datasets/*.jsonl<br/>+ manifest.json"]
+    FX["fixtures/*.json"]
+    TH["thresholds.json"]
+  end
+
+  CLI["evals/cli.ts<br/>--suite --runs --mode"] --> EX["runner/execute.ts"]
+  DS --> EX
+  EX --> MODE{"EVAL_MODE"}
+  MODE -- mock --> MOCK["mock/mockModel.ts<br/>fixture replay + mock judge"]
+  FX --> MOCK
+  MODE -- live --> RES["models.ts<br/>resolveModel(provider:model)"]
+  RES --> PROV["anthropic · openai · bynara<br/>openrouter · nim"]
+
+  MOCK --> SUITE["suites/*.ts<br/>run + score"]
+  PROV --> SUITE
+  SUITE --> SUT["src/lib/ai/<br/>summarize · classify · extract<br/>groundedQa · agent"]
+  SUITE --> SC["scorers/<br/>deterministic + llmJudge"]
+  SC --> RUN["runner/runner.ts<br/>N runs · pass rate · flaky"]
+  RUN --> GATE["runner/gate.ts"]
+  TH --> GATE
+  GATE --> REP["reports/*.json<br/>summary.md"]
+  GATE --> EXIT["exit code → CI"]
+  REP --> UI["app/ dashboard<br/>+ POST /api/eval"]
+```
+
 ## Quick start
 
 ```bash
@@ -38,12 +68,36 @@ Useful flags: `npm run eval -- --suite rag --suite agent --runs 10 --no-gate`.
 ### Live mode
 
 ```bash
-cp .env.example .env     # set ANTHROPIC_API_KEY and/or OPENAI_API_KEY
+cp .env.example .env     # set the API key for the provider you use
 EVAL_MODE=live npm run eval -- --runs 3
 ```
 
-`EVAL_MODEL` and `EVAL_JUDGE_MODEL` take `provider:model` (`anthropic:`, `openai:` or `bynara:`). Judges run at temperature 0 on a pinned model.
-The `bynara:` provider uses the [Bynara router](https://router.bynara.id) through an OpenAI-compatible chat-completions client (set `BYNARA_API_KEY`; override the endpoint with `BYNARA_BASE_URL`, default `https://router.bynara.id/v1`). A bare router-style id such as `openai/laguna-s-2.1` is routed to Bynara automatically. Example: `EVAL_MODEL=openai/laguna-s-2.1 EVAL_JUDGE_MODEL=openai/laguna-s-2.1 EVAL_MODE=live npm run eval`.
+`EVAL_MODEL` and `EVAL_JUDGE_MODEL` take `provider:model`. Only the first `:` separates the provider, so ids like `nvidia/...:free` work. Judges run at temperature 0 on a pinned model.
+
+| Provider | Key env var | Endpoint (override env var) | Example spec |
+|---|---|---|---|
+| `anthropic` | `ANTHROPIC_API_KEY` | SDK default | `anthropic:claude-haiku-5-5` |
+| `openai` | `OPENAI_API_KEY` | SDK default | `openai:<model>` |
+| `bynara` | `BYNARA_API_KEY` | `https://router.bynara.id/v1` (`BYNARA_BASE_URL`) | `bynara:claude-haiku-5.5` |
+| `openrouter` | `OPENROUTER_API_KEY` | `https://openrouter.ai/api/v1` (`OPENROUTER_BASE_URL`) | `openrouter:nvidia/nemotron-3-ultra-550b-a55b:free` |
+| `nim` | `NVIDIA_API_KEY` | `https://integrate.api.nvidia.com/v1` (`NIM_BASE_URL`) | `nim:nvidia/nemotron-3-ultra-550b-a55b` |
+
+`bynara`, `openrouter` and `nim` use an OpenAI-compatible chat-completions client. A bare id with a `/` and no provider prefix goes to Bynara; a bare id without one goes to Anthropic. Use the ids each provider lists (Bynara: `GET /v1/models`).
+
+Notes from live runs:
+- When every run errors, the CLI prints `N/total runs errored. First error: ...`. "The requested model does not exist" means the model id is wrong. "Bad Gateway" means the router could not reach the upstream model, so try another model.
+- Free tiers (for example OpenRouter `:free` models) have daily request caps. One full run at N=5 makes about 200+ model calls (target + judge), so start with `--suite summarize --runs 1`.
+- `classify`, `extract` and `rag` need structured output, and `agent` needs tool calling. Models without these will fail those suites even if `summarize` passes.
+
+PowerShell:
+
+```powershell
+$env:EVAL_MODE = "live"
+$env:EVAL_MODEL = "nim:nvidia/nemotron-3-ultra-550b-a55b"
+$env:EVAL_JUDGE_MODEL = "nim:nvidia/nemotron-3-ultra-550b-a55b"
+$env:NVIDIA_API_KEY = "<your key>"
+npm run eval -- --suite summarize --runs 1 --no-gate
+```
 
 The dashboard's "Run suite" button and `POST /api/eval` use live providers only if the **server** has `EVAL_MODE=live`.
 
@@ -67,6 +121,6 @@ always-failing case (`classify/c06`) so the flake detector and reports are exerc
 ## CI (`.github/workflows`)
 
 - `ci.yml`: lint → typecheck → Vitest → eval gate (mock) → Playwright. Posts/updates a PR comment with the summary and uploads `reports/`.
-- `live-eval.yml`: manual (`workflow_dispatch`) live run; needs `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` / `BYNARA_API_KEY` repo secrets (and optionally a `BYNARA_BASE_URL` repo variable).
+- `live-eval.yml`: manual (`workflow_dispatch`) live run; needs the repo secret for each provider you pick (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `BYNARA_API_KEY`, `OPENROUTER_API_KEY`, `NVIDIA_API_KEY`). Endpoints can be overridden with the `BYNARA_BASE_URL`, `OPENROUTER_BASE_URL` and `NIM_BASE_URL` repo variables.
 
 To make the gate block merges, mark the `checks` and `e2e` jobs as required in branch protection.

@@ -11,7 +11,7 @@ on:
         description: Comma-separated suites (blank = all)
         default: ""
       model:
-        description: "Model under test (provider:model; anthropic, openai or bynara)"
+        description: "Model under test (provider:model; anthropic, openai, bynara, openrouter or nim)"
         default: "anthropic:claude-haiku-5-5"
       judge_model:
         description: "Judge model (provider:model)"
@@ -31,6 +31,10 @@ jobs:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       BYNARA_API_KEY: ${{ secrets.BYNARA_API_KEY }}
       BYNARA_BASE_URL: ${{ vars.BYNARA_BASE_URL }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      OPENROUTER_BASE_URL: ${{ vars.OPENROUTER_BASE_URL }}
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      NIM_BASE_URL: ${{ vars.NIM_BASE_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
