@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { assertLiveKeys, parseSpec, resolveModel } from "../../evals/models";
 
-const KEYS = ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "BYNARA_API_KEY"] as const;
+const KEYS = ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "BYNARA_API_KEY", "OPENROUTER_API_KEY"] as const;
 const saved = Object.fromEntries(KEYS.map((k) => [k, process.env[k]]));
 afterEach(() => {
   for (const k of KEYS) {
@@ -15,6 +15,11 @@ describe("resolveModel", () => {
     const m = resolveModel("bynara:some-model");
     expect(m).toMatchObject({ modelId: "some-model" });
     expect((m as { provider: string }).provider).toContain("bynara");
+  });
+  it("resolves openrouter models via an OpenAI-compatible client", () => {
+    const m = resolveModel("openrouter:nvidia/nemotron-3-ultra-550b-a55b:free");
+    expect(m).toMatchObject({ modelId: "nvidia/nemotron-3-ultra-550b-a55b:free" });
+    expect((m as { provider: string }).provider).toContain("openrouter");
   });
   it("rejects unknown providers", () => expect(() => resolveModel("banana:x")).toThrow(/Unknown provider/));
 });
@@ -37,5 +42,11 @@ describe("assertLiveKeys", () => {
     expect(() => assertLiveKeys(["bynara:m"])).toThrow(/BYNARA_API_KEY/);
     process.env.BYNARA_API_KEY = "test";
     expect(() => assertLiveKeys(["bynara:m"])).not.toThrow();
+  });
+  it("requires OPENROUTER_API_KEY for openrouter models", () => {
+    delete process.env.OPENROUTER_API_KEY;
+    expect(() => assertLiveKeys(["openrouter:nvidia/some-model:free"])).toThrow(/OPENROUTER_API_KEY/);
+    process.env.OPENROUTER_API_KEY = "test";
+    expect(() => assertLiveKeys(["openrouter:nvidia/some-model:free"])).not.toThrow();
   });
 });
