@@ -1,0 +1,139 @@
+name: eval
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 9 * * 1-5' # weekday live-model drift check
+  workflow_dispatch:
+    inputs:
+      runs:
+        description: Runs per case (N) for the live eval
+        default: '3'
+
+concurrency:
+  # Scheduled/manual live runs get their own group so a push to main never
+  # cancels a live run that has already spent tokens (and vice versa).
+  group: eval-${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && 'live' || 'ci' }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: '22'
+  EVAL_MODE: mock
+
+jobs:
+  unit:
+    name: typecheck + vitest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ env.NODE_VERSION }}', cache: npm }
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+
+  eval-gate:
+    name: eval gate (mock, N=5)
+    needs: unit
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ env.NODE_VERSION }}', cache: npm }
+      - run: npm ci
+      - name: Judge calibration
+        run: npm run eval:calibrate
+      - name: Gate self-test (injected regressions must be blocked)
+        run: npm run eval:gate-selftest
+      - name: Run evals and enforce gate
+        id: gate
+        run: npm run eval:ci
+      - name: Upload eval report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: eval-report, path: reports/ }
+      - name: Comment on PR
+        # Fork PRs get a read-only token; the job summary still has the report.
+        if: always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && hashFiles('reports/summary.md') != ''
+        continue-on-error: true
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const marker = '<!-- eval-harness-report -->';
+            const body = `${marker}\n${fs.readFileSync('reports/summary.md', 'utf8')}`;
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number });
+            const mine = comments.find((c) => c.body?.startsWith(marker));
+            if (mine) await github.rest.issues.updateComment({ owner, repo, comment_id: mine.id, body });
+            else await github.rest.issues.createComment({ owner, repo, issue_number, body });
+
+  e2e:
+    name: playwright
+    needs: unit
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ env.NODE_VERSION }}', cache: npm }
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Seed a report for the dashboard
+        run: npm run eval -- --runs 3 --no-gate
+      - run: npm run build
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with: { name: playwright-report, path: playwright-report/ }
+
+  live-eval:
+    name: live eval (${{ vars.EVAL_PROVIDER || 'anthropic' }})
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      EVAL_MODE: live
+      EVAL_PROVIDER: ${{ vars.EVAL_PROVIDER || 'anthropic' }}
+      EVAL_JUDGE_PROVIDER: ${{ vars.EVAL_JUDGE_PROVIDER }}
+      # Empty when unset; models.ts falls back to its defaults.
+      EVAL_SUBJECT_MODEL: ${{ vars.EVAL_SUBJECT_MODEL }}
+      EVAL_JUDGE_MODEL: ${{ vars.EVAL_JUDGE_MODEL }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ env.NODE_VERSION }}', cache: npm }
+      - run: npm ci
+      - name: Check for provider key
+        id: keys
+        run: |
+          # Check the key for each provider actually in use (subject and judge).
+          missing=""
+          for p in "$EVAL_PROVIDER" "${EVAL_JUDGE_PROVIDER:-$EVAL_PROVIDER}"; do
+            if [ "$p" = "openai" ] && [ -z "$OPENAI_API_KEY" ]; then missing="$missing OPENAI_API_KEY"; fi
+            if [ "$p" != "openai" ] && [ -z "$ANTHROPIC_API_KEY" ]; then missing="$missing ANTHROPIC_API_KEY"; fi
+          done
+          if [ -n "$missing" ]; then
+            echo "Missing secret(s):$missing; skipping live eval." >> "$GITHUB_STEP_SUMMARY"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Judge calibration (live judge)
+        if: steps.keys.outputs.skip != 'true'
+        run: npm run eval:calibrate
+      - name: Live evals
+        if: steps.keys.outputs.skip != 'true'
+        run: npm run eval -- --runs ${{ inputs.runs || '3' }} --concurrency 2
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.keys.outputs.skip != 'true'
+        with: { name: live-eval-report, path: reports/ }

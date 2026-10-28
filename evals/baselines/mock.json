@@ -1,0 +1,70 @@
+{
+  "updatedAt": "2026-10-28T21:53:17.328Z",
+  "mode": "mock",
+  "subjectModel": "mock:mock-subject",
+  "judgeModel": "mock:mock-judge",
+  "runsPerCase": 5,
+  "suites": {
+    "summarize": {
+      "gatedPassRate": 1,
+      "cases": {
+        "sum-001": "stable-pass",
+        "sum-002": "stable-pass",
+        "sum-003": "stable-pass",
+        "sum-004": "stable-pass",
+        "sum-005": "stable-pass",
+        "sum-006": "stable-pass"
+      }
+    },
+    "classify": {
+      "gatedPassRate": 1,
+      "cases": {
+        "cls-001": "stable-pass",
+        "cls-002": "stable-pass",
+        "cls-003": "stable-pass",
+        "cls-004": "stable-pass",
+        "cls-005": "stable-pass",
+        "cls-006": "stable-pass",
+        "cls-007": "stable-pass",
+        "cls-008": "stable-pass",
+        "cls-009": "stable-pass",
+        "cls-010": "flaky"
+      }
+    },
+    "extract": {
+      "gatedPassRate": 1,
+      "cases": {
+        "ext-001": "stable-pass",
+        "ext-002": "stable-pass",
+        "ext-003": "stable-pass",
+        "ext-004": "stable-pass",
+        "ext-005": "stable-pass",
+        "ext-006": "stable-pass"
+      }
+    },
+    "rag-qa": {
+      "gatedPassRate": 1,
+      "cases": {
+        "rag-001": "stable-pass",
+        "rag-002": "stable-pass",
+        "rag-003": "stable-pass",
+        "rag-004": "stable-pass",
+        "rag-005": "stable-pass",
+        "rag-006": "stable-pass",
+        "rag-007": "stable-pass"
+      }
+    },
+    "agent": {
+      "gatedPassRate": 1,
+      "cases": {
+        "agt-001": "stable-pass",
+        "agt-002": "stable-pass",
+        "agt-003": "stable-pass",
+        "agt-004": "stable-pass",
+        "agt-005": "stable-pass",
+        "agt-006": "stable-pass",
+        "agt-007": "stable-pass"
+      }
+    }
+  }
+}

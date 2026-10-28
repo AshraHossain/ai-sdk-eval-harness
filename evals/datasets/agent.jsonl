@@ -1,0 +1,7 @@
+{"id":"agt-001","tags":["weather"],"input":{"question":"What's the weather in Denver right now?"},"expected":{"toolCalls":[{"toolName":"getWeather","inputIncludes":{"city":"Denver"}}],"mustInclude":["58"],"maxSteps":3}}
+{"id":"agt-002","tags":["weather"],"input":{"question":"Is it raining in Seattle?"},"expected":{"toolCalls":[{"toolName":"getWeather","inputIncludes":{"city":"Seattle"}}],"mustInclude":["rain"],"maxSteps":3}}
+{"id":"agt-003","tags":["orders"],"input":{"question":"Where is my order A-1001?"},"expected":{"toolCalls":[{"toolName":"lookupOrder","inputIncludes":{"orderId":"A-1001"}}],"mustInclude":["shipped","2026-10-18"],"maxSteps":3}}
+{"id":"agt-004","tags":["orders","error-path"],"input":{"question":"Can you check order Z-9999 for me?"},"expected":{"toolCalls":[{"toolName":"lookupOrder","inputIncludes":{"orderId":"Z-9999"}}],"mustInclude":["not found"],"maxSteps":3}}
+{"id":"agt-005","tags":["math"],"input":{"question":"What is 1250 * 0.08?"},"expected":{"toolCalls":[{"toolName":"calculator"}],"mustInclude":["100"],"maxSteps":3}}
+{"id":"agt-006","tags":["math"],"input":{"question":"Split a $96 bill: what is 96 / 4 + 2.5?"},"expected":{"toolCalls":[{"toolName":"calculator"}],"mustInclude":["26.5"],"maxSteps":3}}
+{"id":"agt-007","tags":["no-tool"],"input":{"question":"Hi there, what can you help me with?"},"expected":{"toolCalls":[],"mustInclude":["help"],"maxSteps":1}}

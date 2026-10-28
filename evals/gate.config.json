@@ -1,0 +1,19 @@
+{
+  "defaults": {
+    "minPassRate": 0.9,
+    "maxFlakyRate": 0,
+    "maxRegression": 0.05,
+    "maxInfraErrorRate": 0.1,
+    "minJudgeScore": 0.75
+  },
+  "suites": {
+    "summarize": { "minPassRate": 0.85 },
+    "classify": { "minPassRate": 0.9 },
+    "extract": { "minPassRate": 0.95 },
+    "rag-qa": { "minPassRate": 0.9 },
+    "agent": { "minPassRate": 0.95 }
+  },
+  "modes": {
+    "live": { "maxFlakyRate": 0.2, "maxRegression": 0.1 }
+  }
+}

@@ -1,0 +1,10 @@
+{"id":"cls-001","tags":["billing"],"input":{"ticket":"I was charged for my subscription after I cancelled it. Please refund me."},"expected":{"label":"billing"}}
+{"id":"cls-002","tags":["technical"],"input":{"ticket":"The dashboard shows a 500 error every time I open the reports tab."},"expected":{"label":"technical"}}
+{"id":"cls-003","tags":["account"],"input":{"ticket":"I forgot my password and the reset email never arrives in my inbox."},"expected":{"label":"account"}}
+{"id":"cls-004","tags":["shipping"],"input":{"ticket":"My package has said 'in transit' for nine days and the tracking number does not update."},"expected":{"label":"shipping"}}
+{"id":"cls-005","tags":["other"],"input":{"ticket":"Do you have any open positions on your design team?"},"expected":{"label":"other"}}
+{"id":"cls-006","tags":["technical"],"input":{"ticket":"The mobile app crashes as soon as I tap the camera button."},"expected":{"label":"technical"}}
+{"id":"cls-007","tags":["billing"],"input":{"ticket":"Can I get a copy of last month's invoice for my accountant?"},"expected":{"label":"billing"}}
+{"id":"cls-008","tags":["account"],"input":{"ticket":"How do I change the email address on my account?"},"expected":{"label":"account"}}
+{"id":"cls-009","tags":["shipping"],"input":{"ticket":"The courier left my delivery at the wrong house."},"expected":{"label":"shipping"}}
+{"id":"cls-010","tags":["ambiguous","known-flaky"],"input":{"ticket":"I got charged twice this month and now I can't log in to check my billing history."},"expected":{"label":"billing"}}
