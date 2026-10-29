@@ -2,14 +2,14 @@ import { RunButton } from "./RunButton";
 import { SUITES } from "@/evals/suites";
 import { readReports } from "@/evals/runner/execute";
 import { evaluateGate, pct } from "@/evals/runner/gate";
-import { loadThresholds } from "@/evals/runner/load";
+import { loadBaseline, loadThresholds } from "@/evals/runner/load";
 
 export const dynamic = "force-dynamic";
 
 export default async function Dashboard() {
   const [reports, thresholds] = await Promise.all([readReports(), loadThresholds()]);
   const byName = new Map(reports.map((r) => [r.suite, r]));
-  const gate = evaluateGate(reports, thresholds);
+  const gate = evaluateGate(reports, thresholds, reports[0] ? await loadBaseline(reports[0].mode) : undefined);
   const gateBySuite = new Map(gate.results.map((g) => [g.suite, g]));
 
   return (

@@ -1,0 +1,73 @@
+{
+  "updatedAt": "2026-10-29T20:16:46.089Z",
+  "mode": "mock",
+  "model": "mock-fixture",
+  "judgeModel": "mock-judge",
+  "suites": {
+    "summarize": {
+      "datasetHash": "c5d7a6a5cd8f",
+      "runsPerCase": 5,
+      "passRate": 0.9667,
+      "cases": {
+        "s01": "stable-pass",
+        "s02": "stable-pass",
+        "s03": "stable-pass",
+        "s04": "stable-pass",
+        "s05": "flaky",
+        "s06": "stable-pass"
+      }
+    },
+    "classify": {
+      "datasetHash": "1a054c044752",
+      "runsPerCase": 5,
+      "passRate": 0.8333,
+      "cases": {
+        "c01": "stable-pass",
+        "c02": "stable-pass",
+        "c03": "stable-pass",
+        "c04": "stable-pass",
+        "c05": "stable-pass",
+        "c06": "stable-fail"
+      }
+    },
+    "extract": {
+      "datasetHash": "2177a54456b2",
+      "runsPerCase": 5,
+      "passRate": 0.9667,
+      "cases": {
+        "e01": "stable-pass",
+        "e02": "stable-pass",
+        "e03": "stable-pass",
+        "e04": "flaky",
+        "e05": "stable-pass",
+        "e06": "stable-pass"
+      }
+    },
+    "rag": {
+      "datasetHash": "c60468356be1",
+      "runsPerCase": 5,
+      "passRate": 0.9667,
+      "cases": {
+        "r01": "stable-pass",
+        "r02": "stable-pass",
+        "r03": "stable-pass",
+        "r04": "stable-pass",
+        "r05": "stable-pass",
+        "r06": "flaky"
+      }
+    },
+    "agent": {
+      "datasetHash": "35ea59e2020d",
+      "runsPerCase": 5,
+      "passRate": 1,
+      "cases": {
+        "a01": "stable-pass",
+        "a02": "stable-pass",
+        "a03": "stable-pass",
+        "a04": "stable-pass",
+        "a05": "stable-pass",
+        "a06": "stable-pass"
+      }
+    }
+  }
+}
