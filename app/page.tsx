@@ -41,21 +41,23 @@ export default async function Dashboard() {
               {r && g ? (
                 <>
                   <div className="stats">
-                    <div className="stat"><b data-testid="pass-rate">{pct(r.summary.passRate)}</b><span className="muted">pass rate (min {pct(g.minPassRate)})</span></div>
+                    <div className="stat"><b data-testid="pass-rate">{pct(g.passRate)}</b><span className="muted">pass rate (min {pct(g.minPassRate)})</span></div>
                     <div className="stat"><b>{r.summary.flakyCases}/{r.summary.cases}</b><span className="muted">flaky (max {pct(g.maxFlakeRate)})</span></div>
                     <div className="stat"><b>{r.summary.meanScore.toFixed(2)}</b><span className="muted">mean score</span></div>
-                    <div className="stat"><span className={`pill ${g.ok ? "ok" : "bad"}`}>{g.ok ? "pass" : "fail"}</span><div className="muted">{r.runsPerCase} runs · dataset v{r.datasetVersion} ({r.datasetHash})</div></div>
+                    <div className="stat"><span className={`pill ${g.ok ? "ok" : "bad"}`}>{g.ok ? "pass" : "fail"}</span><div className="muted">{r.runsPerCase} runs · dataset v{r.datasetVersion} ({r.datasetHash}){g.regression !== undefined && <> · {g.regression > 0 ? "−" : "+"}{pct(Math.abs(g.regression))} vs baseline</>}</div></div>
                   </div>
                   <table>
-                    <thead><tr><th>Case</th><th>Pass rate</th><th>Score μ ± σ</th><th>Status</th></tr></thead>
+                    <thead><tr><th>Case</th><th>Pass rate</th><th>95% CI</th><th>Score μ ± σ</th><th>Status</th></tr></thead>
                     <tbody>
                       {r.cases.map((c) => (
                         <tr key={c.id}>
                           <td>{c.id}</td>
                           <td>{pct(c.passRate)}</td>
+                          <td className="muted">{c.ci95 ? `${pct(c.ci95.low)}–${pct(c.ci95.high)}` : "—"}</td>
                           <td>{c.meanScore.toFixed(2)} ± {c.scoreStdev.toFixed(2)}</td>
                           <td>
-                            {c.flaky ? <span className="pill warn">flaky</span> : c.passRate === 1 ? <span className="pill ok">pass</span> : <span className="pill bad">fail</span>}
+                            {g.quarantined.includes(c.id) && <span className="pill">quarantined</span>}{" "}
+                            {c.flaky ? <span className="pill warn" title={c.flakyScorers?.length ? `unstable: ${c.flakyScorers.join(", ")}` : undefined}>flaky</span> : c.passRate === 1 ? <span className="pill ok">pass</span> : <span className="pill bad">fail</span>}
                           </td>
                         </tr>
                       ))}
