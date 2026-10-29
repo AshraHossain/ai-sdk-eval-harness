@@ -55,6 +55,10 @@ describe("offline eval of the real suites", () => {
     expect(gate.results[0]!.failures.join(" ")).toMatch(/pass rate|newly failing|regressed/);
   });
 
+  it("has a gate self-test fault for every suite", () => {
+    expect(new Set(Object.values(MOCK_FAULTS).map((f) => f.suite))).toEqual(new Set(suiteNames));
+  });
+
   it("only touches the targeted suite and rejects unknown faults", () => {
     expect(applyFault("rag-no-citations", "classify", { label: "billing" })).toEqual({ label: "billing" });
     expect(() => applyFault("nope", "rag", {})).toThrow(/Unknown EVAL_MOCK_FAULT/);
