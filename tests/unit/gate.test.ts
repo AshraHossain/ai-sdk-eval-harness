@@ -6,7 +6,7 @@ import type { SuiteReport } from "../../evals/runner/types";
 const report = (suite: string, passRate: number, flakeRate: number): SuiteReport => ({
   suite, title: suite, mode: "mock", runsPerCase: 5, datasetVersion: "1", datasetHash: "x", model: "m", judgeModel: "j",
   startedAt: "", durationMs: 1, cases: [],
-  summary: { cases: 10, passRate, meanScore: passRate, flakyCases: flakeRate * 10, flakeRate, failingCases: 0 },
+  summary: { cases: 10, passRate, meanScore: passRate, flakyCases: flakeRate * 10, flakeRate, failingCases: 0, infraErrorRate: 0 },
 });
 const thresholds = thresholdsSchema.parse({ default: { minPassRate: 0.8, maxFlakeRate: 0.2 }, suites: { agent: { minPassRate: 0.95 } } });
 

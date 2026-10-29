@@ -1,6 +1,7 @@
 import { generateObject, type LanguageModel } from "ai";
 import { z } from "zod";
 import type { ScoreResult } from "./types";
+import { isInfraError } from "../runner/errors";
 
 export const judgeSchema = z.object({
   score: z.number().int().min(1).max(5),
@@ -54,6 +55,6 @@ export async function llmJudge(model: LanguageModel, opts: JudgeOptions, i: Judg
       detail: `${object.score}/5 - ${object.rationale}`,
     };
   } catch (err) {
-    return { name: `judge:${opts.name}`, score: 0, pass: false, detail: `judge error: ${(err as Error).message}` };
+    return { name: `judge:${opts.name}`, score: 0, pass: false, detail: `judge error: ${(err as Error).message}`, ...(isInfraError(err) ? { infra: true } : {}) };
   }
 }
