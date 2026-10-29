@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { executeSuite } from "../../evals/runner/execute";
 import { suiteNames } from "../../evals/suites";
 import { evaluateGate } from "../../evals/runner/gate";
-import { loadThresholds } from "../../evals/runner/load";
+import { loadBaseline, loadThresholds } from "../../evals/runner/load";
+import { applyFault, MOCK_FAULTS, mockFaultNames } from "../../evals/mock/faults";
 
 describe("offline eval of the real suites", () => {
   it("is deterministic across invocations", async () => {
@@ -37,5 +38,25 @@ describe("offline eval of the real suites", () => {
       if (saved.a) process.env.ANTHROPIC_API_KEY = saved.a;
       if (saved.o) process.env.OPENAI_API_KEY = saved.o;
     }
+  });
+
+  it("matches the committed mock baseline", async () => {
+    const reports = await Promise.all(suiteNames.map((suite) => executeSuite({ suite, runs: 5, mode: "mock" })));
+    const gate = evaluateGate(reports, await loadThresholds(), await loadBaseline("mock"));
+    expect(gate.ok).toBe(true);
+    expect(gate.results.every((g) => g.regression === 0)).toBe(true);
+  });
+
+  it.each(mockFaultNames)("injected fault %s fails the gate", async (fault) => {
+    const { suite } = MOCK_FAULTS[fault];
+    const reports = [await executeSuite({ suite, runs: 5, mode: "mock", fault })];
+    const gate = evaluateGate(reports, await loadThresholds(), await loadBaseline("mock"));
+    expect(gate.ok).toBe(false);
+    expect(gate.results[0]!.failures.join(" ")).toMatch(/pass rate|newly failing|regressed/);
+  });
+
+  it("only touches the targeted suite and rejects unknown faults", () => {
+    expect(applyFault("rag-no-citations", "classify", { label: "billing" })).toEqual({ label: "billing" });
+    expect(() => applyFault("nope", "rag", {})).toThrow(/Unknown EVAL_MOCK_FAULT/);
   });
 });
