@@ -1,6 +1,7 @@
+import { APICallError } from "ai";
 import { describe, expect, it } from "vitest";
 import { z } from "zod";
-import { runSuite } from "../../evals/runner/runner";
+import { flakyScorers, runSuite } from "../../evals/runner/runner";
 import { createFixtureModel, createMockJudge } from "../../evals/mock/mockModel";
 import { summarize } from "../../src/lib/ai/summarize";
 import { exactMatch } from "../../evals/scorers/deterministic";
@@ -48,5 +49,48 @@ describe("runSuite", () => {
       modelFor: () => createFixtureModel("ok"),
     });
     expect(report.cases.map((c) => c.id)).toEqual(["stable", "flaky", "broken"]);
+  });
+
+  it("keeps infrastructure errors out of pass rates and flaky detection", async () => {
+    const rateLimited = () => new APICallError({ message: "rate limited", url: "https://api", requestBodyValues: {}, statusCode: 429, isRetryable: true });
+    const report = await runSuite({
+      suite, cases: [cases[0]!, cases[2]!], runs: 3, judge: createMockJudge(), meta,
+      modelFor: (c, run) => {
+        if (c.id === "broken" || run === 1) throw rateLimited();
+        return createFixtureModel("ok");
+      },
+    });
+    const [stable, broken] = report.cases;
+    expect(stable).toMatchObject({ passRate: 1, scoredRuns: 2, stability: "stable-pass", flaky: false });
+    expect(stable!.runs[1]!.infra).toBe(true);
+    expect(broken).toMatchObject({ scoredRuns: 0, stability: "inconclusive", flaky: false });
+    expect(report.summary.infraErrorRate).toBeCloseTo(4 / 6, 3);
+    expect(report.summary.passRate).toBe(1);
+    expect(report.summary.failingCases).toBe(0);
+  });
+
+  it("adds a Wilson interval and names the scorer that flipped", async () => {
+    const report = await runSuite({
+      suite, cases: [cases[1]!], runs: 4, judge: createMockJudge(), meta,
+      modelFor: (c, run) => createFixtureModel(fixtures[c.id]![run % fixtures[c.id]!.length]!),
+    });
+    const c = report.cases[0]!;
+    expect(c.stability).toBe("flaky");
+    expect(c.flakyScorers).toEqual(["eq"]);
+    expect(c.ci95.low).toBeLessThan(0.75);
+    expect(c.ci95.high).toBeGreaterThan(0.75);
+  });
+
+  it("rejects a non-integer concurrency", async () => {
+    await expect(runSuite({ suite, cases, runs: 1, judge: createMockJudge(), meta, concurrency: Number.NaN, modelFor: () => createFixtureModel("ok") })).rejects.toThrow(RangeError);
+  });
+});
+
+describe("flakyScorers", () => {
+  it("attributes intermittent exceptions to execution", () => {
+    const ok = { run: 0, pass: true, score: 1, scores: [{ name: "eq", score: 1, pass: true }], latencyMs: 1 };
+    const threw = { run: 1, pass: false, score: 0, scores: [], error: "could not parse", latencyMs: 1 };
+    expect(flakyScorers([ok, threw])).toEqual(["execution", "eq"]);
+    expect(flakyScorers([ok, ok])).toEqual([]);
   });
 });

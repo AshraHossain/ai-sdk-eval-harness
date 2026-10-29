@@ -16,6 +16,9 @@
     "test": "vitest run",
     "eval": "tsx evals/cli.ts",
     "eval:gate": "tsx evals/cli.ts --mode mock --runs 5",
+    "eval:baseline": "tsx evals/cli.ts --mode mock --runs 5 --update-baseline",
+    "eval:calibrate": "tsx evals/calibration/calibrate.ts",
+    "eval:selftest": "tsx scripts/gate-selftest.ts",
     "eval:live": "EVAL_MODE=live tsx evals/cli.ts --runs 3",
     "e2e": "playwright test"
   },

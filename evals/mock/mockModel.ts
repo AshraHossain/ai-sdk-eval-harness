@@ -60,10 +60,9 @@ function promptText(opts: LanguageModelV3CallOptions): string {
     .join("\n");
 }
 
-/** Section between `label:` and the next blank-line-delimited label. */
-function section(prompt: string, label: string): string {
-  const m = prompt.match(new RegExp(`${label}:\\n([\\s\\S]*?)(?:\\n\\n[A-Z]+[A-Z ()a-z]*:|\\n\\nScore the OUTPUT|$)`));
-  return m?.[1]?.trim() ?? "";
+/** Contents of `<tag>…</tag>` in the judge prompt (see buildJudgePrompt). */
+function section(prompt: string, tag: string): string {
+  return prompt.match(new RegExp(`<${tag}>\\n([\\s\\S]*?)\\n</${tag}>`))?.[1]?.trim() ?? "";
 }
 
 /**
@@ -75,8 +74,8 @@ export function createMockJudge() {
     modelId: "mock-judge",
     doGenerate: async (opts) => {
       const prompt = promptText(opts);
-      const ref = contentWords(section(prompt, "REFERENCE"));
-      const out = contentWords(section(prompt, "OUTPUT"));
+      const ref = contentWords(section(prompt, "reference"));
+      const out = contentWords(section(prompt, "output"));
       const recall = ref.size ? [...ref].filter((w) => out.has(w)).length / ref.size : 1;
       const score = Math.max(1, Math.min(5, 1 + Math.round(4 * recall)));
       return stepResult({ text: JSON.stringify({ score, rationale: `mock judge: ${Math.round(recall * 100)}% reference coverage` }) }, 0);

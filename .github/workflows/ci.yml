@@ -29,6 +29,12 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
+      # Mock judge: a plumbing check that reports agreement but never fails CI.
+      - name: Judge calibration (mock, report only)
+        run: npm run eval:calibrate
+      # A gate that never fails is worse than none: every injected fault must fail it.
+      - name: Gate self-test
+        run: npm run eval:selftest
       # Offline: fixtures + mock judge, no API keys. Exits non-zero if any suite
       # is below its pass-rate threshold or over its flake budget.
       - name: Eval gate (mock)

@@ -11,6 +11,8 @@ npm test                       # Vitest (offline)
 npm run eval                   # all suites, mock mode, N=5, applies the gate -> reports/
 npm run eval -- --suite rag --runs 10 --no-gate
 npm run e2e                    # Playwright; set PW_CHROMIUM_PATH to use a preinstalled Chromium
+npm run eval:calibrate         # judge agreement with human labels (fails below the bar in live mode)
+npm run eval:selftest          # the gate must fail on every injected fault
 EVAL_MODE=live npm run eval    # real providers; needs keys (see .env.example)
 ```
 
@@ -29,6 +31,9 @@ EVAL_MODE=live npm run eval    # real providers; needs keys (see .env.example)
 - Changing a dataset's cases: bump its version in `evals/datasets/manifest.json`.
 - Providers: `anthropic:`, `openai:`, `bynara:` (OpenAI-compatible router). API keys come from env only;
   never commit keys or `.env`.
+- Baselines: `evals/baselines/<mode>.json`. Re-record with `npm run eval:baseline` after an intended fixture or
+  dataset change; it refuses when the gate fails. Quarantine noisy cases in `thresholds.json`, never by editing data.
+- Gate self-test faults live in `evals/mock/faults.ts`; every suite needs one, and `npm run eval:selftest` must pass.
 - The seeded flaky cases (`summarize/s05`, `extract/e04`, `rag/r06`) and failing case (`classify/c06`) are
   asserted in `tests/unit/mockSuites.test.ts` and `tests/e2e/dashboard.spec.ts`; change them together.
 

@@ -4,7 +4,7 @@ import path from "node:path";
 import { z } from "zod";
 import type { EvalCase, Suite } from "./types";
 import type { Fixture } from "../mock/mockModel";
-import { thresholdsSchema, type Thresholds } from "./gate";
+import { baselineSchema, thresholdsSchema, type Baseline, type Thresholds } from "./gate";
 
 export const EVALS_DIR = path.join(process.cwd(), "evals");
 
@@ -49,4 +49,17 @@ export async function loadFixtures(suite: string, dir = EVALS_DIR): Promise<Reco
 
 export async function loadThresholds(dir = EVALS_DIR): Promise<Thresholds> {
   return thresholdsSchema.parse(JSON.parse(await readFile(path.join(dir, "thresholds.json"), "utf8")));
+}
+
+/** Baselines are per mode: a mock baseline says nothing about a live model. */
+export const baselinePath = (mode: "mock" | "live", dir = EVALS_DIR) => path.join(dir, "baselines", `${mode}.json`);
+
+export async function loadBaseline(mode: "mock" | "live", dir = EVALS_DIR): Promise<Baseline | undefined> {
+  let raw: string;
+  try {
+    raw = await readFile(baselinePath(mode, dir), "utf8");
+  } catch {
+    return undefined;
+  }
+  return baselineSchema.parse(JSON.parse(raw));
 }
