@@ -1,6 +1,7 @@
 import type { ZodType } from "zod";
 import type { LanguageModel } from "ai";
 import type { ScoreResult } from "../scorers/types";
+import type { Interval, Stability } from "./stats";
 
 export interface EvalCase {
   id: string;
@@ -25,12 +26,21 @@ export interface RunReport {
   scores: ScoreResult[];
   output?: unknown;
   error?: string;
+  /** Failed for infrastructure reasons; excluded from pass rates and flaky detection. */
+  infra?: boolean;
   latencyMs: number;
 }
 
 export interface CaseReport {
   id: string;
+  /** Runs that produced a quality signal (runs minus infra errors). */
+  scoredRuns: number;
   passRate: number;
+  /** Wilson 95% interval on the pass rate. */
+  ci95: Interval;
+  stability: Stability;
+  /** Scorers whose verdict changed across runs: where the instability lives. */
+  flakyScorers: string[];
   meanScore: number;
   scoreStdev: number;
   flaky: boolean;
@@ -44,6 +54,8 @@ export interface SuiteSummary {
   flakyCases: number;
   flakeRate: number;
   failingCases: number;
+  /** Share of runs lost to infrastructure errors. */
+  infraErrorRate: number;
 }
 
 export interface SuiteReport {

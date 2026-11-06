@@ -4,4 +4,6 @@ export interface ScoreResult {
   score: number;
   pass: boolean;
   detail?: string;
+  /** Failed for infrastructure reasons (rate limit, 5xx), not quality. */
+  infra?: boolean;
 }

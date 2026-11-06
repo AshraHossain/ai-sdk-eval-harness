@@ -14,6 +14,8 @@ test("flaky and failing cases are surfaced", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByTestId("suite-extract").getByRole("row", { name: /e04.*flaky/ })).toBeVisible();
   await expect(page.getByTestId("suite-classify").getByRole("row", { name: /c06.*fail/ })).toBeVisible();
+  // 4/5 passes: the Wilson interval shows how little five runs prove.
+  await expect(page.getByTestId("suite-extract").getByRole("row", { name: /e04/ })).toContainText("37.5%–96.4%");
 });
 
 test("running a suite from the UI refreshes its report", async ({ page }) => {

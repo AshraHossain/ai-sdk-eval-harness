@@ -2,6 +2,7 @@ import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { assertLiveKeys, DEFAULT_JUDGE_MODEL, DEFAULT_MODEL, resolveMode, resolveModel, type EvalMode } from "../models";
 import { createFixtureModel, createMockJudge } from "../mock/mockModel";
+import { applyFault } from "../mock/faults";
 import { getSuite } from "../suites";
 import { loadDataset, loadFixtures } from "./load";
 import { runSuite } from "./runner";
@@ -15,6 +16,8 @@ export interface ExecuteOptions {
   outDir?: string;
   model?: string;
   judgeModel?: string;
+  /** Mock mode only: inject a regression (see evals/mock/faults.ts). Defaults to EVAL_MOCK_FAULT. */
+  fault?: string;
 }
 
 export const REPORTS_DIR = path.join(process.cwd(), "reports");
@@ -28,6 +31,7 @@ export async function executeSuite(opts: ExecuteOptions): Promise<SuiteReport> {
 
   if (mode === "mock") {
     const fixtures = await loadFixtures(suite.name);
+    const fault = opts.fault ?? (process.env.EVAL_MOCK_FAULT || undefined);
     const missing = ds.cases.filter((c) => !fixtures[c.id]?.length).map((c) => c.id);
     if (missing.length) throw new Error(`${suite.name}: no fixtures for cases: ${missing.join(", ")}`);
     return runSuite({
@@ -36,7 +40,7 @@ export async function executeSuite(opts: ExecuteOptions): Promise<SuiteReport> {
       runs,
       modelFor: (c, run) => {
         const list = fixtures[c.id]!;
-        return createFixtureModel(list[run % list.length]!);
+        return createFixtureModel(applyFault(fault, suite.name, list[run % list.length]!));
       },
       judge: createMockJudge(),
       meta: { mode, datasetVersion: ds.version, datasetHash: ds.hash, model: "mock-fixture", judgeModel: "mock-judge" },

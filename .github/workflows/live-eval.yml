@@ -20,6 +20,11 @@ on:
 permissions:
   contents: read
 
+# Never cancel a live run that has already spent tokens.
+concurrency:
+  group: live-eval
+  cancel-in-progress: false
+
 jobs:
   live:
     runs-on: ubuntu-latest
@@ -42,6 +47,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Judge calibration (fails if the live judge disagrees with human labels)
+        run: npm run eval:calibrate
       - name: Run live eval gate
         env:
           SUITES: ${{ inputs.suites }}
