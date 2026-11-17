@@ -7,6 +7,7 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 ### Added
 - API edge middleware: `X-Request-ID`, sliding-window rate limit (429 + `Retry-After: 60`), optional
   `API_AUTH_TOKEN` (Bearer or `X-API-Key`, constant-time), OWASP headers; `/api/health` and `/api/readyz` probes.
+- Rate-limit keys trust `X-Forwarded-For` only through `TRUSTED_PROXY_HOPS` (right-most hop); key table capped.
 - Route hardening: 415 for non-JSON, 413 byte cap, strict schema, `X-Process-Time-Ms`, generic 500s.
 - `<untrusted_context>` framing for documents, tickets and invoices; `safeId()` for report paths.
 - Eval scorecard (`reports/scorecard.json`, summary.md): citation recall, grounding rate, guardrail pass

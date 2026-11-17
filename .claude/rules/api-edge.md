@@ -13,6 +13,7 @@ paths:
 3. Wrap route handlers in `withTiming()` so responses carry `X-Process-Time-Ms`.
 4. JSON routes check Content-Type (415), byte size by header and by bytes read (413), then a
    `.strict()` Zod schema (400). 500s return a generic message and log the detail server-side.
-5. Live runs spend tokens: keep `EVAL_API_ENABLED` + `EVAL_API_TOKEN` and the one-at-a-time lock.
-6. Every new security branch gets a test in `tests/integration/` (status code and headers).
+5. Never key anything on the left-most `X-Forwarded-For`. Use `clientKey(headers, TRUSTED_PROXY_HOPS)`.
+6. Live runs spend tokens: keep `EVAL_API_ENABLED` + `EVAL_API_TOKEN` and the one-at-a-time lock.
+7. Every new security branch gets a test in `tests/integration/` (status code and headers).
    Update the threat table in `SECURITY.md`.

@@ -227,7 +227,7 @@ Follow [.claude/skills/add-eval-suite/SKILL.md](.claude/skills/add-eval-suite/SK
 Details and the full threat table: [SECURITY.md](SECURITY.md).
 
 - **Edge** (`middleware.ts`, Node runtime, `/api/*`): `X-Request-ID`, sliding-window rate limit (`RATE_LIMIT_PER_MINUTE`,
-  default 120, 429 + `Retry-After: 60`), optional `API_AUTH_TOKEN` (Bearer or `X-API-Key`, constant-time compare, 401),
+  default 120, 429 + `Retry-After: 60`; per client only via `TRUSTED_PROXY_HOPS`, forged `X-Forwarded-For` ignored), optional `API_AUTH_TOKEN` (Bearer or `X-API-Key`, constant-time compare, 401),
   and `nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, `Cache-Control: no-store`,
   `Content-Security-Policy: default-src none; frame-ancestors none`. `/api/health` and `/api/readyz` stay open.
 - **Route**: JSON only (415), 4 KB cap (413), strict schema (400), `X-Process-Time-Ms`, generic 500s. Live runs also need

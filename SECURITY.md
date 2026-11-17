@@ -13,7 +13,8 @@ Do not file a public issue for an unpatched problem.
 | Variable | Default | Effect |
 |---|---|---|
 | `API_AUTH_TOKEN` | unset | When set, every `/api/*` route except the probes requires `Authorization: Bearer <t>` or `X-API-Key: <t>` (401 otherwise) |
-| `RATE_LIMIT_PER_MINUTE` | `120` | Sliding-window limit per client IP on `/api/*` except the probes (429, `Retry-After: 60`) |
+| `RATE_LIMIT_PER_MINUTE` | `120` | Sliding-window limit on `/api/*` except the probes (429, `Retry-After: 60`) |
+| `TRUSTED_PROXY_HOPS` | `0` | Reverse proxies in front of the app. `0`: one shared rate-limit bucket (client headers are never trusted). `n`: key by the `n`-th `X-Forwarded-For` entry from the right |
 | `EVAL_API_ENABLED`, `EVAL_API_TOKEN` | off | Live (token-spending) runs over HTTP need both, plus a matching bearer token |
 | `EVAL_MODE` | `mock` | `live` calls real providers; keys come from env only |
 
@@ -24,7 +25,8 @@ Do not file a public issue for an unpatched problem.
 | Unauthenticated use of the API | Optional `API_AUTH_TOKEN`, Bearer or X-API-Key, constant-time compare | `middleware.ts`, `src/lib/security/http.ts` | `tests/integration/middleware.test.ts`, `tests/unit/security.test.ts` |
 | Token timing attack | `crypto.timingSafeEqual` after a length check | `tokenMatches()` | `security.test.ts` |
 | Token spend by an attacker (live mode) | Live runs need `EVAL_API_ENABLED` + `EVAL_API_TOKEN`; one live run at a time (409) | `app/api/eval/route.ts` | `tests/integration/api.test.ts` |
-| Request flooding, token brute force | Sliding-window limit per client before auth, 429 + `Retry-After: 60` | `middleware.ts` | `middleware.test.ts` |
+| Request flooding, token brute force | Sliding-window limit before auth, 429 + `Retry-After: 60` | `middleware.ts` | `middleware.test.ts` |
+| Rate-limit bypass with forged `X-Forwarded-For` | XFF trusted only through `TRUSTED_PROXY_HOPS`, read from the right; otherwise one shared bucket. Key table capped at 10,000; overflow shares one bucket | `clientKey()`, `createRateLimiter()` | `security.test.ts`, `middleware.test.ts` |
 | Oversized bodies | 4 KB cap by `Content-Length` and by bytes read (413) | `route.ts` | `api.test.ts` |
 | Wrong media type, content sniffing | JSON-only (415); `X-Content-Type-Options: nosniff` | `route.ts`, middleware | `api.test.ts`, e2e |
 | Malformed input | Strict Zod schema: known suite only, `runs` 1-10, no extra fields (400) | `route.ts` | `api.test.ts` |
@@ -57,7 +59,8 @@ request input. npm's suggested fix downgrades Vitest to 3.x, so it is not applie
 
 ## Known limits
 
-- The rate limiter is per process. Behind several instances, use a shared store.
+- The rate limiter is per process. Behind several instances, use a shared store. Without `TRUSTED_PROXY_HOPS`
+  all clients share one bucket, so one noisy client can throttle the rest; set it when behind a proxy.
 - With `API_AUTH_TOKEN` set, the dashboard's Run button gets 401 (browsers send no token). That is
   intended for headless deployments.
 - Pages use a partial CSP (`frame-ancestors`, `object-src`, `base-uri`, `form-action`). A full

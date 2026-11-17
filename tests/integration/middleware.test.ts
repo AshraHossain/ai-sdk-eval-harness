@@ -10,7 +10,7 @@ async function load(env: Record<string, string> = {}) {
   return (await import("../../middleware")).middleware;
 }
 
-const ENV = ["API_AUTH_TOKEN", "RATE_LIMIT_PER_MINUTE"] as const;
+const ENV = ["API_AUTH_TOKEN", "RATE_LIMIT_PER_MINUTE", "TRUSTED_PROXY_HOPS"] as const;
 beforeEach(() => ENV.forEach((k) => delete process.env[k]));
 afterEach(() => ENV.forEach((k) => delete process.env[k]));
 
@@ -44,8 +44,8 @@ describe("middleware", () => {
     }
   });
 
-  it("rate limits per client with 429 and Retry-After: 60", async () => {
-    const mw = await load({ RATE_LIMIT_PER_MINUTE: "2" });
+  it("rate limits per client behind a trusted proxy with 429 and Retry-After: 60", async () => {
+    const mw = await load({ RATE_LIMIT_PER_MINUTE: "2", TRUSTED_PROXY_HOPS: "1" });
     const a = { "x-forwarded-for": "1.1.1.1" };
     expect(mw(req("/api/eval", a)).status).toBe(200);
     expect(mw(req("/api/eval", a)).status).toBe(200);
@@ -54,5 +54,14 @@ describe("middleware", () => {
     expect(limited.headers.get("Retry-After")).toBe("60");
     expect(limited.headers.get("X-Content-Type-Options")).toBe("nosniff");
     expect(mw(req("/api/eval", { "x-forwarded-for": "2.2.2.2" })).status).toBe(200);
+    // A spoofed left-most entry does not mint a new bucket: the proxy-appended hop decides.
+    expect(mw(req("/api/eval", { "x-forwarded-for": "9.9.9.9, 1.1.1.1" })).status).toBe(429);
+  });
+
+  it("shares one bucket when no proxy is trusted, so forged headers cannot bypass the limit", async () => {
+    const mw = await load({ RATE_LIMIT_PER_MINUTE: "2" });
+    expect(mw(req("/api/eval", { "x-forwarded-for": "1.1.1.1" })).status).toBe(200);
+    expect(mw(req("/api/eval", { "x-forwarded-for": "2.2.2.2" })).status).toBe(200);
+    expect(mw(req("/api/eval", { "x-forwarded-for": "3.3.3.3" })).status).toBe(429);
   });
 });

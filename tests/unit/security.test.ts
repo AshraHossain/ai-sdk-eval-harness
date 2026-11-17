@@ -4,11 +4,13 @@ import {
   clientKey,
   createRateLimiter,
   DEFAULT_RATE_LIMIT_PER_MINUTE,
+  GLOBAL_BUCKET,
   presentedToken,
   rateLimitFrom,
   requestId,
   slidingWindow,
   tokenMatches,
+  trustedHopsFrom,
   withTiming,
 } from "../../src/lib/security/http";
 import { frameUntrusted, MAX_UNTRUSTED_CHARS, safeId, sanitizeUntrusted } from "../../src/lib/security/sanitize";
@@ -87,18 +89,41 @@ describe("rate limiting", () => {
     expect(allow("a", 1001)).toBe(true);
   });
 
-  it("evicts idle keys once the table is large", () => {
-    const allow = createRateLimiter(1, 10);
-    for (let i = 0; i <= 10_001; i++) allow(`k${i}`, 0);
-    // Every earlier key has expired by t=100, so all get evicted and k0 is allowed again.
-    expect(allow("fresh", 100)).toBe(true);
-    expect(allow("k0", 100)).toBe(true);
+  it("caps the key table: rotating keys fall into the shared bucket while the table is full", () => {
+    const allow = createRateLimiter(1, 1000, 3);
+    expect([allow("a", 0), allow("b", 0), allow("c", 0)]).toEqual([true, true, true]);
+    // Table full of active clients: new keys share one bucket, so rotation stops helping.
+    expect(allow("d", 1)).toBe(true);
+    expect(allow("e", 2)).toBe(false);
+    expect(allow("f", 3)).toBe(false);
+    // Known keys keep their own bucket.
+    expect(allow("a", 4)).toBe(false);
   });
 
-  it("keys clients by forwarded IP", () => {
-    expect(clientKey(new Headers({ "x-forwarded-for": "1.2.3.4, 10.0.0.1" }))).toBe("1.2.3.4");
-    expect(clientKey(new Headers({ "x-real-ip": "5.6.7.8" }))).toBe("5.6.7.8");
-    expect(clientKey(new Headers())).toBe("anonymous");
+  it("evicts idle keys before falling back to the shared bucket", () => {
+    const allow = createRateLimiter(1, 10, 2);
+    allow("a", 0);
+    allow("b", 0);
+    // a and b have expired by t=100, so new clients get their own buckets again.
+    expect(allow("c", 100)).toBe(true);
+    expect(allow("d", 100)).toBe(true);
+    expect(allow("c", 101)).toBe(false);
+  });
+
+  it("ignores client-supplied X-Forwarded-For unless proxy hops are trusted", () => {
+    const h = new Headers({ "x-forwarded-for": "6.6.6.6, 1.2.3.4, 10.0.0.1" });
+    expect(clientKey(h)).toBe(GLOBAL_BUCKET);
+    expect(clientKey(new Headers({ "x-real-ip": "5.6.7.8" }), 1)).toBe(GLOBAL_BUCKET);
+    // Read from the right: the nearest trusted proxy appended the last entry.
+    expect(clientKey(h, 1)).toBe("10.0.0.1");
+    expect(clientKey(h, 2)).toBe("1.2.3.4");
+    expect(clientKey(h, 5)).toBe(GLOBAL_BUCKET);
+    expect(clientKey(new Headers(), 1)).toBe(GLOBAL_BUCKET);
+  });
+
+  it("parses TRUSTED_PROXY_HOPS conservatively", () => {
+    expect(trustedHopsFrom("1")).toBe(1);
+    for (const bad of [undefined, "", "-1", "1.5", "11", "x"]) expect(trustedHopsFrom(bad)).toBe(0);
   });
 });
 

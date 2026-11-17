@@ -43,9 +43,26 @@ export function rateLimitFrom(raw: string | undefined): number {
   return Number.isInteger(n) && n > 0 ? n : DEFAULT_RATE_LIMIT_PER_MINUTE;
 }
 
-/** Client key for rate limiting: first X-Forwarded-For hop, else X-Real-IP, else "anonymous". */
-export function clientKey(headers: Headers): string {
-  return headers.get("x-forwarded-for")?.split(",")[0]?.trim() || headers.get("x-real-ip") || "anonymous";
+/** Shared bucket for clients that cannot be identified, and for overflow when the key table is full. */
+export const GLOBAL_BUCKET = "global";
+/** Upper bound on tracked clients, so spoofed or rotating keys cannot grow memory without limit. */
+export const MAX_TRACKED_CLIENTS = 10_000;
+
+/** Parses TRUSTED_PROXY_HOPS: how many reverse proxies in front of the app append to X-Forwarded-For. */
+export function trustedHopsFrom(raw: string | undefined): number {
+  const n = Number(raw);
+  return Number.isInteger(n) && n >= 0 && n <= 10 ? n : 0;
+}
+
+/**
+ * Client key for rate limiting. X-Forwarded-For is client-writable, so it is only trusted through
+ * the configured number of proxy hops, read from the right (the entry our nearest proxy appended).
+ * With no trusted proxy, every client shares one bucket: fails closed instead of trusting headers.
+ */
+export function clientKey(headers: Headers, trustedHops = 0): string {
+  if (trustedHops < 1) return GLOBAL_BUCKET;
+  const hops = (headers.get("x-forwarded-for") ?? "").split(",").map((h) => h.trim()).filter(Boolean);
+  return hops[hops.length - trustedHops] ?? GLOBAL_BUCKET;
 }
 
 export interface RateDecision {
@@ -64,12 +81,16 @@ export function slidingWindow(hits: readonly number[], now: number, limit: numbe
  * In-memory limiter keyed by client.
  * ponytail: per-process memory; behind several instances use a shared store (Redis) instead.
  */
-export function createRateLimiter(limit: number, windowMs = RATE_WINDOW_MS) {
+export function createRateLimiter(limit: number, windowMs = RATE_WINDOW_MS, maxKeys = MAX_TRACKED_CLIENTS) {
   const log = new Map<string, readonly number[]>();
   return (key: string, now = Date.now()): boolean => {
+    if (!log.has(key) && log.size >= maxKeys) {
+      for (const [k, v] of log) if (!v.some((t) => now - t < windowMs)) log.delete(k);
+      // Still full of active clients: new keys share the global bucket instead of growing the table.
+      if (log.size >= maxKeys) key = GLOBAL_BUCKET;
+    }
     const d = slidingWindow(log.get(key) ?? [], now, limit, windowMs);
     log.set(key, d.hits);
-    if (log.size > 10_000) for (const [k, v] of log) if (!v.some((t) => now - t < windowMs)) log.delete(k);
     return d.allowed;
   };
 }

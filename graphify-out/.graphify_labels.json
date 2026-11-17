@@ -1,5 +1,5 @@
 {
-  "0": "index.ts",
+  "0": "deterministic.ts",
   "1": "execute.ts",
   "2": "runner/types.ts",
   "3": "gate.ts",
@@ -23,5 +23,6 @@
   "21": "add-eval-suite/SKILL.md",
   "22": "rebaseline/SKILL.md",
   "23": "engines",
-  "24": "vitest.config.ts"
+  "24": "vitest.config.ts",
+  "25": "faults.ts"
 }

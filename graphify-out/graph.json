@@ -4,26 +4,13 @@
   "graph": {},
   "nodes": [
     {
-      "id": "evals_runner_types_evalcase",
-      "label": "EvalCase",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "index.ts",
-      "file_type": "code",
-      "norm_label": "evalcase",
-      "source_file": "evals/runner/types.ts",
-      "source_location": "L6"
-    },
-    {
       "id": "evals_scorers_deterministic_toolcalllike",
       "label": "ToolCallLike",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "toolcalllike",
       "source_file": "evals/scorers/deterministic.ts",
@@ -36,7 +23,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "case",
       "source_file": "evals/suites/agent.ts",
@@ -49,7 +36,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "case",
       "source_file": "evals/suites/classify.ts",
@@ -62,24 +49,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "case",
       "source_file": "evals/suites/extract.ts",
       "source_location": "L7"
-    },
-    {
-      "id": "evals_suites_index_anysuite",
-      "label": "AnySuite",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "index.ts",
-      "file_type": "code",
-      "norm_label": "anysuite",
-      "source_file": "evals/suites/index.ts",
-      "source_location": "L9"
     },
     {
       "id": "evals_suites_rag_case",
@@ -88,7 +62,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "case",
       "source_file": "evals/suites/rag.ts",
@@ -101,7 +75,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "case",
       "source_file": "evals/suites/summarize.ts",
@@ -114,7 +88,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "agentresult",
       "source_file": "src/lib/ai/agent.ts",
@@ -127,7 +101,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "classification",
       "source_file": "src/lib/ai/classify.ts",
@@ -140,7 +114,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "ticketlabel",
       "source_file": "src/lib/ai/classify.ts",
@@ -153,7 +127,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "invoice",
       "source_file": "src/lib/ai/extract.ts",
@@ -166,7 +140,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "doc",
       "source_file": "src/lib/ai/groundedQa.ts",
@@ -179,7 +153,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "groundedanswer",
       "source_file": "src/lib/ai/groundedQa.ts",
@@ -192,37 +166,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "summarizeinput",
       "source_file": "src/lib/ai/summarize.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "evals_mock_faults_mockfault",
-      "label": "MockFault",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "mockfault",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L46"
-    },
-    {
-      "id": "evals_mock_faults_obj",
-      "label": "Obj",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "obj",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L9"
     },
     {
       "id": "evals_models_evalmode",
@@ -251,17 +199,17 @@
       "source_location": "L12"
     },
     {
-      "id": "scripts_gate_selftest_gaterunner",
-      "label": "GateRunner",
+      "id": "evals_suites_index_anysuite",
+      "label": "AnySuite",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "execute.ts",
       "file_type": "code",
-      "norm_label": "gaterunner",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L15"
+      "norm_label": "anysuite",
+      "source_file": "evals/suites/index.ts",
+      "source_location": "L9"
     },
     {
       "id": "evals_runner_runner_runsuiteoptions",
@@ -275,19 +223,6 @@
       "norm_label": "runsuiteoptions",
       "source_file": "evals/runner/runner.ts",
       "source_location": "L7"
-    },
-    {
-      "id": "evals_runner_scorecard_scorecard",
-      "label": "Scorecard",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "scorecard",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L5"
     },
     {
       "id": "evals_runner_stats_flakybounds",
@@ -340,6 +275,19 @@
       "norm_label": "casereport",
       "source_file": "evals/runner/types.ts",
       "source_location": "L34"
+    },
+    {
+      "id": "evals_runner_types_evalcase",
+      "label": "EvalCase",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "evalcase",
+      "source_file": "evals/runner/types.ts",
+      "source_location": "L6"
     },
     {
       "id": "evals_runner_types_runreport",
@@ -407,6 +355,58 @@
       "source_location": "L11"
     },
     {
+      "id": "evals_mock_faults_mockfault",
+      "label": "MockFault",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "mockfault",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L46"
+    },
+    {
+      "id": "evals_mock_faults_obj",
+      "label": "Obj",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "obj",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "evals_mock_mockmodel_fixture",
+      "label": "Fixture",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "fixture",
+      "source_file": "evals/mock/mockModel.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "scripts_gate_selftest_gaterunner",
+      "label": "GateRunner",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "gaterunner",
+      "source_file": "scripts/gate-selftest.ts",
+      "source_location": "L15"
+    },
+    {
       "id": "evals_runner_gate_baseline",
       "label": "Baseline",
       "_callable": true,
@@ -472,6 +472,19 @@
       "source_location": "L21"
     },
     {
+      "id": "evals_runner_scorecard_scorecard",
+      "label": "Scorecard",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "scorecard",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L5"
+    },
+    {
       "id": "evals_runner_types_suitereport",
       "label": "SuiteReport",
       "_callable": true,
@@ -524,19 +537,6 @@
       "source_location": "L38"
     },
     {
-      "id": "evals_mock_mockmodel_fixture",
-      "label": "Fixture",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "calibrate.ts",
-      "file_type": "code",
-      "norm_label": "fixture",
-      "source_file": "evals/mock/mockModel.ts",
-      "source_location": "L9"
-    },
-    {
       "id": "evals_mock_mockmodel_fixturestep",
       "label": "FixtureStep",
       "_callable": true,
@@ -586,7 +586,7 @@
       "file_type": "code",
       "norm_label": "ratedecision",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L51"
+      "source_location": "L68"
     },
     {
       "id": "evals_runner_errors_isinfraerror",
@@ -594,7 +594,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "isinfraerror()",
       "source_file": "evals/runner/errors.ts",
@@ -606,7 +606,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "argsmatch()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -618,7 +618,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "contains()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -630,7 +630,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "countwords()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -642,7 +642,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "exactmatch()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -654,7 +654,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "lengthbudget()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -666,7 +666,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "matchesregex()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -678,7 +678,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "norm()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -690,7 +690,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "notcontains()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -702,7 +702,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "numerictolerance()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -714,7 +714,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "result()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -726,7 +726,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "schemavalid()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -738,23 +738,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "toolcallmatch()",
       "source_file": "evals/scorers/deterministic.ts",
       "source_location": "L74"
-    },
-    {
-      "id": "evals_suites_index_getsuite",
-      "label": "getSuite()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "index.ts",
-      "file_type": "code",
-      "norm_label": "getsuite()",
-      "source_file": "evals/suites/index.ts",
-      "source_location": "L14"
     },
     {
       "id": "src_lib_ai_agent_runagent",
@@ -762,7 +750,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "runagent()",
       "source_file": "src/lib/ai/agent.ts",
@@ -774,7 +762,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "classifyticket()",
       "source_file": "src/lib/ai/classify.ts",
@@ -786,7 +774,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "extractinvoice()",
       "source_file": "src/lib/ai/extract.ts",
@@ -798,7 +786,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "groundedqa()",
       "source_file": "src/lib/ai/groundedQa.ts",
@@ -810,7 +798,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "summarize()",
       "source_file": "src/lib/ai/summarize.ts",
@@ -822,7 +810,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "frameuntrusted()",
       "source_file": "src/lib/security/sanitize.ts",
@@ -834,7 +822,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "sanitizeuntrusted()",
       "source_file": "src/lib/security/sanitize.ts",
@@ -846,7 +834,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "exec()",
       "source_file": "tests/unit/edges.test.ts",
@@ -923,18 +911,6 @@
       "norm_label": "applyfault()",
       "source_file": "evals/mock/faults.ts",
       "source_location": "L49"
-    },
-    {
-      "id": "evals_mock_faults_asobj",
-      "label": "asObj()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "asobj()",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L11"
     },
     {
       "id": "evals_models_assertlivekeys",
@@ -1033,28 +1009,64 @@
       "source_location": "L55"
     },
     {
-      "id": "scripts_gate_selftest_selftest",
-      "label": "selfTest()",
+      "id": "evals_runner_load_loadbaseline",
+      "label": "loadBaseline()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "execute.ts",
       "file_type": "code",
-      "norm_label": "selftest()",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L29"
+      "norm_label": "loadbaseline()",
+      "source_file": "evals/runner/load.ts",
+      "source_location": "L57"
     },
     {
-      "id": "scripts_gate_selftest_spawngate",
-      "label": "spawnGate()",
+      "id": "evals_runner_load_loaddataset",
+      "label": "loadDataset()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "execute.ts",
       "file_type": "code",
-      "norm_label": "spawngate()",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L18"
+      "norm_label": "loaddataset()",
+      "source_file": "evals/runner/load.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "evals_runner_load_loadfixtures",
+      "label": "loadFixtures()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "loadfixtures()",
+      "source_file": "evals/runner/load.ts",
+      "source_location": "L46"
+    },
+    {
+      "id": "evals_runner_load_parsejsonl",
+      "label": "parseJsonl()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "parsejsonl()",
+      "source_file": "evals/runner/load.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "evals_suites_index_getsuite",
+      "label": "getSuite()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "getsuite()",
+      "source_file": "evals/suites/index.ts",
+      "source_location": "L14"
     },
     {
       "id": "src_lib_security_sanitize_safeid",
@@ -1153,78 +1165,6 @@
       "source_location": "L64"
     },
     {
-      "id": "evals_runner_scorecard_buildscorecard",
-      "label": "buildScorecard()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "buildscorecard()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L41"
-    },
-    {
-      "id": "evals_runner_scorecard_fmt",
-      "label": "fmt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "fmt()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L56"
-    },
-    {
-      "id": "evals_runner_scorecard_latencies",
-      "label": "latencies()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "latencies()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L30"
-    },
-    {
-      "id": "evals_runner_scorecard_percentile",
-      "label": "percentile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "percentile()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L23"
-    },
-    {
-      "id": "evals_runner_scorecard_renderscorecard",
-      "label": "renderScorecard()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "renderscorecard()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L58"
-    },
-    {
-      "id": "evals_runner_scorecard_scorerrate",
-      "label": "scorerRate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "scorerrate()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L33"
-    },
-    {
       "id": "evals_runner_stats_classifystability",
       "label": "classifyStability()",
       "_callable": true,
@@ -1321,54 +1261,6 @@
       "source_location": "L18"
     },
     {
-      "id": "tests_unit_scorecard_test_kase",
-      "label": "kase()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "kase()",
-      "source_file": "tests/unit/scorecard.test.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "tests_unit_scorecard_test_run",
-      "label": "run()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "run()",
-      "source_file": "tests/unit/scorecard.test.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "tests_unit_scorecard_test_s",
-      "label": "s()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "s()",
-      "source_file": "tests/unit/scorecard.test.ts",
-      "source_location": "L16"
-    },
-    {
-      "id": "tests_unit_scorecard_test_suite",
-      "label": "suite()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "suite()",
-      "source_file": "tests/unit/scorecard.test.ts",
-      "source_location": "L12"
-    },
-    {
       "id": "tests_unit_stats_test_run",
       "label": "run()",
       "_callable": true,
@@ -1379,6 +1271,42 @@
       "norm_label": "run()",
       "source_file": "tests/unit/stats.test.ts",
       "source_location": "L6"
+    },
+    {
+      "id": "evals_mock_faults_asobj",
+      "label": "asObj()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "asobj()",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "scripts_gate_selftest_selftest",
+      "label": "selfTest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "selftest()",
+      "source_file": "scripts/gate-selftest.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "scripts_gate_selftest_spawngate",
+      "label": "spawnGate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "spawngate()",
+      "source_file": "scripts/gate-selftest.ts",
+      "source_location": "L18"
     },
     {
       "id": "app_page_dashboard",
@@ -1513,42 +1441,6 @@
       "source_location": "L155"
     },
     {
-      "id": "evals_runner_load_loadbaseline",
-      "label": "loadBaseline()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "loadbaseline()",
-      "source_file": "evals/runner/load.ts",
-      "source_location": "L57"
-    },
-    {
-      "id": "evals_runner_load_loaddataset",
-      "label": "loadDataset()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "loaddataset()",
-      "source_file": "evals/runner/load.ts",
-      "source_location": "L34"
-    },
-    {
-      "id": "evals_runner_load_loadfixtures",
-      "label": "loadFixtures()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "loadfixtures()",
-      "source_file": "evals/runner/load.ts",
-      "source_location": "L46"
-    },
-    {
       "id": "evals_runner_load_loadthresholds",
       "label": "loadThresholds()",
       "_callable": true,
@@ -1561,18 +1453,6 @@
       "source_location": "L50"
     },
     {
-      "id": "evals_runner_load_parsejsonl",
-      "label": "parseJsonl()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "parsejsonl()",
-      "source_file": "evals/runner/load.ts",
-      "source_location": "L13"
-    },
-    {
       "id": "evals_runner_markdown_rendermarkdown",
       "label": "renderMarkdown()",
       "_callable": true,
@@ -1583,6 +1463,78 @@
       "norm_label": "rendermarkdown()",
       "source_file": "evals/runner/markdown.ts",
       "source_location": "L4"
+    },
+    {
+      "id": "evals_runner_scorecard_buildscorecard",
+      "label": "buildScorecard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "buildscorecard()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L41"
+    },
+    {
+      "id": "evals_runner_scorecard_fmt",
+      "label": "fmt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "fmt()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L56"
+    },
+    {
+      "id": "evals_runner_scorecard_latencies",
+      "label": "latencies()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "latencies()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "evals_runner_scorecard_percentile",
+      "label": "percentile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "percentile()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "evals_runner_scorecard_renderscorecard",
+      "label": "renderScorecard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "renderscorecard()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L58"
+    },
+    {
+      "id": "evals_runner_scorecard_scorerrate",
+      "label": "scorerRate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "scorerrate()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L33"
     },
     {
       "id": "tests_unit_gate_test_baseline",
@@ -1643,6 +1595,54 @@
       "norm_label": "withcases()",
       "source_file": "tests/unit/gate.test.ts",
       "source_location": "L48"
+    },
+    {
+      "id": "tests_unit_scorecard_test_kase",
+      "label": "kase()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "kase()",
+      "source_file": "tests/unit/scorecard.test.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "tests_unit_scorecard_test_run",
+      "label": "run()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "run()",
+      "source_file": "tests/unit/scorecard.test.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "tests_unit_scorecard_test_s",
+      "label": "s()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "s()",
+      "source_file": "tests/unit/scorecard.test.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "tests_unit_scorecard_test_suite",
+      "label": "suite()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "suite()",
+      "source_file": "tests/unit/scorecard.test.ts",
+      "source_location": "L12"
     },
     {
       "id": "evals_calibration_calibrate_bootstrapkappaci",
@@ -1858,7 +1858,7 @@
       "file_type": "code",
       "norm_label": "finish()",
       "source_file": "middleware.ts",
-      "source_location": "L19"
+      "source_location": "L21"
     },
     {
       "id": "middleware_middleware",
@@ -1870,7 +1870,7 @@
       "file_type": "code",
       "norm_label": "middleware()",
       "source_file": "middleware.ts",
-      "source_location": "L26"
+      "source_location": "L28"
     },
     {
       "id": "src_lib_security_http_clientkey",
@@ -1882,7 +1882,7 @@
       "file_type": "code",
       "norm_label": "clientkey()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L47"
+      "source_location": "L62"
     },
     {
       "id": "src_lib_security_http_createratelimiter",
@@ -1894,7 +1894,7 @@
       "file_type": "code",
       "norm_label": "createratelimiter()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L67"
+      "source_location": "L84"
     },
     {
       "id": "src_lib_security_http_presentedtoken",
@@ -1942,7 +1942,7 @@
       "file_type": "code",
       "norm_label": "slidingwindow()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L58"
+      "source_location": "L75"
     },
     {
       "id": "src_lib_security_http_tokenmatches",
@@ -1957,6 +1957,18 @@
       "source_location": "L33"
     },
     {
+      "id": "src_lib_security_http_trustedhopsfrom",
+      "label": "trustedHopsFrom()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "code",
+      "norm_label": "trustedhopsfrom()",
+      "source_file": "src/lib/security/http.ts",
+      "source_location": "L52"
+    },
+    {
       "id": "src_lib_security_http_withtiming",
       "label": "withTiming()",
       "_callable": true,
@@ -1966,7 +1978,7 @@
       "file_type": "code",
       "norm_label": "withtiming()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L78"
+      "source_location": "L99"
     },
     {
       "id": "tests_integration_middleware_test_load",
@@ -1997,7 +2009,7 @@
       "label": "errors.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "errors.ts",
       "source_file": "evals/runner/errors.ts",
@@ -2008,7 +2020,7 @@
       "label": "deterministic.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "deterministic.ts",
       "source_file": "evals/scorers/deterministic.ts",
@@ -2019,7 +2031,7 @@
       "label": "suites/agent.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "suites/agent.ts",
       "source_file": "evals/suites/agent.ts",
@@ -2030,7 +2042,7 @@
       "label": "agentCase",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "agentcase",
       "source_file": "evals/suites/agent.ts",
@@ -2041,7 +2053,7 @@
       "label": "agentSuite",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "agentsuite",
       "source_file": "evals/suites/agent.ts",
@@ -2052,7 +2064,7 @@
       "label": "suites/classify.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "suites/classify.ts",
       "source_file": "evals/suites/classify.ts",
@@ -2063,7 +2075,7 @@
       "label": "classifyCase",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "classifycase",
       "source_file": "evals/suites/classify.ts",
@@ -2074,7 +2086,7 @@
       "label": "classifySuite",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "classifysuite",
       "source_file": "evals/suites/classify.ts",
@@ -2085,7 +2097,7 @@
       "label": "suites/extract.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "suites/extract.ts",
       "source_file": "evals/suites/extract.ts",
@@ -2096,7 +2108,7 @@
       "label": "extractCase",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "extractcase",
       "source_file": "evals/suites/extract.ts",
@@ -2107,29 +2119,18 @@
       "label": "extractSuite",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "extractsuite",
       "source_file": "evals/suites/extract.ts",
       "source_location": "L9"
     },
     {
-      "id": "evals_suites_index",
-      "label": "index.ts",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "index.ts",
-      "file_type": "code",
-      "norm_label": "index.ts",
-      "source_file": "evals/suites/index.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "evals_suites_rag",
       "label": "rag.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "rag.ts",
       "source_file": "evals/suites/rag.ts",
@@ -2140,7 +2141,7 @@
       "label": "ragCase",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "ragcase",
       "source_file": "evals/suites/rag.ts",
@@ -2151,7 +2152,7 @@
       "label": "ragSuite",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "ragsuite",
       "source_file": "evals/suites/rag.ts",
@@ -2162,7 +2163,7 @@
       "label": "suites/summarize.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "suites/summarize.ts",
       "source_file": "evals/suites/summarize.ts",
@@ -2173,7 +2174,7 @@
       "label": "summarizeCase",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "summarizecase",
       "source_file": "evals/suites/summarize.ts",
@@ -2184,7 +2185,7 @@
       "label": "summarizeSuite",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "summarizesuite",
       "source_file": "evals/suites/summarize.ts",
@@ -2195,7 +2196,7 @@
       "label": "ai/agent.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "ai/agent.ts",
       "source_file": "src/lib/ai/agent.ts",
@@ -2206,7 +2207,7 @@
       "label": "agentTools",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "agenttools",
       "source_file": "src/lib/ai/agent.ts",
@@ -2217,7 +2218,7 @@
       "label": "ORDERS",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "orders",
       "source_file": "src/lib/ai/agent.ts",
@@ -2228,7 +2229,7 @@
       "label": "RATES",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "rates",
       "source_file": "src/lib/ai/agent.ts",
@@ -2239,7 +2240,7 @@
       "label": "WEATHER",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "weather",
       "source_file": "src/lib/ai/agent.ts",
@@ -2250,7 +2251,7 @@
       "label": "ai/classify.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "ai/classify.ts",
       "source_file": "src/lib/ai/classify.ts",
@@ -2261,7 +2262,7 @@
       "label": "classificationSchema",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "classificationschema",
       "source_file": "src/lib/ai/classify.ts",
@@ -2272,7 +2273,7 @@
       "label": "TICKET_LABELS",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "ticket_labels",
       "source_file": "src/lib/ai/classify.ts",
@@ -2283,7 +2284,7 @@
       "label": "ai/extract.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "ai/extract.ts",
       "source_file": "src/lib/ai/extract.ts",
@@ -2294,7 +2295,7 @@
       "label": "invoiceSchema",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "invoiceschema",
       "source_file": "src/lib/ai/extract.ts",
@@ -2305,7 +2306,7 @@
       "label": "groundedQa.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "groundedqa.ts",
       "source_file": "src/lib/ai/groundedQa.ts",
@@ -2316,7 +2317,7 @@
       "label": "groundedAnswerSchema",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "groundedanswerschema",
       "source_file": "src/lib/ai/groundedQa.ts",
@@ -2327,7 +2328,7 @@
       "label": "ai/summarize.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "ai/summarize.ts",
       "source_file": "src/lib/ai/summarize.ts",
@@ -2338,18 +2339,29 @@
       "label": "sanitize.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "sanitize.ts",
       "source_file": "src/lib/security/sanitize.ts",
       "source_location": "L1"
     },
     {
+      "id": "src_lib_security_sanitize_max_untrusted_chars",
+      "label": "MAX_UNTRUSTED_CHARS",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "deterministic.ts",
+      "file_type": "code",
+      "norm_label": "max_untrusted_chars",
+      "source_file": "src/lib/security/sanitize.ts",
+      "source_location": "L8"
+    },
+    {
       "id": "src_lib_security_sanitize_untrusted_notice",
       "label": "UNTRUSTED_NOTICE",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "untrusted_notice",
       "source_file": "src/lib/security/sanitize.ts",
@@ -2360,7 +2372,7 @@
       "label": "edges.test.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "edges.test.ts",
       "source_file": "tests/unit/edges.test.ts",
@@ -2371,7 +2383,7 @@
       "label": "features.test.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "features.test.ts",
       "source_file": "tests/unit/features.test.ts",
@@ -2382,7 +2394,7 @@
       "label": "scorers.test.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "code",
       "norm_label": "scorers.test.ts",
       "source_file": "tests/unit/scorers.test.ts",
@@ -2393,7 +2405,7 @@
       "label": "ai",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "concept",
       "norm_label": "ai",
       "source_file": "package.json",
@@ -2404,7 +2416,7 @@
       "label": "zod",
       "_origin": "ast",
       "community": 0,
-      "community_name": "index.ts",
+      "community_name": "deterministic.ts",
       "file_type": "concept",
       "norm_label": "zod",
       "source_file": "package.json",
@@ -2486,39 +2498,6 @@
       "norm_label": "cli.ts",
       "source_file": "evals/cli.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "evals_mock_faults",
-      "label": "faults.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "faults.ts",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "evals_mock_faults_mock_faults",
-      "label": "MOCK_FAULTS",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "mock_faults",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "evals_mock_faults_mockfaultnames",
-      "label": "mockFaultNames",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "mockfaultnames",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L47"
     },
     {
       "id": "evals_models",
@@ -2631,6 +2610,17 @@
       "source_location": "L26"
     },
     {
+      "id": "evals_suites_index",
+      "label": "index.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "index.ts",
+      "source_file": "evals/suites/index.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "evals_suites_index_suitenames",
       "label": "suiteNames",
       "_origin": "ast",
@@ -2642,15 +2632,15 @@
       "source_location": "L12"
     },
     {
-      "id": "scripts_gate_selftest",
-      "label": "gate-selftest.ts",
+      "id": "evals_suites_index_suites",
+      "label": "SUITES",
       "_origin": "ast",
       "community": 1,
       "community_name": "execute.ts",
       "file_type": "code",
-      "norm_label": "gate-selftest.ts",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L1"
+      "norm_label": "suites",
+      "source_file": "evals/suites/index.ts",
+      "source_location": "L11"
     },
     {
       "id": "tests_integration_api_test",
@@ -2686,25 +2676,14 @@
       "source_location": "L18"
     },
     {
-      "id": "tests_integration_cli_test",
-      "label": "cli.test.ts",
+      "id": "tests_unit_datasets_test",
+      "label": "datasets.test.ts",
       "_origin": "ast",
       "community": 1,
       "community_name": "execute.ts",
       "file_type": "code",
-      "norm_label": "cli.test.ts",
-      "source_file": "tests/integration/cli.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "tests_integration_live_path_test",
-      "label": "live-path.test.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "live-path.test.ts",
-      "source_file": "tests/integration/live-path.test.ts",
+      "norm_label": "datasets.test.ts",
+      "source_file": "tests/unit/datasets.test.ts",
       "source_location": "L1"
     },
     {
@@ -3202,7 +3181,7 @@
       "node_kind": "heading",
       "norm_label": "[0.1.0]",
       "source_file": "CHANGELOG.md",
-      "source_location": "L25"
+      "source_location": "L26"
     },
     {
       "id": "changelog_added",
@@ -3226,7 +3205,7 @@
       "node_kind": "heading",
       "norm_label": "changed",
       "source_file": "CHANGELOG.md",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "changelog_changelog",
@@ -3466,17 +3445,6 @@
       "source_location": "L1"
     },
     {
-      "id": "evals_runner_scorecard",
-      "label": "scorecard.ts",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "scorecard.ts",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "evals_runner_stats",
       "label": "stats.ts",
       "_origin": "ast",
@@ -3585,17 +3553,6 @@
       "norm_label": "suite",
       "source_file": "tests/unit/runner.test.ts",
       "source_location": "L12"
-    },
-    {
-      "id": "tests_unit_scorecard_test",
-      "label": "scorecard.test.ts",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "scorecard.test.ts",
-      "source_file": "tests/unit/scorecard.test.ts",
-      "source_location": "L1"
     },
     {
       "id": "tests_unit_stats_test",
@@ -3719,6 +3676,61 @@
       "file_type": "code",
       "norm_label": "vitest.config.ts",
       "source_file": "vitest.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "evals_mock_faults",
+      "label": "faults.ts",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "faults.ts",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "evals_mock_faults_mock_faults",
+      "label": "MOCK_FAULTS",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "mock_faults",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "evals_mock_faults_mockfaultnames",
+      "label": "mockFaultNames",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "mockfaultnames",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L47"
+    },
+    {
+      "id": "scripts_gate_selftest",
+      "label": "gate-selftest.ts",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "gate-selftest.ts",
+      "source_file": "scripts/gate-selftest.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_integration_cli_test",
+      "label": "cli.test.ts",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "faults.ts",
+      "file_type": "code",
+      "norm_label": "cli.test.ts",
+      "source_file": "tests/integration/cli.test.ts",
       "source_location": "L1"
     },
     {
@@ -3865,25 +3877,14 @@
       "source_location": "L1"
     },
     {
-      "id": "evals_suites_index_suites",
-      "label": "SUITES",
+      "id": "evals_runner_scorecard",
+      "label": "scorecard.ts",
       "_origin": "ast",
       "community": 3,
       "community_name": "gate.ts",
       "file_type": "code",
-      "norm_label": "suites",
-      "source_file": "evals/suites/index.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "tests_unit_datasets_test",
-      "label": "datasets.test.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "datasets.test.ts",
-      "source_file": "tests/unit/datasets.test.ts",
+      "norm_label": "scorecard.ts",
+      "source_file": "evals/runner/scorecard.ts",
       "source_location": "L1"
     },
     {
@@ -3907,6 +3908,17 @@
       "norm_label": "thresholds",
       "source_file": "tests/unit/gate.test.ts",
       "source_location": "L12"
+    },
+    {
+      "id": "tests_unit_scorecard_test",
+      "label": "scorecard.test.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "scorecard.test.ts",
+      "source_file": "tests/unit/scorecard.test.ts",
+      "source_location": "L1"
     },
     {
       "id": "ref_react",
@@ -4039,6 +4051,17 @@
       "norm_label": "judgeschema",
       "source_file": "evals/scorers/judge.ts",
       "source_location": "L6"
+    },
+    {
+      "id": "tests_integration_live_path_test",
+      "label": "live-path.test.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "calibrate.ts",
+      "file_type": "code",
+      "norm_label": "live-path.test.ts",
+      "source_file": "tests/integration/live-path.test.ts",
+      "source_location": "L1"
     },
     {
       "id": "tests_unit_calibration_test",
@@ -4383,7 +4406,7 @@
       "node_kind": "heading",
       "norm_label": "dependencies",
       "source_file": "SECURITY.md",
-      "source_location": "L51"
+      "source_location": "L53"
     },
     {
       "id": "security_known_limits",
@@ -4395,7 +4418,7 @@
       "node_kind": "heading",
       "norm_label": "known limits",
       "source_file": "SECURITY.md",
-      "source_location": "L58"
+      "source_location": "L60"
     },
     {
       "id": "security_reporting",
@@ -4431,7 +4454,7 @@
       "node_kind": "heading",
       "norm_label": "static analysis",
       "source_file": "SECURITY.md",
-      "source_location": "L41"
+      "source_location": "L43"
     },
     {
       "id": "security_threat_model",
@@ -4443,7 +4466,7 @@
       "node_kind": "heading",
       "norm_label": "threat model",
       "source_file": "SECURITY.md",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "app_api_health_route",
@@ -4498,7 +4521,7 @@
       "file_type": "code",
       "norm_label": "config",
       "source_file": "middleware.ts",
-      "source_location": "L15"
+      "source_location": "L16"
     },
     {
       "id": "middleware_limit",
@@ -4509,7 +4532,18 @@
       "file_type": "code",
       "norm_label": "limit",
       "source_file": "middleware.ts",
-      "source_location": "L17"
+      "source_location": "L18"
+    },
+    {
+      "id": "middleware_trustedhops",
+      "label": "trustedHops",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "code",
+      "norm_label": "trustedhops",
+      "source_file": "middleware.ts",
+      "source_location": "L19"
     },
     {
       "id": "src_lib_security_http",
@@ -4545,6 +4579,28 @@
       "source_location": "L15"
     },
     {
+      "id": "src_lib_security_http_global_bucket",
+      "label": "GLOBAL_BUCKET",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "code",
+      "norm_label": "global_bucket",
+      "source_file": "src/lib/security/http.ts",
+      "source_location": "L47"
+    },
+    {
+      "id": "src_lib_security_http_max_tracked_clients",
+      "label": "MAX_TRACKED_CLIENTS",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "code",
+      "norm_label": "max_tracked_clients",
+      "source_file": "src/lib/security/http.ts",
+      "source_location": "L49"
+    },
+    {
       "id": "src_lib_security_http_open_paths",
       "label": "OPEN_PATHS",
       "_origin": "ast",
@@ -4576,17 +4632,6 @@
       "norm_label": "retry_after_seconds",
       "source_file": "src/lib/security/http.ts",
       "source_location": "L17"
-    },
-    {
-      "id": "src_lib_security_sanitize_max_untrusted_chars",
-      "label": "MAX_UNTRUSTED_CHARS",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "http.ts",
-      "file_type": "code",
-      "norm_label": "max_untrusted_chars",
-      "source_file": "src/lib/security/sanitize.ts",
-      "source_location": "L8"
     },
     {
       "id": "tests_integration_middleware_test",
@@ -6438,7 +6483,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -6450,7 +6495,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L29",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -6462,7 +6507,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L29",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -6474,7 +6519,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -6486,7 +6531,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -6498,7 +6543,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -6558,7 +6603,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L70",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -8424,6 +8469,18 @@
       "weight": 1.0
     },
     {
+      "source": "middleware",
+      "target": "src_lib_security_http_trustedhopsfrom",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "middleware.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
       "source": "package",
       "target": "ref_ai_sdk_anthropic",
       "relation": "imports",
@@ -9812,7 +9869,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/unit/security.test.ts",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -9824,7 +9881,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/unit/security.test.ts",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -9836,7 +9893,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/unit/security.test.ts",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -9848,7 +9905,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/unit/security.test.ts",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -9890,6 +9947,18 @@
     {
       "source": "tests_unit_security_test",
       "target": "src_lib_security_http_default_rate_limit_per_minute",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/unit/security.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_unit_security_test",
+      "target": "src_lib_security_http_global_bucket",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9950,6 +10019,18 @@
     {
       "source": "tests_unit_security_test",
       "target": "src_lib_security_http_tokenmatches",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/unit/security.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_unit_security_test",
+      "target": "src_lib_security_http_trustedhopsfrom",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -12302,7 +12383,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/unit/security.test.ts",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -12693,7 +12774,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CHANGELOG.md",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -12715,7 +12796,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CHANGELOG.md",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -14552,7 +14633,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "middleware.ts",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -14563,12 +14644,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "middleware.ts",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
       "source": "middleware",
-      "target": "middleware_finish",
+      "target": "middleware_trustedhops",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14579,13 +14660,24 @@
     },
     {
       "source": "middleware",
+      "target": "middleware_finish",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "middleware.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "middleware",
       "target": "middleware_middleware",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "middleware.ts",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -15234,7 +15326,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "SECURITY.md",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -15245,7 +15337,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "SECURITY.md",
-      "source_location": "L41",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -15256,18 +15348,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "SECURITY.md",
-      "source_location": "L51",
-      "weight": 1.0
-    },
-    {
-      "source": "security_security",
-      "target": "security_known_limits",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "SECURITY.md",
-      "source_location": "L58",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -15279,6 +15360,17 @@
       "confidence_score": 1.0,
       "source_file": "SECURITY.md",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "security_security",
+      "target": "security_known_limits",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SECURITY.md",
+      "source_location": "L60",
       "weight": 1.0
     },
     {
@@ -15602,7 +15694,7 @@
     },
     {
       "source": "src_lib_security_http",
-      "target": "src_lib_security_http_clientkey",
+      "target": "src_lib_security_http_global_bucket",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15613,13 +15705,46 @@
     },
     {
       "source": "src_lib_security_http",
+      "target": "src_lib_security_http_max_tracked_clients",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/lib/security/http.ts",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "src_lib_security_http",
+      "target": "src_lib_security_http_trustedhopsfrom",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/lib/security/http.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "src_lib_security_http",
+      "target": "src_lib_security_http_clientkey",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/lib/security/http.ts",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "src_lib_security_http",
       "target": "src_lib_security_http_ratedecision",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L51",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -15630,7 +15755,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L58",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -15641,7 +15766,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L67",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -15652,7 +15777,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L78",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -16473,5 +16598,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "04e9b3549a84cae2d6dc77ef21d888c04da8a912"
+  "built_at_commit": "95e5edabb272cae3e9d8bb44395909127686fc5b"
 }
