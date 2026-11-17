@@ -61,7 +61,8 @@ function promptText(opts: LanguageModelV3CallOptions): string {
 }
 
 /** Contents of `<tag>…</tag>` in the judge prompt (see buildJudgePrompt). */
-function section(prompt: string, tag: string): string {
+function section(prompt: string, tag: "reference" | "output"): string {
+  // eslint-disable-next-line security/detect-non-literal-regexp -- tag is a fixed literal union
   return prompt.match(new RegExp(`<${tag}>\\n([\\s\\S]*?)\\n</${tag}>`))?.[1]?.trim() ?? "";
 }
 

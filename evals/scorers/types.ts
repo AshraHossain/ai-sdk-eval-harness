@@ -1,9 +1,9 @@
 export interface ScoreResult {
-  name: string;
+  readonly name: string;
   /** Normalized 0..1. */
-  score: number;
-  pass: boolean;
-  detail?: string;
+  readonly score: number;
+  readonly pass: boolean;
+  readonly detail?: string;
   /** Failed for infrastructure reasons (rate limit, 5xx), not quality. */
-  infra?: boolean;
+  readonly infra?: boolean;
 }
