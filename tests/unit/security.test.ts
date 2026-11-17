@@ -115,10 +115,15 @@ describe("rate limiting", () => {
     expect(clientKey(h)).toBe(GLOBAL_BUCKET);
     expect(clientKey(new Headers({ "x-real-ip": "5.6.7.8" }), 1)).toBe(GLOBAL_BUCKET);
     // Read from the right: the nearest trusted proxy appended the last entry.
-    expect(clientKey(h, 1)).toBe("10.0.0.1");
-    expect(clientKey(h, 2)).toBe("1.2.3.4");
+    expect(clientKey(h, 1)).toBe("ip:10.0.0.1");
+    expect(clientKey(h, 2)).toBe("ip:1.2.3.4");
+    expect(clientKey(new Headers({ "x-forwarded-for": "::1" }), 1)).toBe("ip:::1");
     expect(clientKey(h, 5)).toBe(GLOBAL_BUCKET);
     expect(clientKey(new Headers(), 1)).toBe(GLOBAL_BUCKET);
+    // Non-IP values (for example a forged bucket name) never become their own key.
+    for (const forged of ["authenticated", "global", "token", "ip:1.2.3.4", "999.1.1.1"]) {
+      expect(clientKey(new Headers({ "x-forwarded-for": forged }), 1)).toBe(GLOBAL_BUCKET);
+    }
   });
 
   it("parses TRUSTED_PROXY_HOPS conservatively", () => {

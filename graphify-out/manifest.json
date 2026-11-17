@@ -228,9 +228,9 @@
     "semantic_hash": ""
   },
   "middleware.ts": {
-    "mtime": 1794954069.6348186,
-    "seen": 1794954098.653583,
-    "ast_hash": "72a39208d261fddac944991da920b730",
+    "mtime": 1794954362.3408356,
+    "seen": 1794954391.079252,
+    "ast_hash": "aef8216db178d38fa57d2668d06b703e",
     "semantic_hash": ""
   },
   "next.config.mjs": {
@@ -288,9 +288,9 @@
     "semantic_hash": ""
   },
   "src/lib/security/http.ts": {
-    "mtime": 1794954069.634918,
-    "seen": 1794954098.653588,
-    "ast_hash": "3babee8a628ba6d02d9c6a786aa145e0",
+    "mtime": 1794954362.3405826,
+    "seen": 1794954391.079257,
+    "ast_hash": "519ac3f3cb02e2150065e697d1242c4e",
     "semantic_hash": ""
   },
   "src/lib/security/sanitize.ts": {
@@ -324,9 +324,9 @@
     "semantic_hash": ""
   },
   "tests/integration/middleware.test.ts": {
-    "mtime": 1794954069.6350133,
-    "seen": 1794954098.65359,
-    "ast_hash": "f7da10a521cfed08e6b61d267c8fd526",
+    "mtime": 1794954362.34108,
+    "seen": 1794954391.079259,
+    "ast_hash": "252addee2804d3297d91c7aaabc49a4d",
     "semantic_hash": ""
   },
   "tests/unit/calibration.test.ts": {
@@ -396,9 +396,9 @@
     "semantic_hash": ""
   },
   "tests/unit/security.test.ts": {
-    "mtime": 1794953761.5861042,
-    "seen": 1794953808.136395,
-    "ast_hash": "9513ac1166a76cc2bda5ca7d9935062f",
+    "mtime": 1794954362.3410025,
+    "seen": 1794954391.079265,
+    "ast_hash": "9db5d06aff4551163d3a605e1b6bfc4b",
     "semantic_hash": ""
   },
   "tests/unit/stats.test.ts": {
@@ -498,9 +498,9 @@
     "semantic_hash": ""
   },
   "SECURITY.md": {
-    "mtime": 1794954069.6351926,
-    "seen": 1794954098.653604,
-    "ast_hash": "86f27b5f899a5727738465f5dcc074c1",
+    "mtime": 1794954362.34116,
+    "seen": 1794954391.079273,
+    "ast_hash": "cd89fba771768bc22052c7d596c1c726",
     "semantic_hash": ""
   },
   "docker-compose.yml": {

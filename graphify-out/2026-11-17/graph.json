@@ -586,7 +586,7 @@
       "file_type": "code",
       "norm_label": "ratedecision",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L68"
+      "source_location": "L70"
     },
     {
       "id": "evals_runner_errors_isinfraerror",
@@ -1858,7 +1858,7 @@
       "file_type": "code",
       "norm_label": "finish()",
       "source_file": "middleware.ts",
-      "source_location": "L21"
+      "source_location": "L22"
     },
     {
       "id": "middleware_middleware",
@@ -1870,7 +1870,7 @@
       "file_type": "code",
       "norm_label": "middleware()",
       "source_file": "middleware.ts",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "src_lib_security_http_clientkey",
@@ -1882,7 +1882,7 @@
       "file_type": "code",
       "norm_label": "clientkey()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L62"
+      "source_location": "L64"
     },
     {
       "id": "src_lib_security_http_createratelimiter",
@@ -1894,7 +1894,7 @@
       "file_type": "code",
       "norm_label": "createratelimiter()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L84"
+      "source_location": "L86"
     },
     {
       "id": "src_lib_security_http_presentedtoken",
@@ -1942,7 +1942,7 @@
       "file_type": "code",
       "norm_label": "slidingwindow()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L75"
+      "source_location": "L77"
     },
     {
       "id": "src_lib_security_http_tokenmatches",
@@ -1966,7 +1966,7 @@
       "file_type": "code",
       "norm_label": "trustedhopsfrom()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L52"
+      "source_location": "L54"
     },
     {
       "id": "src_lib_security_http_withtiming",
@@ -1978,7 +1978,7 @@
       "file_type": "code",
       "norm_label": "withtiming()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L99"
+      "source_location": "L101"
     },
     {
       "id": "tests_integration_middleware_test_load",
@@ -4521,7 +4521,7 @@
       "file_type": "code",
       "norm_label": "config",
       "source_file": "middleware.ts",
-      "source_location": "L16"
+      "source_location": "L17"
     },
     {
       "id": "middleware_limit",
@@ -4532,7 +4532,7 @@
       "file_type": "code",
       "norm_label": "limit",
       "source_file": "middleware.ts",
-      "source_location": "L18"
+      "source_location": "L19"
     },
     {
       "id": "middleware_trustedhops",
@@ -4543,7 +4543,7 @@
       "file_type": "code",
       "norm_label": "trustedhops",
       "source_file": "middleware.ts",
-      "source_location": "L19"
+      "source_location": "L20"
     },
     {
       "id": "src_lib_security_http",
@@ -4566,6 +4566,17 @@
       "norm_label": "api_security_headers",
       "source_file": "src/lib/security/http.ts",
       "source_location": "L4"
+    },
+    {
+      "id": "src_lib_security_http_authenticated_bucket",
+      "label": "AUTHENTICATED_BUCKET",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "code",
+      "norm_label": "authenticated_bucket",
+      "source_file": "src/lib/security/http.ts",
+      "source_location": "L49"
     },
     {
       "id": "src_lib_security_http_default_rate_limit_per_minute",
@@ -4598,7 +4609,7 @@
       "file_type": "code",
       "norm_label": "max_tracked_clients",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L49"
+      "source_location": "L51"
     },
     {
       "id": "src_lib_security_http_open_paths",
@@ -6483,43 +6494,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L29",
-      "weight": 1.0
-    },
-    {
-      "source": "middleware_middleware",
-      "target": "middleware_limit",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "middleware.ts",
-      "source_location": "L31",
-      "weight": 1.0
-    },
-    {
-      "source": "middleware_middleware",
-      "target": "src_lib_security_http_clientkey",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "middleware.ts",
-      "source_location": "L31",
-      "weight": 1.0
-    },
-    {
-      "source": "middleware_middleware",
-      "target": "middleware_finish",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "middleware.ts",
-      "source_location": "L34",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -6531,7 +6506,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L37",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -6543,7 +6518,43 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L37",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "middleware_middleware",
+      "target": "middleware_limit",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "middleware.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "middleware_middleware",
+      "target": "src_lib_security_http_clientkey",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "middleware.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "middleware_middleware",
+      "target": "middleware_finish",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "middleware.ts",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -6603,7 +6614,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L92",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -8363,6 +8374,18 @@
     {
       "source": "middleware",
       "target": "src_lib_security_http_api_security_headers",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "middleware.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "middleware",
+      "target": "src_lib_security_http_authenticated_bucket",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14633,7 +14656,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "middleware.ts",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -14644,7 +14667,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "middleware.ts",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -14655,7 +14678,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "middleware.ts",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -14666,7 +14689,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "middleware.ts",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -14677,7 +14700,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "middleware.ts",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -15595,6 +15618,17 @@
     },
     {
       "source": "src_lib_security_http",
+      "target": "src_lib_security_http_withtiming",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/lib/security/http.ts",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "src_lib_security_http",
       "target": "src_lib_security_http_open_paths",
       "relation": "contains",
       "_origin": "ast",
@@ -15705,7 +15739,7 @@
     },
     {
       "source": "src_lib_security_http",
-      "target": "src_lib_security_http_max_tracked_clients",
+      "target": "src_lib_security_http_authenticated_bucket",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15716,13 +15750,24 @@
     },
     {
       "source": "src_lib_security_http",
+      "target": "src_lib_security_http_max_tracked_clients",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/lib/security/http.ts",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "src_lib_security_http",
       "target": "src_lib_security_http_trustedhopsfrom",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L52",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -15733,7 +15778,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L62",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -15744,7 +15789,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L68",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -15755,7 +15800,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L75",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -15766,18 +15811,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L84",
-      "weight": 1.0
-    },
-    {
-      "source": "src_lib_security_http",
-      "target": "src_lib_security_http_withtiming",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/lib/security/http.ts",
-      "source_location": "L99",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
@@ -16598,5 +16632,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "95e5edabb272cae3e9d8bb44395909127686fc5b"
+  "built_at_commit": "3ae73afc3ad43fcbbdd77a1445f60e85010d4cf0"
 }

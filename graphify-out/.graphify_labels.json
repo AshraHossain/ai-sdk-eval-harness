@@ -23,6 +23,5 @@
   "21": "add-eval-suite/SKILL.md",
   "22": "rebaseline/SKILL.md",
   "23": "engines",
-  "24": "vitest.config.ts",
-  "25": "faults.ts"
+  "24": "vitest.config.ts"
 }

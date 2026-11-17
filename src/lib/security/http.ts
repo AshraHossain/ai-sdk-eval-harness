@@ -1,4 +1,5 @@
 import { randomUUID, timingSafeEqual } from "node:crypto";
+import { isIP } from "node:net";
 
 /** OWASP response headers for JSON API routes. The API serves no HTML, so CSP denies everything. */
 export const API_SECURITY_HEADERS: Readonly<Record<string, string>> = Object.freeze({
@@ -45,8 +46,6 @@ export function rateLimitFrom(raw: string | undefined): number {
 
 /** Shared bucket for clients that cannot be identified, and for overflow when the key table is full. */
 export const GLOBAL_BUCKET = "global";
-/** Bucket for requests carrying a valid API_AUTH_TOKEN; kept apart from anonymous traffic. */
-export const AUTHENTICATED_BUCKET = "authenticated";
 /** Upper bound on tracked clients, so spoofed or rotating keys cannot grow memory without limit. */
 export const MAX_TRACKED_CLIENTS = 10_000;
 
@@ -60,11 +59,14 @@ export function trustedHopsFrom(raw: string | undefined): number {
  * Client key for rate limiting. X-Forwarded-For is client-writable, so it is only trusted through
  * the configured number of proxy hops, read from the right (the entry our nearest proxy appended).
  * With no trusted proxy, every client shares one bucket: fails closed instead of trusting headers.
+ * Keys are namespaced ("ip:<addr>") and the address must parse as IPv4/IPv6, so a forged value
+ * cannot collide with another bucket name.
  */
 export function clientKey(headers: Headers, trustedHops = 0): string {
   if (trustedHops < 1) return GLOBAL_BUCKET;
   const hops = (headers.get("x-forwarded-for") ?? "").split(",").map((h) => h.trim()).filter(Boolean);
-  return hops[hops.length - trustedHops] ?? GLOBAL_BUCKET;
+  const ip = hops[hops.length - trustedHops];
+  return ip && isIP(ip) ? `ip:${ip}` : GLOBAL_BUCKET;
 }
 
 export interface RateDecision {

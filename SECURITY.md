@@ -26,7 +26,7 @@ Do not file a public issue for an unpatched problem.
 | Token timing attack | `crypto.timingSafeEqual` after a length check | `tokenMatches()` | `security.test.ts` |
 | Token spend by an attacker (live mode) | Live runs need `EVAL_API_ENABLED` + `EVAL_API_TOKEN`; one live run at a time (409) | `app/api/eval/route.ts` | `tests/integration/api.test.ts` |
 | Request flooding, token brute force | Sliding-window limit before auth, 429 + `Retry-After: 60` | `middleware.ts` | `middleware.test.ts` |
-| Rate-limit bypass with forged `X-Forwarded-For` | XFF trusted only through `TRUSTED_PROXY_HOPS`, read from the right; otherwise one shared bucket. Requests with a valid `API_AUTH_TOKEN` use a separate bucket, so anonymous floods cannot lock them out. Key table capped at 10,000; overflow shares one bucket | `clientKey()`, `createRateLimiter()` | `security.test.ts`, `middleware.test.ts` |
+| Rate-limit bypass with forged `X-Forwarded-For` | XFF trusted only through `TRUSTED_PROXY_HOPS`, read from the right; otherwise one shared bucket. Anonymous keys are `ip:<addr>` and must parse as an IP. Requests with a valid `API_AUTH_TOKEN` use a separate limiter instance, so no anonymous key, forged value or overflow can share or drain their budget. Key table capped at 10,000; overflow shares one bucket | `clientKey()`, `createRateLimiter()` | `security.test.ts`, `middleware.test.ts` |
 | Oversized bodies | 4 KB cap by `Content-Length` and by bytes read (413) | `route.ts` | `api.test.ts` |
 | Wrong media type, content sniffing | JSON-only (415); `X-Content-Type-Options: nosniff` | `route.ts`, middleware | `api.test.ts`, e2e |
 | Malformed input | Strict Zod schema: known suite only, `runs` 1-10, no extra fields (400) | `route.ts` | `api.test.ts` |

@@ -1,16 +1,16 @@
 # Graph Report - ai-sdk-eval-harness  (2026-11-17)
 
 ## Corpus Check
-- 82 files · ~26,491 words
+- 82 files · ~26,663 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 455 nodes · 977 edges · 26 communities (16 shown, 9 thin omitted)
+- 456 nodes · 978 edges · 25 communities (15 shown, 9 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3ae73afc`
+- Built from commit: `0ed5560c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -39,7 +39,6 @@
 - add-eval-suite/SKILL.md
 - rebaseline/SKILL.md
 - engines
-- faults.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `zod` - 19 edges
@@ -68,7 +67,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (26 total, 9 thin omitted)
+## Communities (25 total, 9 thin omitted)
 
 ### Community 0 - "deterministic.ts"
 Cohesion: 0.06
@@ -76,15 +75,15 @@ Nodes (55): isInfraError(), argsMatch(), contains(), countWords(), exactMatch(),
 
 ### Community 1 - "execute.ts"
 Cohesion: 0.08
-Nodes (45): authorizeLive(), body, dynamic, error(), maxDuration, parseBody(), POST, runtime (+37 more)
+Nodes (46): authorizeLive(), body, dynamic, error(), maxDuration, parseBody(), POST, runtime (+38 more)
 
 ### Community 2 - "runner/types.ts"
 Cohesion: 0.13
 Nodes (28): flakyScorers(), runOnce(), runSuite(), worker(), RunSuiteOptions, summarizeCase(), classifyStability(), DEFAULT_FLAKY_BOUNDS (+20 more)
 
 ### Community 3 - "gate.ts"
-Cohesion: 0.08
-Nodes (38): dynamic, GET, Dashboard(), dynamic, RunButton(), readReports(), Baseline, baselineFrom() (+30 more)
+Cohesion: 0.07
+Nodes (41): dynamic, GET, Dashboard(), dynamic, RunButton(), readReports(), Baseline, baselineFrom() (+33 more)
 
 ### Community 4 - "calibrate.ts"
 Cohesion: 0.10
@@ -95,8 +94,8 @@ Cohesion: 0.07
 Nodes (25): AGENTS.md — ai-sdk-eval-harness, Commands (all verified offline, no API keys), Conventions, Invariants, Layout, What this is, Architecture, Design rules (+17 more)
 
 ### Community 6 - "http.ts"
-Cohesion: 0.12
-Nodes (27): dynamic, GET, config, finish(), limit, middleware(), trustedHops, API_SECURITY_HEADERS (+19 more)
+Cohesion: 0.10
+Nodes (31): dynamic, GET, config, finish(), limitAnonymous, limitAuthenticated, middleware(), perMinute (+23 more)
 
 ### Community 7 - "compilerOptions"
 Cohesion: 0.10
@@ -130,29 +129,25 @@ Nodes (5): [0.1.0], Added, Changed, Changelog, [Unreleased]
 Cohesion: 0.67
 Nodes (3): postcss, overrides, next
 
-### Community 25 - "faults.ts"
-Cohesion: 0.26
-Nodes (7): MOCK_FAULTS, MockFault, mockFaultNames, Obj, Fixture, GateRunner, selfTest()
-
 ## Knowledge Gaps
-- **175 isolated node(s):** `runtime`, `dynamic`, `maxDuration`, `body`, `dynamic` (+170 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 199 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **176 isolated node(s):** `runtime`, `dynamic`, `maxDuration`, `body`, `dynamic` (+171 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 200 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `vitest` connect `execute.ts` to `deterministic.ts`, `runner/types.ts`, `gate.ts`, `calibrate.ts`, `http.ts`, `package.json`, `faults.ts`?**
-  _High betweenness centrality (0.135) - this node is a cross-community bridge._
+- **Why does `vitest` connect `http.ts` to `deterministic.ts`, `execute.ts`, `runner/types.ts`, `gate.ts`, `calibrate.ts`, `package.json`?**
+  _High betweenness centrality (0.137) - this node is a cross-community bridge._
 - **Why does `zod` connect `deterministic.ts` to `execute.ts`, `runner/types.ts`, `gate.ts`, `calibrate.ts`, `package.json`?**
-  _High betweenness centrality (0.121) - this node is a cross-community bridge._
+  _High betweenness centrality (0.120) - this node is a cross-community bridge._
 - **Why does `ai` connect `deterministic.ts` to `package.json`, `execute.ts`, `runner/types.ts`, `calibrate.ts`?**
-  _High betweenness centrality (0.051) - this node is a cross-community bridge._
+  _High betweenness centrality (0.050) - this node is a cross-community bridge._
 - **What connects `runtime`, `dynamic`, `maxDuration` to the rest of the system?**
-  _175 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _176 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `deterministic.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.0649452269170579 - nodes in this community are weakly interconnected._
 - **Should `execute.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07946127946127945 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07562008469449485 - nodes in this community are weakly interconnected._
 - **Should `runner/types.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.12912912912912913 - nodes in this community are weakly interconnected._

@@ -70,6 +70,13 @@ describe("middleware", () => {
     expect(mw(req("/api/eval", { "x-api-key": "tok" })).status).toBe(429);
   });
 
+  it("never lets a forged X-Forwarded-For land in the token holders' budget", async () => {
+    // Misconfigured: one more trusted hop than real proxies, so the client controls the keyed entry.
+    const mw = await load({ API_AUTH_TOKEN: "tok", RATE_LIMIT_PER_MINUTE: "1", TRUSTED_PROXY_HOPS: "1" });
+    for (const forged of ["token", "authenticated", "global"]) mw(req("/api/eval", { "x-forwarded-for": forged }));
+    expect(mw(req("/api/eval", { "x-api-key": "tok" })).status).toBe(200);
+  });
+
   it("shares one bucket when no proxy is trusted, so forged headers cannot bypass the limit", async () => {
     const mw = await load({ RATE_LIMIT_PER_MINUTE: "2" });
     expect(mw(req("/api/eval", { "x-forwarded-for": "1.1.1.1" })).status).toBe(200);
