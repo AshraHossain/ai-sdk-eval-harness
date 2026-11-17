@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import {
   API_SECURITY_HEADERS,
+  AUTHENTICATED_BUCKET,
   clientKey,
   createRateLimiter,
   OPEN_PATHS,
@@ -28,13 +29,16 @@ function finish(res: NextResponse, id: string): NextResponse {
 export function middleware(req: NextRequest): NextResponse {
   const id = requestId(req.headers.get("x-request-id"));
   if (!OPEN_PATHS.has(req.nextUrl.pathname)) {
-    if (!limit(clientKey(req.headers, trustedHops))) {
+    const token = process.env.API_AUTH_TOKEN;
+    const authed = !!token && tokenMatches(presentedToken(req.headers), token);
+    // Authenticated callers get their own bucket, so anonymous floods of the shared bucket cannot lock them out.
+    // Unauthenticated requests (including bad tokens) are limited before the 401, which also throttles brute force.
+    if (!limit(authed ? AUTHENTICATED_BUCKET : clientKey(req.headers, trustedHops))) {
       const res = NextResponse.json({ error: "Too many requests" }, { status: 429 });
       res.headers.set("Retry-After", String(RETRY_AFTER_SECONDS));
       return finish(res, id);
     }
-    const token = process.env.API_AUTH_TOKEN;
-    if (token && !tokenMatches(presentedToken(req.headers), token)) {
+    if (token && !authed) {
       return finish(NextResponse.json({ error: "Unauthorized" }, { status: 401 }), id);
     }
   }

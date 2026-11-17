@@ -45,6 +45,8 @@ export function rateLimitFrom(raw: string | undefined): number {
 
 /** Shared bucket for clients that cannot be identified, and for overflow when the key table is full. */
 export const GLOBAL_BUCKET = "global";
+/** Bucket for requests carrying a valid API_AUTH_TOKEN; kept apart from anonymous traffic. */
+export const AUTHENTICATED_BUCKET = "authenticated";
 /** Upper bound on tracked clients, so spoofed or rotating keys cannot grow memory without limit. */
 export const MAX_TRACKED_CLIENTS = 10_000;
 

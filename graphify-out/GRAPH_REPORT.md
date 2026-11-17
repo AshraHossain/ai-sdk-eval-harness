@@ -1,16 +1,16 @@
 # Graph Report - ai-sdk-eval-harness  (2026-11-17)
 
 ## Corpus Check
-- 82 files · ~26,325 words
+- 82 files · ~26,491 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 454 nodes · 975 edges · 26 communities (16 shown, 9 thin omitted)
+- 455 nodes · 977 edges · 26 communities (16 shown, 9 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `95e5edab`
+- Built from commit: `3ae73afc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -96,7 +96,7 @@ Nodes (25): AGENTS.md — ai-sdk-eval-harness, Commands (all verified offline, n
 
 ### Community 6 - "http.ts"
 Cohesion: 0.12
-Nodes (26): dynamic, GET, config, finish(), limit, middleware(), trustedHops, API_SECURITY_HEADERS (+18 more)
+Nodes (27): dynamic, GET, config, finish(), limit, middleware(), trustedHops, API_SECURITY_HEADERS (+19 more)
 
 ### Community 7 - "compilerOptions"
 Cohesion: 0.10
@@ -145,7 +145,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `vitest` connect `execute.ts` to `deterministic.ts`, `runner/types.ts`, `gate.ts`, `calibrate.ts`, `http.ts`, `package.json`, `faults.ts`?**
   _High betweenness centrality (0.135) - this node is a cross-community bridge._
 - **Why does `zod` connect `deterministic.ts` to `execute.ts`, `runner/types.ts`, `gate.ts`, `calibrate.ts`, `package.json`?**
-  _High betweenness centrality (0.120) - this node is a cross-community bridge._
+  _High betweenness centrality (0.121) - this node is a cross-community bridge._
 - **Why does `ai` connect `deterministic.ts` to `package.json`, `execute.ts`, `runner/types.ts`, `calibrate.ts`?**
   _High betweenness centrality (0.051) - this node is a cross-community bridge._
 - **What connects `runtime`, `dynamic`, `maxDuration` to the rest of the system?**

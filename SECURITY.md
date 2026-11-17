@@ -26,7 +26,7 @@ Do not file a public issue for an unpatched problem.
 | Token timing attack | `crypto.timingSafeEqual` after a length check | `tokenMatches()` | `security.test.ts` |
 | Token spend by an attacker (live mode) | Live runs need `EVAL_API_ENABLED` + `EVAL_API_TOKEN`; one live run at a time (409) | `app/api/eval/route.ts` | `tests/integration/api.test.ts` |
 | Request flooding, token brute force | Sliding-window limit before auth, 429 + `Retry-After: 60` | `middleware.ts` | `middleware.test.ts` |
-| Rate-limit bypass with forged `X-Forwarded-For` | XFF trusted only through `TRUSTED_PROXY_HOPS`, read from the right; otherwise one shared bucket. Key table capped at 10,000; overflow shares one bucket | `clientKey()`, `createRateLimiter()` | `security.test.ts`, `middleware.test.ts` |
+| Rate-limit bypass with forged `X-Forwarded-For` | XFF trusted only through `TRUSTED_PROXY_HOPS`, read from the right; otherwise one shared bucket. Requests with a valid `API_AUTH_TOKEN` use a separate bucket, so anonymous floods cannot lock them out. Key table capped at 10,000; overflow shares one bucket | `clientKey()`, `createRateLimiter()` | `security.test.ts`, `middleware.test.ts` |
 | Oversized bodies | 4 KB cap by `Content-Length` and by bytes read (413) | `route.ts` | `api.test.ts` |
 | Wrong media type, content sniffing | JSON-only (415); `X-Content-Type-Options: nosniff` | `route.ts`, middleware | `api.test.ts`, e2e |
 | Malformed input | Strict Zod schema: known suite only, `runs` 1-10, no extra fields (400) | `route.ts` | `api.test.ts` |
@@ -60,7 +60,8 @@ request input. npm's suggested fix downgrades Vitest to 3.x, so it is not applie
 ## Known limits
 
 - The rate limiter is per process. Behind several instances, use a shared store. Without `TRUSTED_PROXY_HOPS`
-  all clients share one bucket, so one noisy client can throttle the rest; set it when behind a proxy.
+  anonymous clients share one bucket, so one noisy client can throttle other anonymous clients (token holders
+  are unaffected). Set it when behind a proxy. Next.js middleware does not expose the socket address.
 - With `API_AUTH_TOKEN` set, the dashboard's Run button gets 401 (browsers send no token). That is
   intended for headless deployments.
 - Pages use a partial CSP (`frame-ancestors`, `object-src`, `base-uri`, `form-action`). A full

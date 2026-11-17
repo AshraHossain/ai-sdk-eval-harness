@@ -58,6 +58,18 @@ describe("middleware", () => {
     expect(mw(req("/api/eval", { "x-forwarded-for": "9.9.9.9, 1.1.1.1" })).status).toBe(429);
   });
 
+  it("keeps authenticated callers out of the shared anonymous bucket", async () => {
+    const mw = await load({ API_AUTH_TOKEN: "tok", RATE_LIMIT_PER_MINUTE: "2" });
+    // Anonymous flood exhausts the shared bucket (401s still count, which throttles brute force).
+    expect(mw(req("/api/eval")).status).toBe(401);
+    expect(mw(req("/api/eval", { "x-api-key": "guess" })).status).toBe(401);
+    expect(mw(req("/api/eval")).status).toBe(429);
+    // The token holder is unaffected and limited in its own bucket.
+    expect(mw(req("/api/eval", { "x-api-key": "tok" })).status).toBe(200);
+    expect(mw(req("/api/eval", { authorization: "Bearer tok" })).status).toBe(200);
+    expect(mw(req("/api/eval", { "x-api-key": "tok" })).status).toBe(429);
+  });
+
   it("shares one bucket when no proxy is trusted, so forged headers cannot bypass the limit", async () => {
     const mw = await load({ RATE_LIMIT_PER_MINUTE: "2" });
     expect(mw(req("/api/eval", { "x-forwarded-for": "1.1.1.1" })).status).toBe(200);

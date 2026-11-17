@@ -228,9 +228,9 @@
     "semantic_hash": ""
   },
   "middleware.ts": {
-    "mtime": 1794952295.484759,
-    "seen": 1794953471.0975099,
-    "ast_hash": "5fcfce66e6b3feeb8e0af4a58cc6651b",
+    "mtime": 1794953740.074472,
+    "seen": 1794953808.136383,
+    "ast_hash": "f689c9889ec37e53979722b96d959658",
     "semantic_hash": ""
   },
   "next.config.mjs": {
@@ -288,9 +288,9 @@
     "semantic_hash": ""
   },
   "src/lib/security/http.ts": {
-    "mtime": 1794952283.9750335,
-    "seen": 1794953471.097513,
-    "ast_hash": "13de504a6abbc0438e72d78842ff010c",
+    "mtime": 1794953740.0740774,
+    "seen": 1794953808.136387,
+    "ast_hash": "39dba23aab1fa69cf933b924a01d0d6a",
     "semantic_hash": ""
   },
   "src/lib/security/sanitize.ts": {
@@ -324,9 +324,9 @@
     "semantic_hash": ""
   },
   "tests/integration/middleware.test.ts": {
-    "mtime": 1794952636.9899573,
-    "seen": 1794953471.097515,
-    "ast_hash": "bfe646494c4b172ef82d6234e4ee3851",
+    "mtime": 1794953761.5868378,
+    "seen": 1794953808.13639,
+    "ast_hash": "a67ee5e8951c13b4917ce8682da65d35",
     "semantic_hash": ""
   },
   "tests/unit/calibration.test.ts": {
@@ -396,9 +396,9 @@
     "semantic_hash": ""
   },
   "tests/unit/security.test.ts": {
-    "mtime": 1794952541.2285402,
-    "seen": 1794953471.09752,
-    "ast_hash": "555c6b8af9d1319821c02d59f7077694",
+    "mtime": 1794953761.5861042,
+    "seen": 1794953808.136395,
+    "ast_hash": "9513ac1166a76cc2bda5ca7d9935062f",
     "semantic_hash": ""
   },
   "tests/unit/stats.test.ts": {
@@ -420,9 +420,9 @@
     "semantic_hash": ""
   },
   ".claude/rules/api-edge.md": {
-    "mtime": 1794953014.2589667,
-    "seen": 1794953471.0975208,
-    "ast_hash": "6911de13ebc7bdd2bbee6c54e42a0468",
+    "mtime": 1794953777.9871888,
+    "seen": 1794953808.1363971,
+    "ast_hash": "e171ed320824b88c2fc2464efe063289",
     "semantic_hash": ""
   },
   ".claude/rules/evals.md": {
@@ -474,9 +474,9 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1794953440.0903466,
-    "seen": 1794953471.097524,
-    "ast_hash": "b12b7401fd31c3ec9de7449e7026cdce",
+    "mtime": 1794953777.9880853,
+    "seen": 1794953808.136401,
+    "ast_hash": "4ba8e822ae5969a2874c6921cffd2886",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -492,21 +492,21 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1794953097.682233,
-    "seen": 1794953471.097525,
-    "ast_hash": "76b8ebf5982cfe865f4f93ae4a5672a3",
+    "mtime": 1794953777.987839,
+    "seen": 1794953808.1364028,
+    "ast_hash": "987eee9010322881fd66272758a21848",
     "semantic_hash": ""
   },
   "SECURITY.md": {
-    "mtime": 1794953440.0851843,
-    "seen": 1794953471.097526,
-    "ast_hash": "8573ca5760d9e8ed446d49063d4d99bf",
+    "mtime": 1794953777.9869688,
+    "seen": 1794953808.1364028,
+    "ast_hash": "26e254cf6e826b7d8a33a8814969f47a",
     "semantic_hash": ""
   },
   "docker-compose.yml": {
-    "mtime": 1794953297.0406096,
-    "seen": 1794953471.097526,
-    "ast_hash": "548f2addfb3e833726fd6b25690e184d",
+    "mtime": 1794953777.987584,
+    "seen": 1794953808.136404,
+    "ast_hash": "f1b157fcda208642a1b450f99e411c8b",
     "semantic_hash": ""
   }
 }
