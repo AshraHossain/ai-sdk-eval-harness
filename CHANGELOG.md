@@ -4,6 +4,12 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 
 ## [Unreleased]
 
+### Added
+- `PLANNING.md`: goals, scope, non-goals, milestones, definition of done and a known-gaps backlog.
+
+### Fixed
+- Architecture diagrams in README and ARCHITECTURE.md now list Vertex among the live backends.
+
 ## [0.2.0] - 2026-11-18
 
 ### Added

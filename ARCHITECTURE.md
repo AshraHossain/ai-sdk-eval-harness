@@ -47,7 +47,7 @@ flowchart LR
         MOCKM["evals/mock: fixture replay + mock judge + faults"]
     end
     subgraph Backends["Live vs offline backends"]
-        LIVE[("Anthropic, OpenAI, Bynara, OpenRouter, NIM")]
+        LIVE[("Anthropic, OpenAI, Vertex, Bynara, OpenRouter, NIM")]
         FIX[("evals/fixtures + datasets + thresholds + baselines")]
     end
     UI & API_C --> MW --> RT --> SUITES

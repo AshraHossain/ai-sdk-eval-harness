@@ -462,27 +462,27 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1794960353.8845117,
-    "seen": 1794967177.182049,
-    "ast_hash": "36596a3f778066d70e4e08acfb9855ce",
+    "mtime": 1795024235.7145941,
+    "seen": 1795024244.079654,
+    "ast_hash": "fc928bbea36ed7f73efb189d3d7772bc",
     "semantic_hash": ""
   },
   "ARCHITECTURE.md": {
-    "mtime": 1794960353.884859,
-    "seen": 1794967177.182049,
-    "ast_hash": "dfc15fe42b62e9431c55b91a9c9b32cb",
+    "mtime": 1795024237.3585162,
+    "seen": 1795024244.079654,
+    "ast_hash": "fe3d02b87efa622a34484c6d0915a4ed",
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1795016900.6112096,
-    "seen": 1795016926.023403,
-    "ast_hash": "fe4abfe534bb047d3dd2a15320b5077d",
+    "mtime": 1795024241.6942036,
+    "seen": 1795024244.079655,
+    "ast_hash": "35d32e093120909141a29aae751b9d48",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1794966493.4232435,
-    "seen": 1794967177.18205,
-    "ast_hash": "217e18bce46c6f6602810352504d6bb8",
+    "mtime": 1795024229.2736025,
+    "seen": 1795024244.079655,
+    "ast_hash": "8e95d01cabde6df55bdf726752ba44be",
     "semantic_hash": ""
   },
   "GEMINI.md": {
@@ -492,9 +492,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1795016889.5028527,
-    "seen": 1795016926.0234041,
-    "ast_hash": "03ddb94cd24223c9d18a859498f7d456",
+    "mtime": 1795024237.3628986,
+    "seen": 1795024244.079657,
+    "ast_hash": "76b6b19e05faa34f5c6b069e549af213",
     "semantic_hash": ""
   },
   "SECURITY.md": {
@@ -525,6 +525,12 @@
     "mtime": 1795016837.7573607,
     "seen": 1795016926.023405,
     "ast_hash": "e2efced4f67857d3a7ffe22fafd59816",
+    "semantic_hash": ""
+  },
+  "PLANNING.md": {
+    "mtime": 1795024228.7210138,
+    "seen": 1795024244.079656,
+    "ast_hash": "52b5fd361e610055ae718af606e211b2",
     "semantic_hash": ""
   }
 }

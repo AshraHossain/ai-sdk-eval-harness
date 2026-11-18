@@ -57,4 +57,5 @@ EVAL_MODE=live npm run eval -- --runs 3   # real providers; keys from env (see .
 ## Conventions
 Conventional commits (`feat|fix|test|refactor|docs|chore(scope): ...`). Run `make check` before
 pushing. Do not claim production readiness. Security model: [SECURITY.md](SECURITY.md).
-Architecture: [ARCHITECTURE.md](ARCHITECTURE.md).
+Architecture: [ARCHITECTURE.md](ARCHITECTURE.md). Goals, scope, milestones and known gaps:
+[PLANNING.md](PLANNING.md); keep it in step with any change to scope or architecture.

@@ -72,7 +72,7 @@ flowchart LR
         MOCKM["evals/mock: fixture replay + mock judge + faults"]
     end
     subgraph Backends["Live vs offline backends"]
-        LIVE[("Anthropic, OpenAI, Bynara, OpenRouter, NIM")]
+        LIVE[("Anthropic, OpenAI, Vertex, Bynara, OpenRouter, NIM")]
         FIX[("evals/fixtures + datasets + thresholds + baselines")]
     end
     UI & API_C --> MW --> RT --> SUITES
@@ -138,7 +138,7 @@ Offline (mock) run, N=5 runs per case, from `npm run eval:gate` (`reports/scorec
 | Grounding rate (rag) | 100.0% | Faithfulness judge passes (mock judge: reference coverage) |
 | Guardrail pass rate (rag) | 95.0% | Correct abstention when documents lack the answer; seeded flaky case `rag/r06` |
 | Tool-call accuracy (agent) | 100.0% | Right tools, args and order |
-| Latency p50 / p95 per run | 0 ms / 2 ms | Harness overhead only in mock mode |
+| Latency p50 / p95 per run | 0 ms / 1-2 ms | Harness overhead only in mock mode; varies per run |
 
 | Suite | Pass rate | Flaky cases | Gate |
 |---|---|---|---|

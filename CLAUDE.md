@@ -1,6 +1,8 @@
 # CLAUDE.md — ai-sdk-eval-harness
 
-Read [AGENTS.md](AGENTS.md) first: commands, layout and invariants live there.
+Read [PLANNING.md](PLANNING.md) first: goals, scope, milestones and known gaps. Check every task
+against it and update it in the same change when scope or architecture moves.
+Then [AGENTS.md](AGENTS.md): commands, layout and invariants live there.
 Scoped rules load from `.claude/rules/` by path. Repo workflows: `/add-eval-suite`, `/rebaseline`.
 
 ## Repo specifics
