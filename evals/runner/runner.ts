@@ -1,6 +1,6 @@
 import type { LanguageModel } from "ai";
 import { mean, round, stdev, isFlaky, classifyStability, wilsonInterval, DEFAULT_FLAKY_BOUNDS, type FlakyBounds } from "./stats";
-import { isInfraError } from "./errors";
+import { errorText, isInfraError } from "./errors";
 import type { CaseReport, EvalCase, RunReport, Suite, SuiteReport } from "./types";
 import type { ScoreResult } from "../scorers/types";
 
@@ -27,7 +27,7 @@ async function runOnce<C extends EvalCase>(o: RunSuiteOptions<C>, c: C, run: num
     output = await o.suite.run(o.modelFor(c, run), c);
     scores = await o.suite.score({ case: c, output, judge: o.judge });
   } catch (err) {
-    error = err instanceof Error ? err.message : String(err);
+    error = errorText(err);
     infra = isInfraError(err);
   }
   infra ||= scores.some((s) => s.infra);

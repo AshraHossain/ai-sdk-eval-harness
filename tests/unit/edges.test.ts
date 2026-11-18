@@ -5,7 +5,7 @@ import { groundedQa } from "../../src/lib/ai/groundedQa";
 import { summarize } from "../../src/lib/ai/summarize";
 import { createFixtureModel, createMockJudge } from "../../evals/mock/mockModel";
 import { applyFault, MOCK_FAULTS } from "../../evals/mock/faults";
-import { isInfraError } from "../../evals/runner/errors";
+import { errorText, isInfraError } from "../../evals/runner/errors";
 import { getSuite } from "../../evals/suites";
 import { UNTRUSTED_NOTICE } from "../../src/lib/security/sanitize";
 
@@ -36,6 +36,17 @@ describe("prompt-injection framing in the system under test", () => {
     const s = createFixtureModel("ok");
     await summarize(s, { text: "body", maxWords: 5 });
     expect(JSON.stringify(s.doGenerateCalls[0]!.prompt)).toContain('<untrusted_context source=\\"text\\">');
+  });
+});
+
+describe("errorText", () => {
+  it("falls back to the response body when the provider sends an empty message", () => {
+    const body = "{\n \"error\": { \"code\": 400, \"message\": \"missing thought_signature\" } }";
+    const err = new APICallError({ message: "", url: "u", requestBodyValues: {}, statusCode: 400, responseBody: body });
+    expect(errorText(err)).toBe(`AI_APICallError: { "error": { "code": 400, "message": "missing thought_signature" } }`);
+    expect(errorText(new APICallError({ message: "", url: "u", requestBodyValues: {} }))).toBe("AI_APICallError");
+    expect(errorText(new Error("boom"))).toBe("boom");
+    expect(errorText("plain")).toBe("plain");
   });
 });
 
