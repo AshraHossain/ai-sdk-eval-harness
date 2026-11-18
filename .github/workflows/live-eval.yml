@@ -11,7 +11,7 @@ on:
         description: Comma-separated suites (blank = all)
         default: ""
       model:
-        description: "Model under test (provider:model; anthropic, openai, bynara, openrouter or nim)"
+        description: "Model under test (provider:model; anthropic, openai, bynara, openrouter, nim or vertex)"
         default: "anthropic:claude-haiku-5-5"
       judge_model:
         description: "Judge model (provider:model)"
@@ -40,6 +40,9 @@ jobs:
       OPENROUTER_BASE_URL: ${{ vars.OPENROUTER_BASE_URL }}
       NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
       NIM_BASE_URL: ${{ vars.NIM_BASE_URL }}
+      # vertex: add a google-github-actions/auth step (Workload Identity Federation) before using vertex models.
+      GOOGLE_CLOUD_PROJECT: ${{ vars.GOOGLE_CLOUD_PROJECT }}
+      GOOGLE_CLOUD_LOCATION: ${{ vars.GOOGLE_CLOUD_LOCATION }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

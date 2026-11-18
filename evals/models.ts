@@ -1,4 +1,5 @@
 import { anthropic } from "@ai-sdk/anthropic";
+import { createVertex } from "@ai-sdk/google-vertex";
 import { createOpenAI, openai } from "@ai-sdk/openai";
 import type { LanguageModel } from "ai";
 
@@ -22,6 +23,8 @@ export const KEY_ENV: Record<string, string> = {
   bynara: "BYNARA_API_KEY",
   openrouter: "OPENROUTER_API_KEY",
   nim: "NVIDIA_API_KEY",
+  // Credentials come from Application Default Credentials (gcloud auth application-default login, or a service account).
+  vertex: "GOOGLE_CLOUD_PROJECT",
 };
 
 /** "provider:model"; a bare router-style id like "openai/laguna-s-2.1" goes to the Bynara router. */
@@ -33,7 +36,7 @@ export function parseSpec(spec: string): { provider: string; id: string } {
 const providerOf = (spec: string) => parseSpec(spec).provider;
 
 /**
- * "provider:model" -> LanguageModel. Providers: anthropic, openai, bynara.
+ * "provider:model" -> LanguageModel. Providers: anthropic, openai, bynara, openrouter, nim, vertex.
  * `bynara` talks to the Bynara router (https://router.bynara.id) and assumes an OpenAI-compatible
  * chat-completions API; override the endpoint with BYNARA_BASE_URL.
  */
@@ -62,7 +65,15 @@ export function resolveModel(spec: string): LanguageModel {
       apiKey: process.env.NVIDIA_API_KEY,
     }).chat(id);
   }
-  throw new Error(`Unknown provider "${provider}" in model spec "${spec}" (use anthropic:<id>, openai:<id>, bynara:<id>, openrouter:<id> or nim:<id>)`);
+  if (provider === "vertex") {
+    // Native Vertex client, not the OpenAI-compatible endpoint: Gemini 3 tool calls carry a thought_signature
+    // that must be sent back on the next step, and the OpenAI client drops it (400 INVALID_ARGUMENT).
+    return createVertex({
+      project: process.env.GOOGLE_CLOUD_PROJECT,
+      location: process.env.GOOGLE_CLOUD_LOCATION || "global",
+    })(id.replace(/^google\//, ""));
+  }
+  throw new Error(`Unknown provider "${provider}" in model spec "${spec}" (use anthropic:<id>, openai:<id>, bynara:<id>, openrouter:<id>, nim:<id> or vertex:<id>)`);
 }
 
 export function assertLiveKeys(specs: string[]): void {

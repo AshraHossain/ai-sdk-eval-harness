@@ -5,6 +5,9 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 ## [Unreleased]
 
 ### Added
+- `vertex:` provider (native `@ai-sdk/google-vertex`, ADC credentials, `GOOGLE_CLOUD_PROJECT`/`GOOGLE_CLOUD_LOCATION`)
+  and a measured live run of Gemini 3.8 Flash in the README.
+- Runner records the provider response body when an API error has an empty message (`errorText`).
 - API edge middleware: `X-Request-ID`, sliding-window rate limit (429 + `Retry-After: 60`), optional
   `API_AUTH_TOKEN` (Bearer or `X-API-Key`, constant-time), OWASP headers; `/api/health` and `/api/readyz` probes.
 - Rate-limit keys trust `X-Forwarded-For` only through `TRUSTED_PROXY_HOPS` (right-most hop); key table capped.

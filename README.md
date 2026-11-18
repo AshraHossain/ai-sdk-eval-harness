@@ -149,6 +149,36 @@ Offline (mock) run, N=5 runs per case, from `npm run eval:gate` (`reports/scorec
 These numbers come from fixtures that include seeded failures, so they show that the harness and gate
 work. They say nothing about model quality. Run `EVAL_MODE=live npm run eval` for that.
 
+### Live run: Gemini 3.8 Flash on Vertex AI
+
+`EVAL_MODEL=vertex:gemini-3.8-flash`, same model as judge, N=3 runs per case, run on 2026-11-17. Gate: **PASSED**.
+
+| Suite | Pass rate | Flaky cases | Gate |
+|---|---|---|---|
+| summarize | 88.9% | 1/6 (`s01`) | ✅ |
+| classify | 100.0% | 0/6 | ✅ |
+| extract | 100.0% | 0/6 | ✅ |
+| rag | 100.0% | 0/6 | ✅ |
+| agent | 100.0% | 0/6 | ✅ |
+
+| Metric | Value |
+|---|---|
+| Pass rate (mean of suites) | 97.8% |
+| Citation recall / grounding / guardrail (rag) | 100% / 100% / 100% |
+| Tool-call accuracy (agent) | 100.0% |
+| Latency p50 / p95 per run (including judge calls) | 3988 ms / 9912 ms |
+
+What the run found:
+- `summarize/s01` is flaky. The model writes "rolled it back" and the keyword scorer wants the
+  phrase "rolled back". The keyword scorer is strict on wording, which a real model shows and the
+  fixtures do not.
+- The first attempt went through Vertex's OpenAI-compatible endpoint, and the agent suite failed 5 of 6
+  cases with HTTP 400. Gemini 3 tool calls carry a `thought_signature` that must be sent back on the
+  next step, and the OpenAI client drops it. `vertex:` now uses the native client.
+
+Limits: one model, N=3, and the model judges its own output (self-preference bias is possible). Treat
+this as a smoke test of a real provider, not a benchmark.
+
 ## Quick start
 
 ```bash
@@ -182,8 +212,9 @@ EVAL_MODE=live npm run eval -- --runs 3
 | `bynara` | `BYNARA_API_KEY` | `https://router.bynara.id/v1` (`BYNARA_BASE_URL`) | `bynara:claude-haiku-5.5` |
 | `openrouter` | `OPENROUTER_API_KEY` | `https://openrouter.ai/api/v1` (`OPENROUTER_BASE_URL`) | `openrouter:nvidia/nemotron-3-ultra-550b-a55b:free` |
 | `nim` | `NVIDIA_API_KEY` | `https://integrate.api.nvidia.com/v1` (`NIM_BASE_URL`) | `nim:nvidia/nemotron-3-ultra-550b-a55b` |
+| `vertex` | ADC (`gcloud auth application-default login`) + `GOOGLE_CLOUD_PROJECT` | native Vertex client; `GOOGLE_CLOUD_LOCATION` (default `global`) | `vertex:gemini-3.8-flash` |
 
-`bynara`, `openrouter` and `nim` use an OpenAI-compatible chat-completions client. A bare id with a `/` and no provider prefix goes to Bynara; a bare id without one goes to Anthropic. Use the ids each provider lists (Bynara: `GET /v1/models`).
+`bynara`, `openrouter` and `nim` use an OpenAI-compatible chat-completions client. `vertex` uses the native `@ai-sdk/google-vertex` client, because Gemini 3 tool calls carry thought signatures that the OpenAI-compatible endpoint drops. A bare id with a `/` and no provider prefix goes to Bynara; a bare id without one goes to Anthropic. Use the ids each provider lists (Bynara: `GET /v1/models`).
 
 Notes from live runs:
 - When every run errors, the CLI prints `N/total runs errored. First error: ...`. "The requested model does not exist" means the model id is wrong. "Bad Gateway" means the router could not reach the upstream model, so try another model.

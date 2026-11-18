@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { assertLiveKeys, parseSpec, resolveModel } from "../../evals/models";
 
-const KEYS = ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "BYNARA_API_KEY", "OPENROUTER_API_KEY", "NVIDIA_API_KEY"] as const;
+const KEYS = ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "BYNARA_API_KEY", "OPENROUTER_API_KEY", "NVIDIA_API_KEY", "GOOGLE_CLOUD_PROJECT", "GOOGLE_CLOUD_LOCATION"] as const;
 const saved = Object.fromEntries(KEYS.map((k) => [k, process.env[k]]));
 afterEach(() => {
   for (const k of KEYS) {
@@ -25,6 +25,13 @@ describe("resolveModel", () => {
     const m = resolveModel("nim:nvidia/nemotron-3-ultra-550b-a55b");
     expect(m).toMatchObject({ modelId: "nvidia/nemotron-3-ultra-550b-a55b" });
     expect((m as { provider: string }).provider).toContain("nim");
+  });
+  it("resolves vertex models with the native Vertex client and strips a google/ prefix", () => {
+    process.env.GOOGLE_CLOUD_PROJECT = "gen-lang-client-0000000000";
+    delete process.env.GOOGLE_CLOUD_LOCATION;
+    const m = resolveModel("vertex:google/gemini-3.8-flash");
+    expect(m).toMatchObject({ modelId: "gemini-3.8-flash" });
+    expect((m as { provider: string }).provider).toContain("vertex");
   });
   it("rejects unknown providers", () => expect(() => resolveModel("banana:x")).toThrow(/Unknown provider/));
 });
@@ -60,4 +67,11 @@ describe("assertLiveKeys", () => {
     process.env.NVIDIA_API_KEY = "test";
     expect(() => assertLiveKeys(["nim:nvidia/nemotron-3-ultra-550b-a55b"])).not.toThrow();
   });
+  it("requires GOOGLE_CLOUD_PROJECT for vertex models", () => {
+    delete process.env.GOOGLE_CLOUD_PROJECT;
+    expect(() => assertLiveKeys(["vertex:gemini-3.8-flash"])).toThrow(/GOOGLE_CLOUD_PROJECT/);
+    process.env.GOOGLE_CLOUD_PROJECT = "p";
+    expect(() => assertLiveKeys(["vertex:gemini-3.8-flash"])).not.toThrow();
+  });
 });
+
