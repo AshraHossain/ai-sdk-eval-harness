@@ -240,9 +240,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1794966856.8609192,
-    "seen": 1794967177.1820328,
-    "ast_hash": "1114f2b8597ab7a0eba08e1c6e787630",
+    "mtime": 1795016907.0071836,
+    "seen": 1795016926.0233831,
+    "ast_hash": "650482ee467fdacbcd1c525a1598b78c",
     "semantic_hash": ""
   },
   "playwright.config.ts": {
@@ -450,15 +450,15 @@
     "semantic_hash": ""
   },
   ".github/workflows/ci.yml": {
-    "mtime": 1794960353.8834755,
-    "seen": 1794967177.182048,
-    "ast_hash": "6bf5b1c1f21eef6cf64b212413285afb",
+    "mtime": 1795016298.6507971,
+    "seen": 1795016926.0233998,
+    "ast_hash": "d4cc059433c81436a3117c043ec76a59",
     "semantic_hash": ""
   },
   ".github/workflows/live-eval.yml": {
-    "mtime": 1794966493.4239728,
-    "seen": 1794967177.182048,
-    "ast_hash": "9a846ab84e3a552a8a4da241ddeab5ea",
+    "mtime": 1795016298.6509392,
+    "seen": 1795016926.023401,
+    "ast_hash": "82a92e8533690ff03477465be0ebfd6d",
     "semantic_hash": ""
   },
   "AGENTS.md": {
@@ -474,9 +474,9 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1794967172.3268247,
-    "seen": 1794967177.182049,
-    "ast_hash": "94ad2bc95519c38fe0c0675176bf60b7",
+    "mtime": 1795016900.6112096,
+    "seen": 1795016926.023403,
+    "ast_hash": "fe4abfe534bb047d3dd2a15320b5077d",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -492,9 +492,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1794967163.0244207,
-    "seen": 1794967177.1820512,
-    "ast_hash": "f2114320ed79571a64aabb9de45a8c67",
+    "mtime": 1795016889.5028527,
+    "seen": 1795016926.0234041,
+    "ast_hash": "03ddb94cd24223c9d18a859498f7d456",
     "semantic_hash": ""
   },
   "SECURITY.md": {
@@ -507,6 +507,24 @@
     "mtime": 1794960353.891002,
     "seen": 1794967177.1820521,
     "ast_hash": "f1b157fcda208642a1b450f99e411c8b",
+    "semantic_hash": ""
+  },
+  ".github/dependabot.yml": {
+    "mtime": 1795016306.8356748,
+    "seen": 1795016926.0233989,
+    "ast_hash": "ee3b5b8bc3d342af49670e9206236dea",
+    "semantic_hash": ""
+  },
+  ".github/workflows/codeql.yml": {
+    "mtime": 1795016306.8403149,
+    "seen": 1795016926.023401,
+    "ast_hash": "8d973a993da9cb15f242a3b5fbb8b885",
+    "semantic_hash": ""
+  },
+  "docs/dashboard.png": {
+    "mtime": 1795016837.7573607,
+    "seen": 1795016926.023405,
+    "ast_hash": "e2efced4f67857d3a7ffe22fafd59816",
     "semantic_hash": ""
   }
 }
