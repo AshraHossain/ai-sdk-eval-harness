@@ -173,6 +173,45 @@
       "source_location": "L4"
     },
     {
+      "id": "evals_mock_faults_mockfault",
+      "label": "MockFault",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "mockfault",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L46"
+    },
+    {
+      "id": "evals_mock_faults_obj",
+      "label": "Obj",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "obj",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "evals_mock_mockmodel_fixture",
+      "label": "Fixture",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "fixture",
+      "source_file": "evals/mock/mockModel.ts",
+      "source_location": "L9"
+    },
+    {
       "id": "evals_models_evalmode",
       "label": "EvalMode",
       "_callable": true,
@@ -210,6 +249,19 @@
       "norm_label": "anysuite",
       "source_file": "evals/suites/index.ts",
       "source_location": "L9"
+    },
+    {
+      "id": "scripts_gate_selftest_gaterunner",
+      "label": "GateRunner",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "gaterunner",
+      "source_file": "scripts/gate-selftest.ts",
+      "source_location": "L15"
     },
     {
       "id": "evals_runner_runner_runsuiteoptions",
@@ -353,58 +405,6 @@
       "norm_label": "case",
       "source_file": "tests/unit/runner.test.ts",
       "source_location": "L11"
-    },
-    {
-      "id": "evals_mock_faults_mockfault",
-      "label": "MockFault",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "mockfault",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L46"
-    },
-    {
-      "id": "evals_mock_faults_obj",
-      "label": "Obj",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "obj",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "evals_mock_mockmodel_fixture",
-      "label": "Fixture",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "fixture",
-      "source_file": "evals/mock/mockModel.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "scripts_gate_selftest_gaterunner",
-      "label": "GateRunner",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "gaterunner",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L15"
     },
     {
       "id": "evals_runner_gate_baseline",
@@ -586,7 +586,7 @@
       "file_type": "code",
       "norm_label": "ratedecision",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L70"
+      "source_location": "L72"
     },
     {
       "id": "evals_runner_errors_isinfraerror",
@@ -913,6 +913,18 @@
       "source_location": "L49"
     },
     {
+      "id": "evals_mock_faults_asobj",
+      "label": "asObj()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "asobj()",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L11"
+    },
+    {
       "id": "evals_models_assertlivekeys",
       "label": "assertLiveKeys()",
       "_callable": true,
@@ -1021,18 +1033,6 @@
       "source_location": "L57"
     },
     {
-      "id": "evals_runner_load_loaddataset",
-      "label": "loadDataset()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "loaddataset()",
-      "source_file": "evals/runner/load.ts",
-      "source_location": "L34"
-    },
-    {
       "id": "evals_runner_load_loadfixtures",
       "label": "loadFixtures()",
       "_callable": true,
@@ -1043,18 +1043,6 @@
       "norm_label": "loadfixtures()",
       "source_file": "evals/runner/load.ts",
       "source_location": "L46"
-    },
-    {
-      "id": "evals_runner_load_parsejsonl",
-      "label": "parseJsonl()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "parsejsonl()",
-      "source_file": "evals/runner/load.ts",
-      "source_location": "L13"
     },
     {
       "id": "evals_suites_index_getsuite",
@@ -1069,6 +1057,30 @@
       "source_location": "L14"
     },
     {
+      "id": "scripts_gate_selftest_selftest",
+      "label": "selfTest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "selftest()",
+      "source_file": "scripts/gate-selftest.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "scripts_gate_selftest_spawngate",
+      "label": "spawnGate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "spawngate()",
+      "source_file": "scripts/gate-selftest.ts",
+      "source_location": "L18"
+    },
+    {
       "id": "src_lib_security_sanitize_safeid",
       "label": "safeId()",
       "_callable": true,
@@ -1079,18 +1091,6 @@
       "norm_label": "safeid()",
       "source_file": "src/lib/security/sanitize.ts",
       "source_location": "L34"
-    },
-    {
-      "id": "tests_integration_api_test_post",
-      "label": "post()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "post()",
-      "source_file": "tests/integration/api.test.ts",
-      "source_location": "L14"
     },
     {
       "id": "app_layout_rootlayout",
@@ -1273,42 +1273,6 @@
       "source_location": "L6"
     },
     {
-      "id": "evals_mock_faults_asobj",
-      "label": "asObj()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "asobj()",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "scripts_gate_selftest_selftest",
-      "label": "selfTest()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "selftest()",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L29"
-    },
-    {
-      "id": "scripts_gate_selftest_spawngate",
-      "label": "spawnGate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "spawngate()",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L18"
-    },
-    {
       "id": "app_page_dashboard",
       "label": "Dashboard()",
       "_callable": true,
@@ -1441,6 +1405,18 @@
       "source_location": "L155"
     },
     {
+      "id": "evals_runner_load_loaddataset",
+      "label": "loadDataset()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "loaddataset()",
+      "source_file": "evals/runner/load.ts",
+      "source_location": "L34"
+    },
+    {
       "id": "evals_runner_load_loadthresholds",
       "label": "loadThresholds()",
       "_callable": true,
@@ -1451,6 +1427,18 @@
       "norm_label": "loadthresholds()",
       "source_file": "evals/runner/load.ts",
       "source_location": "L50"
+    },
+    {
+      "id": "evals_runner_load_parsejsonl",
+      "label": "parseJsonl()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "parsejsonl()",
+      "source_file": "evals/runner/load.ts",
+      "source_location": "L13"
     },
     {
       "id": "evals_runner_markdown_rendermarkdown",
@@ -1858,7 +1846,7 @@
       "file_type": "code",
       "norm_label": "finish()",
       "source_file": "middleware.ts",
-      "source_location": "L22"
+      "source_location": "L25"
     },
     {
       "id": "middleware_middleware",
@@ -1870,7 +1858,7 @@
       "file_type": "code",
       "norm_label": "middleware()",
       "source_file": "middleware.ts",
-      "source_location": "L29"
+      "source_location": "L32"
     },
     {
       "id": "src_lib_security_http_clientkey",
@@ -1882,7 +1870,7 @@
       "file_type": "code",
       "norm_label": "clientkey()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L64"
+      "source_location": "L65"
     },
     {
       "id": "src_lib_security_http_createratelimiter",
@@ -1894,7 +1882,7 @@
       "file_type": "code",
       "norm_label": "createratelimiter()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L86"
+      "source_location": "L88"
     },
     {
       "id": "src_lib_security_http_presentedtoken",
@@ -1906,7 +1894,7 @@
       "file_type": "code",
       "norm_label": "presentedtoken()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L27"
+      "source_location": "L28"
     },
     {
       "id": "src_lib_security_http_ratelimitfrom",
@@ -1918,7 +1906,7 @@
       "file_type": "code",
       "norm_label": "ratelimitfrom()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L41"
+      "source_location": "L42"
     },
     {
       "id": "src_lib_security_http_requestid",
@@ -1930,7 +1918,7 @@
       "file_type": "code",
       "norm_label": "requestid()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L22"
+      "source_location": "L23"
     },
     {
       "id": "src_lib_security_http_slidingwindow",
@@ -1942,7 +1930,7 @@
       "file_type": "code",
       "norm_label": "slidingwindow()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L77"
+      "source_location": "L79"
     },
     {
       "id": "src_lib_security_http_tokenmatches",
@@ -1954,7 +1942,7 @@
       "file_type": "code",
       "norm_label": "tokenmatches()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L33"
+      "source_location": "L34"
     },
     {
       "id": "src_lib_security_http_trustedhopsfrom",
@@ -1966,7 +1954,7 @@
       "file_type": "code",
       "norm_label": "trustedhopsfrom()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L54"
+      "source_location": "L53"
     },
     {
       "id": "src_lib_security_http_withtiming",
@@ -1978,7 +1966,19 @@
       "file_type": "code",
       "norm_label": "withtiming()",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L101"
+      "source_location": "L103"
+    },
+    {
+      "id": "tests_integration_api_test_post",
+      "label": "post()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "code",
+      "norm_label": "post()",
+      "source_file": "tests/integration/api.test.ts",
+      "source_location": "L14"
     },
     {
       "id": "tests_integration_middleware_test_load",
@@ -2500,6 +2500,39 @@
       "source_location": "L1"
     },
     {
+      "id": "evals_mock_faults",
+      "label": "faults.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "faults.ts",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "evals_mock_faults_mock_faults",
+      "label": "MOCK_FAULTS",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "mock_faults",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "evals_mock_faults_mockfaultnames",
+      "label": "mockFaultNames",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "mockfaultnames",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L47"
+    },
+    {
       "id": "evals_models",
       "label": "models.ts",
       "_origin": "ast",
@@ -2632,58 +2665,25 @@
       "source_location": "L12"
     },
     {
-      "id": "evals_suites_index_suites",
-      "label": "SUITES",
+      "id": "scripts_gate_selftest",
+      "label": "gate-selftest.ts",
       "_origin": "ast",
       "community": 1,
       "community_name": "execute.ts",
       "file_type": "code",
-      "norm_label": "suites",
-      "source_file": "evals/suites/index.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "tests_integration_api_test",
-      "label": "api.test.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "api.test.ts",
-      "source_file": "tests/integration/api.test.ts",
+      "norm_label": "gate-selftest.ts",
+      "source_file": "scripts/gate-selftest.ts",
       "source_location": "L1"
     },
     {
-      "id": "tests_integration_api_test_env",
-      "label": "ENV",
+      "id": "tests_integration_cli_test",
+      "label": "cli.test.ts",
       "_origin": "ast",
       "community": 1,
       "community_name": "execute.ts",
       "file_type": "code",
-      "norm_label": "env",
-      "source_file": "tests/integration/api.test.ts",
-      "source_location": "L17"
-    },
-    {
-      "id": "tests_integration_api_test_saved",
-      "label": "saved",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "saved",
-      "source_file": "tests/integration/api.test.ts",
-      "source_location": "L18"
-    },
-    {
-      "id": "tests_unit_datasets_test",
-      "label": "datasets.test.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "datasets.test.ts",
-      "source_file": "tests/unit/datasets.test.ts",
+      "norm_label": "cli.test.ts",
+      "source_file": "tests/integration/cli.test.ts",
       "source_location": "L1"
     },
     {
@@ -2751,17 +2751,6 @@
       "norm_label": "@ai-sdk/openai",
       "source_file": "package.json",
       "source_location": "L28"
-    },
-    {
-      "id": "ref_vitest",
-      "label": "vitest",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "concept",
-      "norm_label": "vitest",
-      "source_file": "package.json",
-      "source_location": "L47"
     },
     {
       "id": "package_scripts",
@@ -3679,61 +3668,6 @@
       "source_location": "L1"
     },
     {
-      "id": "evals_mock_faults",
-      "label": "faults.ts",
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "faults.ts",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "evals_mock_faults_mock_faults",
-      "label": "MOCK_FAULTS",
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "mock_faults",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "evals_mock_faults_mockfaultnames",
-      "label": "mockFaultNames",
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "mockfaultnames",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L47"
-    },
-    {
-      "id": "scripts_gate_selftest",
-      "label": "gate-selftest.ts",
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "gate-selftest.ts",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "tests_integration_cli_test",
-      "label": "cli.test.ts",
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "faults.ts",
-      "file_type": "code",
-      "norm_label": "cli.test.ts",
-      "source_file": "tests/integration/cli.test.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "app_api_readyz_route",
       "label": "readyz/route.ts",
       "_origin": "ast",
@@ -3885,6 +3819,28 @@
       "file_type": "code",
       "norm_label": "scorecard.ts",
       "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "evals_suites_index_suites",
+      "label": "SUITES",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "suites",
+      "source_file": "evals/suites/index.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "tests_unit_datasets_test",
+      "label": "datasets.test.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "datasets.test.ts",
+      "source_file": "tests/unit/datasets.test.ts",
       "source_location": "L1"
     },
     {
@@ -4521,18 +4477,40 @@
       "file_type": "code",
       "norm_label": "config",
       "source_file": "middleware.ts",
-      "source_location": "L17"
+      "source_location": "L16"
     },
     {
-      "id": "middleware_limit",
-      "label": "limit",
+      "id": "middleware_limitanonymous",
+      "label": "limitAnonymous",
       "_origin": "ast",
       "community": 6,
       "community_name": "http.ts",
       "file_type": "code",
-      "norm_label": "limit",
+      "norm_label": "limitanonymous",
       "source_file": "middleware.ts",
-      "source_location": "L19"
+      "source_location": "L20"
+    },
+    {
+      "id": "middleware_limitauthenticated",
+      "label": "limitAuthenticated",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "code",
+      "norm_label": "limitauthenticated",
+      "source_file": "middleware.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "middleware_perminute",
+      "label": "perMinute",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "code",
+      "norm_label": "perminute",
+      "source_file": "middleware.ts",
+      "source_location": "L18"
     },
     {
       "id": "middleware_trustedhops",
@@ -4543,7 +4521,7 @@
       "file_type": "code",
       "norm_label": "trustedhops",
       "source_file": "middleware.ts",
-      "source_location": "L20"
+      "source_location": "L23"
     },
     {
       "id": "src_lib_security_http",
@@ -4565,18 +4543,7 @@
       "file_type": "code",
       "norm_label": "api_security_headers",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_lib_security_http_authenticated_bucket",
-      "label": "AUTHENTICATED_BUCKET",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "http.ts",
-      "file_type": "code",
-      "norm_label": "authenticated_bucket",
-      "source_file": "src/lib/security/http.ts",
-      "source_location": "L49"
+      "source_location": "L5"
     },
     {
       "id": "src_lib_security_http_default_rate_limit_per_minute",
@@ -4587,7 +4554,7 @@
       "file_type": "code",
       "norm_label": "default_rate_limit_per_minute",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L15"
+      "source_location": "L16"
     },
     {
       "id": "src_lib_security_http_global_bucket",
@@ -4598,7 +4565,7 @@
       "file_type": "code",
       "norm_label": "global_bucket",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L47"
+      "source_location": "L48"
     },
     {
       "id": "src_lib_security_http_max_tracked_clients",
@@ -4609,7 +4576,7 @@
       "file_type": "code",
       "norm_label": "max_tracked_clients",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L51"
+      "source_location": "L50"
     },
     {
       "id": "src_lib_security_http_open_paths",
@@ -4620,7 +4587,7 @@
       "file_type": "code",
       "norm_label": "open_paths",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L13"
+      "source_location": "L14"
     },
     {
       "id": "src_lib_security_http_rate_window_ms",
@@ -4631,7 +4598,7 @@
       "file_type": "code",
       "norm_label": "rate_window_ms",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L16"
+      "source_location": "L17"
     },
     {
       "id": "src_lib_security_http_retry_after_seconds",
@@ -4642,7 +4609,40 @@
       "file_type": "code",
       "norm_label": "retry_after_seconds",
       "source_file": "src/lib/security/http.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "tests_integration_api_test",
+      "label": "api.test.ts",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "code",
+      "norm_label": "api.test.ts",
+      "source_file": "tests/integration/api.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_integration_api_test_env",
+      "label": "ENV",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "code",
+      "norm_label": "env",
+      "source_file": "tests/integration/api.test.ts",
       "source_location": "L17"
+    },
+    {
+      "id": "tests_integration_api_test_saved",
+      "label": "saved",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "code",
+      "norm_label": "saved",
+      "source_file": "tests/integration/api.test.ts",
+      "source_location": "L18"
     },
     {
       "id": "tests_integration_middleware_test",
@@ -4676,6 +4676,17 @@
       "norm_label": "security.test.ts",
       "source_file": "tests/unit/security.test.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "ref_vitest",
+      "label": "vitest",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "http.ts",
+      "file_type": "concept",
+      "norm_label": "vitest",
+      "source_file": "package.json",
+      "source_location": "L47"
     },
     {
       "id": "tsconfig",
@@ -6494,7 +6505,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L30",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -6506,7 +6517,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -6518,19 +6529,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
       "source": "middleware_middleware",
-      "target": "middleware_limit",
+      "target": "middleware_limitanonymous",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L36",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "middleware_middleware",
+      "target": "middleware_limitauthenticated",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "middleware.ts",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -6542,7 +6565,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L36",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -6554,7 +6577,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "middleware.ts",
-      "source_location": "L39",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -6614,7 +6637,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L94",
+      "source_location": "L96",
       "weight": 1.0
     },
     {
@@ -8374,18 +8397,6 @@
     {
       "source": "middleware",
       "target": "src_lib_security_http_api_security_headers",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "middleware.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "middleware",
-      "target": "src_lib_security_http_authenticated_bucket",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14656,23 +14667,23 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "middleware.ts",
-      "source_location": "L17",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
       "source": "middleware",
-      "target": "middleware_limit",
+      "target": "middleware_perminute",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "middleware.ts",
-      "source_location": "L19",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
       "source": "middleware",
-      "target": "middleware_trustedhops",
+      "target": "middleware_limitanonymous",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14683,7 +14694,7 @@
     },
     {
       "source": "middleware",
-      "target": "middleware_finish",
+      "target": "middleware_limitauthenticated",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14694,13 +14705,35 @@
     },
     {
       "source": "middleware",
+      "target": "middleware_trustedhops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "middleware.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "middleware",
+      "target": "middleware_finish",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "middleware.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "middleware",
       "target": "middleware_middleware",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "middleware.ts",
-      "source_location": "L29",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -15624,7 +15657,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L101",
+      "source_location": "L103",
       "weight": 1.0
     },
     {
@@ -15635,7 +15668,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -15646,7 +15679,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -15657,7 +15690,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -15668,7 +15701,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -15679,7 +15712,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -15690,7 +15723,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -15701,18 +15734,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L33",
-      "weight": 1.0
-    },
-    {
-      "source": "src_lib_security_http",
-      "target": "src_lib_security_http_api_security_headers",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/lib/security/http.ts",
-      "source_location": "L4",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -15723,7 +15745,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -15734,18 +15756,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L47",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
       "source": "src_lib_security_http",
-      "target": "src_lib_security_http_authenticated_bucket",
+      "target": "src_lib_security_http_api_security_headers",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L49",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -15756,7 +15778,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L51",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -15767,7 +15789,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L54",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -15778,7 +15800,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L64",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -15789,7 +15811,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L70",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -15800,7 +15822,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L77",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -15811,7 +15833,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/http.ts",
-      "source_location": "L86",
+      "source_location": "L88",
       "weight": 1.0
     },
     {
@@ -16632,5 +16654,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3ae73afc3ad43fcbbdd77a1445f60e85010d4cf0"
+  "built_at_commit": "0ed5560c5802bbb523d0358bb1dd28061d5d1bdf"
 }

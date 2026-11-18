@@ -4,13 +4,26 @@
   "graph": {},
   "nodes": [
     {
+      "id": "evals_runner_types_suite",
+      "label": "Suite",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "suite",
+      "source_file": "evals/runner/types.ts",
+      "source_location": "L10"
+    },
+    {
       "id": "evals_scorers_deterministic_toolcalllike",
       "label": "ToolCallLike",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "toolcalllike",
       "source_file": "evals/scorers/deterministic.ts",
@@ -23,7 +36,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "case",
       "source_file": "evals/suites/agent.ts",
@@ -36,7 +49,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "case",
       "source_file": "evals/suites/classify.ts",
@@ -49,11 +62,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "case",
       "source_file": "evals/suites/extract.ts",
       "source_location": "L7"
+    },
+    {
+      "id": "evals_suites_index_anysuite",
+      "label": "AnySuite",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "anysuite",
+      "source_file": "evals/suites/index.ts",
+      "source_location": "L9"
     },
     {
       "id": "evals_suites_rag_case",
@@ -62,7 +88,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "case",
       "source_file": "evals/suites/rag.ts",
@@ -75,7 +101,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "case",
       "source_file": "evals/suites/summarize.ts",
@@ -88,7 +114,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "agentresult",
       "source_file": "src/lib/ai/agent.ts",
@@ -101,7 +127,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "classification",
       "source_file": "src/lib/ai/classify.ts",
@@ -114,7 +140,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "ticketlabel",
       "source_file": "src/lib/ai/classify.ts",
@@ -127,7 +153,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "invoice",
       "source_file": "src/lib/ai/extract.ts",
@@ -140,7 +166,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "doc",
       "source_file": "src/lib/ai/groundedQa.ts",
@@ -153,7 +179,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "groundedanswer",
       "source_file": "src/lib/ai/groundedQa.ts",
@@ -166,50 +192,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "summarizeinput",
       "source_file": "src/lib/ai/summarize.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "evals_mock_faults_mockfault",
-      "label": "MockFault",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "mockfault",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L46"
-    },
-    {
-      "id": "evals_mock_faults_obj",
-      "label": "Obj",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "obj",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "evals_mock_mockmodel_fixture",
-      "label": "Fixture",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "fixture",
-      "source_file": "evals/mock/mockModel.ts",
-      "source_location": "L9"
     },
     {
       "id": "evals_models_evalmode",
@@ -222,7 +209,7 @@
       "file_type": "code",
       "norm_label": "evalmode",
       "source_file": "evals/models.ts",
-      "source_location": "L5"
+      "source_location": "L6"
     },
     {
       "id": "evals_runner_execute_executeoptions",
@@ -238,32 +225,6 @@
       "source_location": "L12"
     },
     {
-      "id": "evals_suites_index_anysuite",
-      "label": "AnySuite",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "anysuite",
-      "source_file": "evals/suites/index.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "scripts_gate_selftest_gaterunner",
-      "label": "GateRunner",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "gaterunner",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L15"
-    },
-    {
       "id": "evals_runner_runner_runsuiteoptions",
       "label": "RunSuiteOptions",
       "_callable": true,
@@ -275,6 +236,19 @@
       "norm_label": "runsuiteoptions",
       "source_file": "evals/runner/runner.ts",
       "source_location": "L7"
+    },
+    {
+      "id": "evals_runner_scorecard_scorecard",
+      "label": "Scorecard",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "scorecard",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L5"
     },
     {
       "id": "evals_runner_stats_flakybounds",
@@ -355,17 +329,17 @@
       "source_location": "L21"
     },
     {
-      "id": "evals_runner_types_suite",
-      "label": "Suite",
+      "id": "evals_runner_types_suitereport",
+      "label": "SuiteReport",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 2,
       "community_name": "runner/types.ts",
       "file_type": "code",
-      "norm_label": "suite",
+      "norm_label": "suitereport",
       "source_file": "evals/runner/types.ts",
-      "source_location": "L10"
+      "source_location": "L61"
     },
     {
       "id": "evals_runner_types_suitesummary",
@@ -394,17 +368,43 @@
       "source_location": "L1"
     },
     {
-      "id": "tests_unit_runner_test_case",
-      "label": "Case",
+      "id": "evals_mock_faults_mockfault",
+      "label": "MockFault",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
+      "community": 25,
+      "community_name": "vitest",
       "file_type": "code",
-      "norm_label": "case",
-      "source_file": "tests/unit/runner.test.ts",
-      "source_location": "L11"
+      "norm_label": "mockfault",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L46"
+    },
+    {
+      "id": "evals_mock_faults_obj",
+      "label": "Obj",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "obj",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "scripts_gate_selftest_gaterunner",
+      "label": "GateRunner",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "gaterunner",
+      "source_file": "scripts/gate-selftest.ts",
+      "source_location": "L15"
     },
     {
       "id": "evals_runner_gate_baseline",
@@ -472,32 +472,6 @@
       "source_location": "L21"
     },
     {
-      "id": "evals_runner_scorecard_scorecard",
-      "label": "Scorecard",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "scorecard",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "evals_runner_types_suitereport",
-      "label": "SuiteReport",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "suitereport",
-      "source_file": "evals/runner/types.ts",
-      "source_location": "L61"
-    },
-    {
       "id": "evals_calibration_calibrate_calibrationitem",
       "label": "CalibrationItem",
       "_callable": true,
@@ -535,6 +509,19 @@
       "norm_label": "calibrationrow",
       "source_file": "evals/calibration/calibrate.ts",
       "source_location": "L38"
+    },
+    {
+      "id": "evals_mock_mockmodel_fixture",
+      "label": "Fixture",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "calibrate.ts",
+      "file_type": "code",
+      "norm_label": "fixture",
+      "source_file": "evals/mock/mockModel.ts",
+      "source_location": "L9"
     },
     {
       "id": "evals_mock_mockmodel_fixturestep",
@@ -576,6 +563,19 @@
       "source_location": "L11"
     },
     {
+      "id": "tests_unit_runner_test_case",
+      "label": "Case",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "calibrate.ts",
+      "file_type": "code",
+      "norm_label": "case",
+      "source_file": "tests/unit/runner.test.ts",
+      "source_location": "L11"
+    },
+    {
       "id": "src_lib_security_http_ratedecision",
       "label": "RateDecision",
       "_callable": true,
@@ -589,16 +589,52 @@
       "source_location": "L72"
     },
     {
+      "id": "evals_runner_errors_errortext",
+      "label": "errorText()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "errortext()",
+      "source_file": "evals/runner/errors.ts",
+      "source_location": "L24"
+    },
+    {
       "id": "evals_runner_errors_isinfraerror",
       "label": "isInfraError()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "isinfraerror()",
       "source_file": "evals/runner/errors.ts",
       "source_location": "L9"
+    },
+    {
+      "id": "evals_runner_types_suite_run",
+      "label": ".run()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": ".run()",
+      "source_file": "evals/runner/types.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "evals_runner_types_suite_score",
+      "label": ".score()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": ".score()",
+      "source_file": "evals/runner/types.ts",
+      "source_location": "L18"
     },
     {
       "id": "evals_scorers_deterministic_argsmatch",
@@ -606,7 +642,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "argsmatch()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -618,7 +654,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "contains()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -630,7 +666,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "countwords()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -642,7 +678,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "exactmatch()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -654,7 +690,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "lengthbudget()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -666,7 +702,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "matchesregex()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -678,7 +714,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "norm()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -690,7 +726,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "notcontains()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -702,7 +738,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "numerictolerance()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -714,7 +750,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "result()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -726,7 +762,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "schemavalid()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -738,7 +774,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "toolcallmatch()",
       "source_file": "evals/scorers/deterministic.ts",
@@ -750,7 +786,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "runagent()",
       "source_file": "src/lib/ai/agent.ts",
@@ -762,7 +798,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "classifyticket()",
       "source_file": "src/lib/ai/classify.ts",
@@ -774,7 +810,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "extractinvoice()",
       "source_file": "src/lib/ai/extract.ts",
@@ -786,7 +822,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "groundedqa()",
       "source_file": "src/lib/ai/groundedQa.ts",
@@ -798,7 +834,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "summarize()",
       "source_file": "src/lib/ai/summarize.ts",
@@ -810,7 +846,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "frameuntrusted()",
       "source_file": "src/lib/security/sanitize.ts",
@@ -822,7 +858,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "sanitizeuntrusted()",
       "source_file": "src/lib/security/sanitize.ts",
@@ -834,7 +870,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "exec()",
       "source_file": "tests/unit/edges.test.ts",
@@ -889,42 +925,6 @@
       "source_location": "L130"
     },
     {
-      "id": "evals_cli_runcli",
-      "label": "runCli()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "runcli()",
-      "source_file": "evals/cli.ts",
-      "source_location": "L15"
-    },
-    {
-      "id": "evals_mock_faults_applyfault",
-      "label": "applyFault()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "applyfault()",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L49"
-    },
-    {
-      "id": "evals_mock_faults_asobj",
-      "label": "asObj()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "asobj()",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L11"
-    },
-    {
       "id": "evals_models_assertlivekeys",
       "label": "assertLiveKeys()",
       "_callable": true,
@@ -934,7 +934,7 @@
       "file_type": "code",
       "norm_label": "assertlivekeys()",
       "source_file": "evals/models.ts",
-      "source_location": "L68"
+      "source_location": "L79"
     },
     {
       "id": "evals_models_parsespec",
@@ -946,7 +946,7 @@
       "file_type": "code",
       "norm_label": "parsespec()",
       "source_file": "evals/models.ts",
-      "source_location": "L28"
+      "source_location": "L31"
     },
     {
       "id": "evals_models_providerof",
@@ -958,7 +958,7 @@
       "file_type": "code",
       "norm_label": "providerof()",
       "source_file": "evals/models.ts",
-      "source_location": "L33"
+      "source_location": "L36"
     },
     {
       "id": "evals_models_resolvemode",
@@ -970,7 +970,7 @@
       "file_type": "code",
       "norm_label": "resolvemode()",
       "source_file": "evals/models.ts",
-      "source_location": "L10"
+      "source_location": "L11"
     },
     {
       "id": "evals_models_resolvemodel",
@@ -982,7 +982,7 @@
       "file_type": "code",
       "norm_label": "resolvemodel()",
       "source_file": "evals/models.ts",
-      "source_location": "L40"
+      "source_location": "L43"
     },
     {
       "id": "evals_runner_execute_executesuite",
@@ -1009,42 +1009,6 @@
       "source_location": "L68"
     },
     {
-      "id": "evals_runner_load_baselinepath",
-      "label": "baselinePath()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "baselinepath()",
-      "source_file": "evals/runner/load.ts",
-      "source_location": "L55"
-    },
-    {
-      "id": "evals_runner_load_loadbaseline",
-      "label": "loadBaseline()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "loadbaseline()",
-      "source_file": "evals/runner/load.ts",
-      "source_location": "L57"
-    },
-    {
-      "id": "evals_runner_load_loadfixtures",
-      "label": "loadFixtures()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "loadfixtures()",
-      "source_file": "evals/runner/load.ts",
-      "source_location": "L46"
-    },
-    {
       "id": "evals_suites_index_getsuite",
       "label": "getSuite()",
       "_callable": true,
@@ -1057,30 +1021,6 @@
       "source_location": "L14"
     },
     {
-      "id": "scripts_gate_selftest_selftest",
-      "label": "selfTest()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "selftest()",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L29"
-    },
-    {
-      "id": "scripts_gate_selftest_spawngate",
-      "label": "spawnGate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "spawngate()",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L18"
-    },
-    {
       "id": "src_lib_security_sanitize_safeid",
       "label": "safeId()",
       "_callable": true,
@@ -1091,6 +1031,18 @@
       "norm_label": "safeid()",
       "source_file": "src/lib/security/sanitize.ts",
       "source_location": "L34"
+    },
+    {
+      "id": "tests_integration_api_test_post",
+      "label": "post()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "code",
+      "norm_label": "post()",
+      "source_file": "tests/integration/api.test.ts",
+      "source_location": "L14"
     },
     {
       "id": "app_layout_rootlayout",
@@ -1165,6 +1117,78 @@
       "source_location": "L64"
     },
     {
+      "id": "evals_runner_scorecard_buildscorecard",
+      "label": "buildScorecard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "buildscorecard()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L41"
+    },
+    {
+      "id": "evals_runner_scorecard_fmt",
+      "label": "fmt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "fmt()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L56"
+    },
+    {
+      "id": "evals_runner_scorecard_latencies",
+      "label": "latencies()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "latencies()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "evals_runner_scorecard_percentile",
+      "label": "percentile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "percentile()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "evals_runner_scorecard_renderscorecard",
+      "label": "renderScorecard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "renderscorecard()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L58"
+    },
+    {
+      "id": "evals_runner_scorecard_scorerrate",
+      "label": "scorerRate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "scorerrate()",
+      "source_file": "evals/runner/scorecard.ts",
+      "source_location": "L33"
+    },
+    {
       "id": "evals_runner_stats_classifystability",
       "label": "classifyStability()",
       "_callable": true,
@@ -1237,28 +1261,52 @@
       "source_location": "L35"
     },
     {
-      "id": "evals_runner_types_suite_run",
-      "label": ".run()",
+      "id": "tests_unit_scorecard_test_kase",
+      "label": "kase()",
       "_callable": true,
       "_origin": "ast",
       "community": 2,
       "community_name": "runner/types.ts",
       "file_type": "code",
-      "norm_label": ".run()",
-      "source_file": "evals/runner/types.ts",
+      "norm_label": "kase()",
+      "source_file": "tests/unit/scorecard.test.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "tests_unit_scorecard_test_run",
+      "label": "run()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "run()",
+      "source_file": "tests/unit/scorecard.test.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "tests_unit_scorecard_test_s",
+      "label": "s()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "s()",
+      "source_file": "tests/unit/scorecard.test.ts",
       "source_location": "L16"
     },
     {
-      "id": "evals_runner_types_suite_score",
-      "label": ".score()",
+      "id": "tests_unit_scorecard_test_suite",
+      "label": "suite()",
       "_callable": true,
       "_origin": "ast",
       "community": 2,
       "community_name": "runner/types.ts",
       "file_type": "code",
-      "norm_label": ".score()",
-      "source_file": "evals/runner/types.ts",
-      "source_location": "L18"
+      "norm_label": "suite()",
+      "source_file": "tests/unit/scorecard.test.ts",
+      "source_location": "L12"
     },
     {
       "id": "tests_unit_stats_test_run",
@@ -1271,6 +1319,54 @@
       "norm_label": "run()",
       "source_file": "tests/unit/stats.test.ts",
       "source_location": "L6"
+    },
+    {
+      "id": "evals_mock_faults_applyfault",
+      "label": "applyFault()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "applyfault()",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L49"
+    },
+    {
+      "id": "evals_mock_faults_asobj",
+      "label": "asObj()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "asobj()",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "scripts_gate_selftest_selftest",
+      "label": "selfTest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "selftest()",
+      "source_file": "scripts/gate-selftest.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "scripts_gate_selftest_spawngate",
+      "label": "spawnGate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "spawngate()",
+      "source_file": "scripts/gate-selftest.ts",
+      "source_location": "L18"
     },
     {
       "id": "app_page_dashboard",
@@ -1307,6 +1403,18 @@
       "norm_label": "run()",
       "source_file": "app/RunButton.tsx",
       "source_location": "L12"
+    },
+    {
+      "id": "evals_cli_runcli",
+      "label": "runCli()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "runcli()",
+      "source_file": "evals/cli.ts",
+      "source_location": "L15"
     },
     {
       "id": "evals_runner_execute_readreports",
@@ -1405,6 +1513,30 @@
       "source_location": "L155"
     },
     {
+      "id": "evals_runner_load_baselinepath",
+      "label": "baselinePath()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "baselinepath()",
+      "source_file": "evals/runner/load.ts",
+      "source_location": "L55"
+    },
+    {
+      "id": "evals_runner_load_loadbaseline",
+      "label": "loadBaseline()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "loadbaseline()",
+      "source_file": "evals/runner/load.ts",
+      "source_location": "L57"
+    },
+    {
       "id": "evals_runner_load_loaddataset",
       "label": "loadDataset()",
       "_callable": true,
@@ -1415,6 +1547,18 @@
       "norm_label": "loaddataset()",
       "source_file": "evals/runner/load.ts",
       "source_location": "L34"
+    },
+    {
+      "id": "evals_runner_load_loadfixtures",
+      "label": "loadFixtures()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "loadfixtures()",
+      "source_file": "evals/runner/load.ts",
+      "source_location": "L46"
     },
     {
       "id": "evals_runner_load_loadthresholds",
@@ -1451,78 +1595,6 @@
       "norm_label": "rendermarkdown()",
       "source_file": "evals/runner/markdown.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "evals_runner_scorecard_buildscorecard",
-      "label": "buildScorecard()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "buildscorecard()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L41"
-    },
-    {
-      "id": "evals_runner_scorecard_fmt",
-      "label": "fmt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "fmt()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L56"
-    },
-    {
-      "id": "evals_runner_scorecard_latencies",
-      "label": "latencies()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "latencies()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L30"
-    },
-    {
-      "id": "evals_runner_scorecard_percentile",
-      "label": "percentile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "percentile()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L23"
-    },
-    {
-      "id": "evals_runner_scorecard_renderscorecard",
-      "label": "renderScorecard()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "renderscorecard()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L58"
-    },
-    {
-      "id": "evals_runner_scorecard_scorerrate",
-      "label": "scorerRate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "scorerrate()",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L33"
     },
     {
       "id": "tests_unit_gate_test_baseline",
@@ -1583,54 +1655,6 @@
       "norm_label": "withcases()",
       "source_file": "tests/unit/gate.test.ts",
       "source_location": "L48"
-    },
-    {
-      "id": "tests_unit_scorecard_test_kase",
-      "label": "kase()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "kase()",
-      "source_file": "tests/unit/scorecard.test.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "tests_unit_scorecard_test_run",
-      "label": "run()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "run()",
-      "source_file": "tests/unit/scorecard.test.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "tests_unit_scorecard_test_s",
-      "label": "s()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "s()",
-      "source_file": "tests/unit/scorecard.test.ts",
-      "source_location": "L16"
-    },
-    {
-      "id": "tests_unit_scorecard_test_suite",
-      "label": "suite()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "suite()",
-      "source_file": "tests/unit/scorecard.test.ts",
-      "source_location": "L12"
     },
     {
       "id": "evals_calibration_calibrate_bootstrapkappaci",
@@ -1969,18 +1993,6 @@
       "source_location": "L103"
     },
     {
-      "id": "tests_integration_api_test_post",
-      "label": "post()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "http.ts",
-      "file_type": "code",
-      "norm_label": "post()",
-      "source_file": "tests/integration/api.test.ts",
-      "source_location": "L14"
-    },
-    {
       "id": "tests_integration_middleware_test_load",
       "label": "load()",
       "_callable": true,
@@ -2009,7 +2021,7 @@
       "label": "errors.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "errors.ts",
       "source_file": "evals/runner/errors.ts",
@@ -2020,7 +2032,7 @@
       "label": "deterministic.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "deterministic.ts",
       "source_file": "evals/scorers/deterministic.ts",
@@ -2031,7 +2043,7 @@
       "label": "suites/agent.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "suites/agent.ts",
       "source_file": "evals/suites/agent.ts",
@@ -2042,7 +2054,7 @@
       "label": "agentCase",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "agentcase",
       "source_file": "evals/suites/agent.ts",
@@ -2053,7 +2065,7 @@
       "label": "agentSuite",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "agentsuite",
       "source_file": "evals/suites/agent.ts",
@@ -2064,7 +2076,7 @@
       "label": "suites/classify.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "suites/classify.ts",
       "source_file": "evals/suites/classify.ts",
@@ -2075,7 +2087,7 @@
       "label": "classifyCase",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "classifycase",
       "source_file": "evals/suites/classify.ts",
@@ -2086,7 +2098,7 @@
       "label": "classifySuite",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "classifysuite",
       "source_file": "evals/suites/classify.ts",
@@ -2097,7 +2109,7 @@
       "label": "suites/extract.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "suites/extract.ts",
       "source_file": "evals/suites/extract.ts",
@@ -2108,7 +2120,7 @@
       "label": "extractCase",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "extractcase",
       "source_file": "evals/suites/extract.ts",
@@ -2119,18 +2131,40 @@
       "label": "extractSuite",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "extractsuite",
       "source_file": "evals/suites/extract.ts",
       "source_location": "L9"
     },
     {
+      "id": "evals_suites_index",
+      "label": "index.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "index.ts",
+      "source_file": "evals/suites/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "evals_suites_index_suitenames",
+      "label": "suiteNames",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "suitenames",
+      "source_file": "evals/suites/index.ts",
+      "source_location": "L12"
+    },
+    {
       "id": "evals_suites_rag",
       "label": "rag.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "rag.ts",
       "source_file": "evals/suites/rag.ts",
@@ -2141,7 +2175,7 @@
       "label": "ragCase",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "ragcase",
       "source_file": "evals/suites/rag.ts",
@@ -2152,7 +2186,7 @@
       "label": "ragSuite",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "ragsuite",
       "source_file": "evals/suites/rag.ts",
@@ -2163,7 +2197,7 @@
       "label": "suites/summarize.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "suites/summarize.ts",
       "source_file": "evals/suites/summarize.ts",
@@ -2174,7 +2208,7 @@
       "label": "summarizeCase",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "summarizecase",
       "source_file": "evals/suites/summarize.ts",
@@ -2185,7 +2219,7 @@
       "label": "summarizeSuite",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "summarizesuite",
       "source_file": "evals/suites/summarize.ts",
@@ -2196,7 +2230,7 @@
       "label": "ai/agent.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "ai/agent.ts",
       "source_file": "src/lib/ai/agent.ts",
@@ -2207,7 +2241,7 @@
       "label": "agentTools",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "agenttools",
       "source_file": "src/lib/ai/agent.ts",
@@ -2218,7 +2252,7 @@
       "label": "ORDERS",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "orders",
       "source_file": "src/lib/ai/agent.ts",
@@ -2229,7 +2263,7 @@
       "label": "RATES",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "rates",
       "source_file": "src/lib/ai/agent.ts",
@@ -2240,7 +2274,7 @@
       "label": "WEATHER",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "weather",
       "source_file": "src/lib/ai/agent.ts",
@@ -2251,7 +2285,7 @@
       "label": "ai/classify.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "ai/classify.ts",
       "source_file": "src/lib/ai/classify.ts",
@@ -2262,7 +2296,7 @@
       "label": "classificationSchema",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "classificationschema",
       "source_file": "src/lib/ai/classify.ts",
@@ -2273,7 +2307,7 @@
       "label": "TICKET_LABELS",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "ticket_labels",
       "source_file": "src/lib/ai/classify.ts",
@@ -2284,7 +2318,7 @@
       "label": "ai/extract.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "ai/extract.ts",
       "source_file": "src/lib/ai/extract.ts",
@@ -2295,7 +2329,7 @@
       "label": "invoiceSchema",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "invoiceschema",
       "source_file": "src/lib/ai/extract.ts",
@@ -2306,7 +2340,7 @@
       "label": "groundedQa.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "groundedqa.ts",
       "source_file": "src/lib/ai/groundedQa.ts",
@@ -2317,7 +2351,7 @@
       "label": "groundedAnswerSchema",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "groundedanswerschema",
       "source_file": "src/lib/ai/groundedQa.ts",
@@ -2328,7 +2362,7 @@
       "label": "ai/summarize.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "ai/summarize.ts",
       "source_file": "src/lib/ai/summarize.ts",
@@ -2339,7 +2373,7 @@
       "label": "sanitize.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "sanitize.ts",
       "source_file": "src/lib/security/sanitize.ts",
@@ -2350,7 +2384,7 @@
       "label": "MAX_UNTRUSTED_CHARS",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "max_untrusted_chars",
       "source_file": "src/lib/security/sanitize.ts",
@@ -2361,7 +2395,7 @@
       "label": "UNTRUSTED_NOTICE",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "untrusted_notice",
       "source_file": "src/lib/security/sanitize.ts",
@@ -2372,7 +2406,7 @@
       "label": "edges.test.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "edges.test.ts",
       "source_file": "tests/unit/edges.test.ts",
@@ -2383,7 +2417,7 @@
       "label": "features.test.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "features.test.ts",
       "source_file": "tests/unit/features.test.ts",
@@ -2394,7 +2428,7 @@
       "label": "scorers.test.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "code",
       "norm_label": "scorers.test.ts",
       "source_file": "tests/unit/scorers.test.ts",
@@ -2405,22 +2439,22 @@
       "label": "ai",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "concept",
       "norm_label": "ai",
       "source_file": "package.json",
-      "source_location": "L29"
+      "source_location": "L30"
     },
     {
       "id": "ref_zod",
       "label": "zod",
       "_origin": "ast",
       "community": 0,
-      "community_name": "deterministic.ts",
+      "community_name": "index.ts",
       "file_type": "concept",
       "norm_label": "zod",
       "source_file": "package.json",
-      "source_location": "L33"
+      "source_location": "L34"
     },
     {
       "id": "app_api_eval_route",
@@ -2489,50 +2523,6 @@
       "source_location": "L8"
     },
     {
-      "id": "evals_cli",
-      "label": "cli.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "cli.ts",
-      "source_file": "evals/cli.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "evals_mock_faults",
-      "label": "faults.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "faults.ts",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "evals_mock_faults_mock_faults",
-      "label": "MOCK_FAULTS",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "mock_faults",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "evals_mock_faults_mockfaultnames",
-      "label": "mockFaultNames",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "mockfaultnames",
-      "source_file": "evals/mock/faults.ts",
-      "source_location": "L47"
-    },
-    {
       "id": "evals_models",
       "label": "models.ts",
       "_origin": "ast",
@@ -2552,7 +2542,7 @@
       "file_type": "code",
       "norm_label": "bynara_default_base_url",
       "source_file": "evals/models.ts",
-      "source_location": "L14"
+      "source_location": "L15"
     },
     {
       "id": "evals_models_default_judge_model",
@@ -2563,7 +2553,7 @@
       "file_type": "code",
       "norm_label": "default_judge_model",
       "source_file": "evals/models.ts",
-      "source_location": "L8"
+      "source_location": "L9"
     },
     {
       "id": "evals_models_default_model",
@@ -2574,7 +2564,7 @@
       "file_type": "code",
       "norm_label": "default_model",
       "source_file": "evals/models.ts",
-      "source_location": "L7"
+      "source_location": "L8"
     },
     {
       "id": "evals_models_key_env",
@@ -2585,7 +2575,7 @@
       "file_type": "code",
       "norm_label": "key_env",
       "source_file": "evals/models.ts",
-      "source_location": "L19"
+      "source_location": "L20"
     },
     {
       "id": "evals_models_nim_default_base_url",
@@ -2596,7 +2586,7 @@
       "file_type": "code",
       "norm_label": "nim_default_base_url",
       "source_file": "evals/models.ts",
-      "source_location": "L16"
+      "source_location": "L17"
     },
     {
       "id": "evals_models_openrouter_default_base_url",
@@ -2607,7 +2597,7 @@
       "file_type": "code",
       "norm_label": "openrouter_default_base_url",
       "source_file": "evals/models.ts",
-      "source_location": "L15"
+      "source_location": "L16"
     },
     {
       "id": "evals_runner_execute",
@@ -2621,81 +2611,37 @@
       "source_location": "L1"
     },
     {
-      "id": "evals_runner_execute_reports_dir",
-      "label": "REPORTS_DIR",
+      "id": "tests_integration_api_test",
+      "label": "api.test.ts",
       "_origin": "ast",
       "community": 1,
       "community_name": "execute.ts",
       "file_type": "code",
-      "norm_label": "reports_dir",
-      "source_file": "evals/runner/execute.ts",
-      "source_location": "L24"
-    },
-    {
-      "id": "evals_runner_execute_scorecard_file",
-      "label": "SCORECARD_FILE",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "scorecard_file",
-      "source_file": "evals/runner/execute.ts",
-      "source_location": "L26"
-    },
-    {
-      "id": "evals_suites_index",
-      "label": "index.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "index.ts",
-      "source_file": "evals/suites/index.ts",
+      "norm_label": "api.test.ts",
+      "source_file": "tests/integration/api.test.ts",
       "source_location": "L1"
     },
     {
-      "id": "evals_suites_index_suitenames",
-      "label": "suiteNames",
+      "id": "tests_integration_api_test_env",
+      "label": "ENV",
       "_origin": "ast",
       "community": 1,
       "community_name": "execute.ts",
       "file_type": "code",
-      "norm_label": "suitenames",
-      "source_file": "evals/suites/index.ts",
-      "source_location": "L12"
+      "norm_label": "env",
+      "source_file": "tests/integration/api.test.ts",
+      "source_location": "L17"
     },
     {
-      "id": "scripts_gate_selftest",
-      "label": "gate-selftest.ts",
+      "id": "tests_integration_api_test_saved",
+      "label": "saved",
       "_origin": "ast",
       "community": 1,
       "community_name": "execute.ts",
       "file_type": "code",
-      "norm_label": "gate-selftest.ts",
-      "source_file": "scripts/gate-selftest.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "tests_integration_cli_test",
-      "label": "cli.test.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "cli.test.ts",
-      "source_file": "tests/integration/cli.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "tests_unit_mocksuites_test",
-      "label": "mockSuites.test.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "execute.ts",
-      "file_type": "code",
-      "norm_label": "mocksuites.test.ts",
-      "source_file": "tests/unit/mockSuites.test.ts",
-      "source_location": "L1"
+      "norm_label": "saved",
+      "source_file": "tests/integration/api.test.ts",
+      "source_location": "L18"
     },
     {
       "id": "tests_unit_models_test",
@@ -2742,6 +2688,17 @@
       "source_location": "L27"
     },
     {
+      "id": "ref_ai_sdk_google_vertex",
+      "label": "@ai-sdk/google-vertex",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "execute.ts",
+      "file_type": "concept",
+      "norm_label": "@ai-sdk/google-vertex",
+      "source_file": "package.json",
+      "source_location": "L28"
+    },
+    {
       "id": "ref_ai_sdk_openai",
       "label": "@ai-sdk/openai",
       "_origin": "ast",
@@ -2750,7 +2707,7 @@
       "file_type": "concept",
       "norm_label": "@ai-sdk/openai",
       "source_file": "package.json",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "package_scripts",
@@ -2926,7 +2883,7 @@
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "package.json",
-      "source_location": "L35"
+      "source_location": "L36"
     },
     {
       "id": "package_devdependencies_eslint",
@@ -2937,7 +2894,7 @@
       "file_type": "code",
       "norm_label": "eslint",
       "source_file": "package.json",
-      "source_location": "L42"
+      "source_location": "L43"
     },
     {
       "id": "package_devdependencies_eslint_js",
@@ -2948,7 +2905,7 @@
       "file_type": "code",
       "norm_label": "@eslint/js",
       "source_file": "package.json",
-      "source_location": "L36"
+      "source_location": "L37"
     },
     {
       "id": "package_devdependencies_eslint_plugin_security",
@@ -2959,7 +2916,7 @@
       "file_type": "code",
       "norm_label": "eslint-plugin-security",
       "source_file": "package.json",
-      "source_location": "L43"
+      "source_location": "L44"
     },
     {
       "id": "package_devdependencies_playwright_test",
@@ -2970,7 +2927,7 @@
       "file_type": "code",
       "norm_label": "@playwright/test",
       "source_file": "package.json",
-      "source_location": "L37"
+      "source_location": "L38"
     },
     {
       "id": "package_devdependencies_tsx",
@@ -2981,7 +2938,7 @@
       "file_type": "code",
       "norm_label": "tsx",
       "source_file": "package.json",
-      "source_location": "L44"
+      "source_location": "L45"
     },
     {
       "id": "package_devdependencies_types_node",
@@ -2992,7 +2949,7 @@
       "file_type": "code",
       "norm_label": "@types/node",
       "source_file": "package.json",
-      "source_location": "L38"
+      "source_location": "L39"
     },
     {
       "id": "package_devdependencies_types_react",
@@ -3003,7 +2960,7 @@
       "file_type": "code",
       "norm_label": "@types/react",
       "source_file": "package.json",
-      "source_location": "L39"
+      "source_location": "L40"
     },
     {
       "id": "package_devdependencies_types_react_dom",
@@ -3014,7 +2971,7 @@
       "file_type": "code",
       "norm_label": "@types/react-dom",
       "source_file": "package.json",
-      "source_location": "L40"
+      "source_location": "L41"
     },
     {
       "id": "package_devdependencies_typescript",
@@ -3025,7 +2982,7 @@
       "file_type": "code",
       "norm_label": "typescript",
       "source_file": "package.json",
-      "source_location": "L45"
+      "source_location": "L46"
     },
     {
       "id": "package_devdependencies_typescript_eslint",
@@ -3036,7 +2993,7 @@
       "file_type": "code",
       "norm_label": "typescript-eslint",
       "source_file": "package.json",
-      "source_location": "L46"
+      "source_location": "L47"
     },
     {
       "id": "package_devdependencies_vitest",
@@ -3047,7 +3004,7 @@
       "file_type": "code",
       "norm_label": "vitest",
       "source_file": "package.json",
-      "source_location": "L47"
+      "source_location": "L48"
     },
     {
       "id": "package_devdependencies_vitest_coverage_v8",
@@ -3058,7 +3015,7 @@
       "file_type": "code",
       "norm_label": "@vitest/coverage-v8",
       "source_file": "package.json",
-      "source_location": "L41"
+      "source_location": "L42"
     },
     {
       "id": "package_dependencies",
@@ -3080,7 +3037,7 @@
       "file_type": "code",
       "norm_label": "ai",
       "source_file": "package.json",
-      "source_location": "L29"
+      "source_location": "L30"
     },
     {
       "id": "package_dependencies_ai_sdk_anthropic",
@@ -3094,6 +3051,17 @@
       "source_location": "L27"
     },
     {
+      "id": "package_dependencies_ai_sdk_google_vertex",
+      "label": "@ai-sdk/google-vertex",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "@ai-sdk/google-vertex",
+      "source_file": "package.json",
+      "source_location": "L28"
+    },
+    {
       "id": "package_dependencies_ai_sdk_openai",
       "label": "@ai-sdk/openai",
       "_origin": "ast",
@@ -3102,7 +3070,7 @@
       "file_type": "code",
       "norm_label": "@ai-sdk/openai",
       "source_file": "package.json",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "package_dependencies_next",
@@ -3113,7 +3081,7 @@
       "file_type": "code",
       "norm_label": "next",
       "source_file": "package.json",
-      "source_location": "L30"
+      "source_location": "L31"
     },
     {
       "id": "package_dependencies_react",
@@ -3124,7 +3092,7 @@
       "file_type": "code",
       "norm_label": "react",
       "source_file": "package.json",
-      "source_location": "L31"
+      "source_location": "L32"
     },
     {
       "id": "package_dependencies_react_dom",
@@ -3135,7 +3103,7 @@
       "file_type": "code",
       "norm_label": "react-dom",
       "source_file": "package.json",
-      "source_location": "L32"
+      "source_location": "L33"
     },
     {
       "id": "package_dependencies_zod",
@@ -3146,7 +3114,7 @@
       "file_type": "code",
       "norm_label": "zod",
       "source_file": "package.json",
-      "source_location": "L33"
+      "source_location": "L34"
     },
     {
       "id": "changelog",
@@ -3170,7 +3138,7 @@
       "node_kind": "heading",
       "norm_label": "[0.1.0]",
       "source_file": "CHANGELOG.md",
-      "source_location": "L26"
+      "source_location": "L29"
     },
     {
       "id": "changelog_added",
@@ -3194,7 +3162,7 @@
       "node_kind": "heading",
       "norm_label": "changed",
       "source_file": "CHANGELOG.md",
-      "source_location": "L21"
+      "source_location": "L24"
     },
     {
       "id": "changelog_changelog",
@@ -3251,7 +3219,7 @@
       "file_type": "concept",
       "norm_label": "next",
       "source_file": "package.json",
-      "source_location": "L30"
+      "source_location": "L31"
     },
     {
       "id": "next",
@@ -3339,7 +3307,7 @@
       "file_type": "concept",
       "norm_label": "@playwright/test",
       "source_file": "package.json",
-      "source_location": "L37"
+      "source_location": "L38"
     },
     {
       "id": "package_next_postcss",
@@ -3350,7 +3318,7 @@
       "file_type": "code",
       "norm_label": "postcss",
       "source_file": "package.json",
-      "source_location": "L51"
+      "source_location": "L52"
     },
     {
       "id": "package_overrides",
@@ -3361,7 +3329,7 @@
       "file_type": "code",
       "norm_label": "overrides",
       "source_file": "package.json",
-      "source_location": "L49"
+      "source_location": "L50"
     },
     {
       "id": "package_overrides_next",
@@ -3372,7 +3340,7 @@
       "file_type": "code",
       "norm_label": "next",
       "source_file": "package.json",
-      "source_location": "L50"
+      "source_location": "L51"
     },
     {
       "id": "claude_rules_api_edge",
@@ -3423,6 +3391,17 @@
       "source_location": "L6"
     },
     {
+      "id": "evals_runner_markdown",
+      "label": "markdown.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "markdown.ts",
+      "source_file": "evals/runner/markdown.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "evals_runner_runner",
       "label": "runner.ts",
       "_origin": "ast",
@@ -3431,6 +3410,17 @@
       "file_type": "code",
       "norm_label": "runner.ts",
       "source_file": "evals/runner/runner.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "evals_runner_scorecard",
+      "label": "scorecard.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "runner/types.ts",
+      "file_type": "code",
+      "norm_label": "scorecard.ts",
+      "source_file": "evals/runner/scorecard.ts",
       "source_location": "L1"
     },
     {
@@ -3478,70 +3468,15 @@
       "source_location": "L1"
     },
     {
-      "id": "tests_unit_runner_test",
-      "label": "runner.test.ts",
+      "id": "tests_unit_scorecard_test",
+      "label": "scorecard.test.ts",
       "_origin": "ast",
       "community": 2,
       "community_name": "runner/types.ts",
       "file_type": "code",
-      "norm_label": "runner.test.ts",
-      "source_file": "tests/unit/runner.test.ts",
+      "norm_label": "scorecard.test.ts",
+      "source_file": "tests/unit/scorecard.test.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "tests_unit_runner_test_cases",
-      "label": "cases",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "cases",
-      "source_file": "tests/unit/runner.test.ts",
-      "source_location": "L17"
-    },
-    {
-      "id": "tests_unit_runner_test_caseschema",
-      "label": "caseSchema",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "caseschema",
-      "source_file": "tests/unit/runner.test.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "tests_unit_runner_test_fixtures",
-      "label": "fixtures",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "fixtures",
-      "source_file": "tests/unit/runner.test.ts",
-      "source_location": "L18"
-    },
-    {
-      "id": "tests_unit_runner_test_meta",
-      "label": "meta",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "meta",
-      "source_file": "tests/unit/runner.test.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "tests_unit_runner_test_suite",
-      "label": "suite",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "runner/types.ts",
-      "file_type": "code",
-      "norm_label": "suite",
-      "source_file": "tests/unit/runner.test.ts",
-      "source_location": "L12"
     },
     {
       "id": "tests_unit_stats_test",
@@ -3668,6 +3603,83 @@
       "source_location": "L1"
     },
     {
+      "id": "evals_mock_faults",
+      "label": "faults.ts",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "faults.ts",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "evals_mock_faults_mock_faults",
+      "label": "MOCK_FAULTS",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "mock_faults",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "evals_mock_faults_mockfaultnames",
+      "label": "mockFaultNames",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "mockfaultnames",
+      "source_file": "evals/mock/faults.ts",
+      "source_location": "L47"
+    },
+    {
+      "id": "scripts_gate_selftest",
+      "label": "gate-selftest.ts",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "gate-selftest.ts",
+      "source_file": "scripts/gate-selftest.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_integration_cli_test",
+      "label": "cli.test.ts",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "cli.test.ts",
+      "source_file": "tests/integration/cli.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_unit_mocksuites_test",
+      "label": "mockSuites.test.ts",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "code",
+      "norm_label": "mocksuites.test.ts",
+      "source_file": "tests/unit/mockSuites.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "ref_vitest",
+      "label": "vitest",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "vitest",
+      "file_type": "concept",
+      "norm_label": "vitest",
+      "source_file": "package.json",
+      "source_location": "L48"
+    },
+    {
       "id": "app_api_readyz_route",
       "label": "readyz/route.ts",
       "_origin": "ast",
@@ -3732,6 +3744,39 @@
       "norm_label": "runbutton.tsx",
       "source_file": "app/RunButton.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "evals_cli",
+      "label": "cli.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "cli.ts",
+      "source_file": "evals/cli.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "evals_runner_execute_reports_dir",
+      "label": "REPORTS_DIR",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "reports_dir",
+      "source_file": "evals/runner/execute.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "evals_runner_execute_scorecard_file",
+      "label": "SCORECARD_FILE",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "gate.ts",
+      "file_type": "code",
+      "norm_label": "scorecard_file",
+      "source_file": "evals/runner/execute.ts",
+      "source_location": "L26"
     },
     {
       "id": "evals_runner_gate",
@@ -3800,28 +3845,6 @@
       "source_location": "L11"
     },
     {
-      "id": "evals_runner_markdown",
-      "label": "markdown.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "markdown.ts",
-      "source_file": "evals/runner/markdown.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "evals_runner_scorecard",
-      "label": "scorecard.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "scorecard.ts",
-      "source_file": "evals/runner/scorecard.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "evals_suites_index_suites",
       "label": "SUITES",
       "_origin": "ast",
@@ -3866,17 +3889,6 @@
       "source_location": "L12"
     },
     {
-      "id": "tests_unit_scorecard_test",
-      "label": "scorecard.test.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "gate.ts",
-      "file_type": "code",
-      "norm_label": "scorecard.test.ts",
-      "source_file": "tests/unit/scorecard.test.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "ref_react",
       "label": "react",
       "_origin": "ast",
@@ -3885,7 +3897,7 @@
       "file_type": "concept",
       "norm_label": "react",
       "source_file": "package.json",
-      "source_location": "L31"
+      "source_location": "L32"
     },
     {
       "id": "evals_calibration_calibrate",
@@ -4051,6 +4063,72 @@
       "norm_label": "opts",
       "source_file": "tests/unit/judge.test.ts",
       "source_location": "L16"
+    },
+    {
+      "id": "tests_unit_runner_test",
+      "label": "runner.test.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "calibrate.ts",
+      "file_type": "code",
+      "norm_label": "runner.test.ts",
+      "source_file": "tests/unit/runner.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_unit_runner_test_cases",
+      "label": "cases",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "calibrate.ts",
+      "file_type": "code",
+      "norm_label": "cases",
+      "source_file": "tests/unit/runner.test.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "tests_unit_runner_test_caseschema",
+      "label": "caseSchema",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "calibrate.ts",
+      "file_type": "code",
+      "norm_label": "caseschema",
+      "source_file": "tests/unit/runner.test.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "tests_unit_runner_test_fixtures",
+      "label": "fixtures",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "calibrate.ts",
+      "file_type": "code",
+      "norm_label": "fixtures",
+      "source_file": "tests/unit/runner.test.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "tests_unit_runner_test_meta",
+      "label": "meta",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "calibrate.ts",
+      "file_type": "code",
+      "norm_label": "meta",
+      "source_file": "tests/unit/runner.test.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "tests_unit_runner_test_suite",
+      "label": "suite",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "calibrate.ts",
+      "file_type": "code",
+      "norm_label": "suite",
+      "source_file": "tests/unit/runner.test.ts",
+      "source_location": "L12"
     },
     {
       "id": "agents",
@@ -4612,39 +4690,6 @@
       "source_location": "L18"
     },
     {
-      "id": "tests_integration_api_test",
-      "label": "api.test.ts",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "http.ts",
-      "file_type": "code",
-      "norm_label": "api.test.ts",
-      "source_file": "tests/integration/api.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "tests_integration_api_test_env",
-      "label": "ENV",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "http.ts",
-      "file_type": "code",
-      "norm_label": "env",
-      "source_file": "tests/integration/api.test.ts",
-      "source_location": "L17"
-    },
-    {
-      "id": "tests_integration_api_test_saved",
-      "label": "saved",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "http.ts",
-      "file_type": "code",
-      "norm_label": "saved",
-      "source_file": "tests/integration/api.test.ts",
-      "source_location": "L18"
-    },
-    {
       "id": "tests_integration_middleware_test",
       "label": "middleware.test.ts",
       "_origin": "ast",
@@ -4676,17 +4721,6 @@
       "norm_label": "security.test.ts",
       "source_file": "tests/unit/security.test.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "ref_vitest",
-      "label": "vitest",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "http.ts",
-      "file_type": "concept",
-      "norm_label": "vitest",
-      "source_file": "package.json",
-      "source_location": "L47"
     },
     {
       "id": "tsconfig",
@@ -4994,7 +5028,7 @@
       "file_type": "concept",
       "norm_label": "eslint",
       "source_file": "package.json",
-      "source_location": "L42"
+      "source_location": "L43"
     },
     {
       "id": "ref_eslint_js",
@@ -5005,7 +5039,7 @@
       "file_type": "concept",
       "norm_label": "@eslint/js",
       "source_file": "package.json",
-      "source_location": "L36"
+      "source_location": "L37"
     },
     {
       "id": "ref_eslint_plugin_security",
@@ -5016,7 +5050,7 @@
       "file_type": "concept",
       "norm_label": "eslint-plugin-security",
       "source_file": "package.json",
-      "source_location": "L43"
+      "source_location": "L44"
     },
     {
       "id": "ref_react_dom",
@@ -5027,7 +5061,7 @@
       "file_type": "concept",
       "norm_label": "react-dom",
       "source_file": "package.json",
-      "source_location": "L32"
+      "source_location": "L33"
     },
     {
       "id": "ref_tsx",
@@ -5038,7 +5072,7 @@
       "file_type": "concept",
       "norm_label": "tsx",
       "source_file": "package.json",
-      "source_location": "L44"
+      "source_location": "L45"
     },
     {
       "id": "ref_types_node",
@@ -5049,7 +5083,7 @@
       "file_type": "concept",
       "norm_label": "@types/node",
       "source_file": "package.json",
-      "source_location": "L38"
+      "source_location": "L39"
     },
     {
       "id": "ref_types_react",
@@ -5060,7 +5094,7 @@
       "file_type": "concept",
       "norm_label": "@types/react",
       "source_file": "package.json",
-      "source_location": "L39"
+      "source_location": "L40"
     },
     {
       "id": "ref_types_react_dom",
@@ -5071,7 +5105,7 @@
       "file_type": "concept",
       "norm_label": "@types/react-dom",
       "source_file": "package.json",
-      "source_location": "L40"
+      "source_location": "L41"
     },
     {
       "id": "ref_typescript",
@@ -5082,7 +5116,7 @@
       "file_type": "concept",
       "norm_label": "typescript",
       "source_file": "package.json",
-      "source_location": "L45"
+      "source_location": "L46"
     },
     {
       "id": "ref_typescript_eslint",
@@ -5093,7 +5127,7 @@
       "file_type": "concept",
       "norm_label": "typescript-eslint",
       "source_file": "package.json",
-      "source_location": "L46"
+      "source_location": "L47"
     },
     {
       "id": "ref_vitest_coverage_v8",
@@ -5104,7 +5138,7 @@
       "file_type": "concept",
       "norm_label": "@vitest/coverage-v8",
       "source_file": "package.json",
-      "source_location": "L41"
+      "source_location": "L42"
     },
     {
       "id": "evals_datasets_manifest",
@@ -5833,7 +5867,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "evals/models.ts",
-      "source_location": "L70",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -5845,7 +5879,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "evals/models.ts",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -5857,7 +5891,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "evals/models.ts",
-      "source_location": "L41",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -6122,6 +6156,18 @@
       "context": "call",
       "source_file": "evals/runner/markdown.ts",
       "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "evals_runner_runner_runonce",
+      "target": "evals_runner_errors_errortext",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "evals/runner/runner.ts",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -7748,6 +7794,18 @@
     },
     {
       "source": "evals_runner_runner",
+      "target": "evals_runner_errors_errortext",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "evals/runner/runner.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "evals_runner_runner",
       "target": "evals_runner_errors_isinfraerror",
       "relation": "imports",
       "_origin": "ast",
@@ -8528,7 +8586,7 @@
     },
     {
       "source": "package",
-      "target": "ref_ai_sdk_openai",
+      "target": "ref_ai_sdk_google_vertex",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8540,7 +8598,7 @@
     },
     {
       "source": "package",
-      "target": "ref_ai",
+      "target": "ref_ai_sdk_openai",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8552,7 +8610,7 @@
     },
     {
       "source": "package",
-      "target": "ref_next",
+      "target": "ref_ai",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8564,7 +8622,7 @@
     },
     {
       "source": "package",
-      "target": "ref_react",
+      "target": "ref_next",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8576,7 +8634,7 @@
     },
     {
       "source": "package",
-      "target": "ref_react_dom",
+      "target": "ref_react",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8588,7 +8646,7 @@
     },
     {
       "source": "package",
-      "target": "ref_zod",
+      "target": "ref_react_dom",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8600,19 +8658,19 @@
     },
     {
       "source": "package",
-      "target": "ref_eslint_js",
+      "target": "ref_zod",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
       "source": "package",
-      "target": "ref_playwright_test",
+      "target": "ref_eslint_js",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8624,7 +8682,7 @@
     },
     {
       "source": "package",
-      "target": "ref_types_node",
+      "target": "ref_playwright_test",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8636,7 +8694,7 @@
     },
     {
       "source": "package",
-      "target": "ref_types_react",
+      "target": "ref_types_node",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8648,7 +8706,7 @@
     },
     {
       "source": "package",
-      "target": "ref_types_react_dom",
+      "target": "ref_types_react",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8660,7 +8718,7 @@
     },
     {
       "source": "package",
-      "target": "ref_vitest_coverage_v8",
+      "target": "ref_types_react_dom",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8672,7 +8730,7 @@
     },
     {
       "source": "package",
-      "target": "ref_eslint",
+      "target": "ref_vitest_coverage_v8",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8684,7 +8742,7 @@
     },
     {
       "source": "package",
-      "target": "ref_eslint_plugin_security",
+      "target": "ref_eslint",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8696,7 +8754,7 @@
     },
     {
       "source": "package",
-      "target": "ref_tsx",
+      "target": "ref_eslint_plugin_security",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8708,7 +8766,7 @@
     },
     {
       "source": "package",
-      "target": "ref_typescript",
+      "target": "ref_tsx",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8720,7 +8778,7 @@
     },
     {
       "source": "package",
-      "target": "ref_typescript_eslint",
+      "target": "ref_typescript",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8732,7 +8790,7 @@
     },
     {
       "source": "package",
-      "target": "ref_vitest",
+      "target": "ref_typescript_eslint",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8740,6 +8798,18 @@
       "context": "import",
       "source_file": "package.json",
       "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "package",
+      "target": "ref_vitest",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "package.json",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -9184,6 +9254,18 @@
       "context": "import",
       "source_file": "tests/unit/edges.test.ts",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_unit_edges_test",
+      "target": "evals_runner_errors_errortext",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/unit/edges.test.ts",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -10608,7 +10690,7 @@
     },
     {
       "source": "evals_models",
-      "target": "ref_ai_sdk_openai",
+      "target": "ref_ai_sdk_google_vertex",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10620,7 +10702,7 @@
     },
     {
       "source": "evals_models",
-      "target": "ref_ai",
+      "target": "ref_ai_sdk_openai",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10628,6 +10710,18 @@
       "context": "import",
       "source_file": "evals/models.ts",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "evals_models",
+      "target": "ref_ai",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "evals/models.ts",
+      "source_location": "L4",
       "type_only": true,
       "weight": 1.0
     },
@@ -12808,7 +12902,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CHANGELOG.md",
-      "source_location": "L26",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -12830,7 +12924,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CHANGELOG.md",
-      "source_location": "L21",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -13435,7 +13529,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -13446,7 +13540,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -13457,7 +13551,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -13468,7 +13562,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -13479,7 +13573,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -13490,7 +13584,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L28",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -13501,7 +13595,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -13512,7 +13606,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L40",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -13523,7 +13617,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -13534,7 +13628,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L68",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -13545,7 +13639,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -13556,7 +13650,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "evals/models.ts",
-      "source_location": "L8",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "evals_runner_errors",
+      "target": "evals_runner_errors_errortext",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "evals/runner/errors.ts",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -14810,7 +14915,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -14826,17 +14931,6 @@
     },
     {
       "source": "package",
-      "target": "package_overrides",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "package.json",
-      "source_location": "L49",
-      "weight": 1.0
-    },
-    {
-      "source": "package",
       "target": "package_description",
       "relation": "contains",
       "_origin": "ast",
@@ -14844,6 +14938,17 @@
       "confidence_score": 1.0,
       "source_file": "package.json",
       "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "package",
+      "target": "package_overrides",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -14881,7 +14986,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_ai_sdk_openai",
+      "target": "package_dependencies_ai_sdk_google_vertex",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14892,7 +14997,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_ai",
+      "target": "package_dependencies_ai_sdk_openai",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14903,7 +15008,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_next",
+      "target": "package_dependencies_ai",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14914,7 +15019,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_react",
+      "target": "package_dependencies_next",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14925,7 +15030,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_react_dom",
+      "target": "package_dependencies_react",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14936,13 +15041,24 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_zod",
+      "target": "package_dependencies_react_dom",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
       "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_zod",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -14953,7 +15069,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -14964,7 +15080,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -14975,7 +15091,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -14986,7 +15102,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -14997,7 +15113,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -15008,7 +15124,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -15019,7 +15135,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L42",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -15030,7 +15146,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L43",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -15041,7 +15157,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -15052,7 +15168,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L45",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -15063,7 +15179,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -15074,7 +15190,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L47",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -15096,7 +15212,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -15107,7 +15223,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L51",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -16654,5 +16770,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0ed5560c5802bbb523d0358bb1dd28061d5d1bdf"
+  "built_at_commit": "0e932944841fa053619d35613e986461af569df3"
 }
