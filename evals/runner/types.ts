@@ -4,14 +4,14 @@ import type { ScoreResult } from "../scorers/types";
 import type { Interval, Stability } from "./stats";
 
 export interface EvalCase {
-  id: string;
+  readonly id: string;
 }
 
 export interface Suite<C extends EvalCase = EvalCase, O = unknown> {
-  name: string;
-  title: string;
-  description: string;
-  caseSchema: ZodType<C>;
+  readonly name: string;
+  readonly title: string;
+  readonly description: string;
+  readonly caseSchema: ZodType<C>;
   /** Runs the system under test for one case. */
   run(model: LanguageModel, c: C): Promise<O>;
   /** Scores one output. `judge` is always provided; scorers decide whether to use it. */
@@ -19,56 +19,56 @@ export interface Suite<C extends EvalCase = EvalCase, O = unknown> {
 }
 
 export interface RunReport {
-  run: number;
-  pass: boolean;
+  readonly run: number;
+  readonly pass: boolean;
   /** Mean of normalized scorer scores for this run. */
-  score: number;
-  scores: ScoreResult[];
-  output?: unknown;
-  error?: string;
+  readonly score: number;
+  readonly scores: readonly ScoreResult[];
+  readonly output?: unknown;
+  readonly error?: string;
   /** Failed for infrastructure reasons; excluded from pass rates and flaky detection. */
-  infra?: boolean;
-  latencyMs: number;
+  readonly infra?: boolean;
+  readonly latencyMs: number;
 }
 
 export interface CaseReport {
-  id: string;
+  readonly id: string;
   /** Runs that produced a quality signal (runs minus infra errors). */
-  scoredRuns: number;
-  passRate: number;
+  readonly scoredRuns: number;
+  readonly passRate: number;
   /** Wilson 95% interval on the pass rate. */
-  ci95: Interval;
-  stability: Stability;
+  readonly ci95: Interval;
+  readonly stability: Stability;
   /** Scorers whose verdict changed across runs: where the instability lives. */
-  flakyScorers: string[];
-  meanScore: number;
-  scoreStdev: number;
-  flaky: boolean;
-  runs: RunReport[];
+  readonly flakyScorers: readonly string[];
+  readonly meanScore: number;
+  readonly scoreStdev: number;
+  readonly flaky: boolean;
+  readonly runs: readonly RunReport[];
 }
 
 export interface SuiteSummary {
-  cases: number;
-  passRate: number;
-  meanScore: number;
-  flakyCases: number;
-  flakeRate: number;
-  failingCases: number;
+  readonly cases: number;
+  readonly passRate: number;
+  readonly meanScore: number;
+  readonly flakyCases: number;
+  readonly flakeRate: number;
+  readonly failingCases: number;
   /** Share of runs lost to infrastructure errors. */
-  infraErrorRate: number;
+  readonly infraErrorRate: number;
 }
 
 export interface SuiteReport {
-  suite: string;
-  title: string;
-  mode: "mock" | "live";
-  runsPerCase: number;
-  datasetVersion: string;
-  datasetHash: string;
-  model: string;
-  judgeModel: string;
-  startedAt: string;
-  durationMs: number;
-  summary: SuiteSummary;
-  cases: CaseReport[];
+  readonly suite: string;
+  readonly title: string;
+  readonly mode: "mock" | "live";
+  readonly runsPerCase: number;
+  readonly datasetVersion: string;
+  readonly datasetHash: string;
+  readonly model: string;
+  readonly judgeModel: string;
+  readonly startedAt: string;
+  readonly durationMs: number;
+  readonly summary: SuiteSummary;
+  readonly cases: readonly CaseReport[];
 }

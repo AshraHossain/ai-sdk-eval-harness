@@ -1,5 +1,15 @@
 # ai-sdk-eval-harness
 
+[![CI](https://github.com/AshraHossain/ai-sdk-eval-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/AshraHossain/ai-sdk-eval-harness/actions/workflows/ci.yml)
+![coverage](https://img.shields.io/badge/coverage-99%25%20lines%20%C2%B7%2096%25%20branches-brightgreen)
+![per-file gate](https://img.shields.io/badge/per--file%20coverage%20gate-80%25-blue)
+![Node](https://img.shields.io/badge/node-%E2%89%A520.9-339933?logo=node.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=next.js)
+![AI SDK](https://img.shields.io/badge/Vercel%20AI%20SDK-v6-000000?logo=vercel)
+![Vitest](https://img.shields.io/badge/tested%20with-Vitest%20%2B%20Playwright-6E9F18?logo=vitest&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 An evaluation harness for [Vercel AI SDK](https://ai-sdk.dev) features, built with Next.js 15 + AI SDK v6.
 It runs five AI features against versioned golden datasets, scores them with deterministic checks and an
 LLM-as-judge, repeats every case **N times** to detect flakiness, and gates CI on the result.
@@ -25,38 +35,125 @@ Each feature is a pure function `(model: LanguageModel, input) => result`, so th
 
 ## Architecture
 
+Requests pass through edge guardrails and a thin route into a deterministic core. Only the model adapter
+knows whether it is talking to a real provider or to recorded fixtures. Design rules, the module map and
+metric definitions are in [ARCHITECTURE.md](ARCHITECTURE.md).
+
+### Layered system architecture
+
 ```mermaid
 flowchart LR
-  subgraph data["evals/ data"]
-    DS["datasets/*.jsonl<br/>+ manifest.json"]
-    FX["fixtures/*.json"]
-    TH["thresholds.json"]
-  end
-
-  CLI["evals/cli.ts<br/>--suite --runs --mode"] --> EX["runner/execute.ts"]
-  DS --> EX
-  EX --> MODE{"EVAL_MODE"}
-  MODE -- mock --> MOCK["mock/mockModel.ts<br/>fixture replay + mock judge"]
-  FX --> MOCK
-  MODE -- live --> RES["models.ts<br/>resolveModel(provider:model)"]
-  RES --> PROV["anthropic · openai · bynara<br/>openrouter · nim"]
-
-  MOCK --> SUITE["suites/*.ts<br/>run + score"]
-  PROV --> SUITE
-  SUITE --> SUT["src/lib/ai/<br/>summarize · classify · extract<br/>groundedQa · agent"]
-  SUITE --> SC["scorers/<br/>deterministic + llmJudge"]
-  SC --> RUN["runner/runner.ts<br/>N runs · pass rate · flaky"]
-  RUN --> GATE["runner/gate.ts"]
-  TH --> GATE
-  GATE --> REP["reports/*.json<br/>summary.md"]
-  GATE --> EXIT["exit code → CI"]
-  REP --> UI["app/ dashboard<br/>+ POST /api/eval"]
+    subgraph Client["Client and CI surface"]
+        UI["Dashboard (app/page.tsx)"]
+        API_C["HTTP client"]
+        CLI["CLI: evals/cli.ts"]
+        CI["GitHub Actions: make check"]
+    end
+    subgraph Edge["Edge and guardrails (middleware.ts)"]
+        MW["X-Request-ID, rate limit 429, token auth 401, OWASP headers"]
+        PROBE["/api/health and /api/readyz (open)"]
+    end
+    subgraph Boundary["Thin boundary (app/api/eval)"]
+        RT["415 type, 413 size, 400 strict Zod, live lock 409, X-Process-Time-Ms"]
+    end
+    subgraph Core["Deterministic pure core"]
+        SUITES["evals/suites: case schema, run, score"]
+        SCORE["evals/scorers: deterministic + judge prompt builder"]
+        STATS["evals/runner: N-run stats, Wilson CI, gate, scorecard"]
+        SAN["src/lib/security: frameUntrusted, safeId, tokenMatches"]
+    end
+    subgraph SUT["System under test (src/lib/ai)"]
+        FEAT["summarize, classify, extract, groundedQa, runAgent"]
+    end
+    subgraph Adapters["Isolated model adapters"]
+        RES["evals/models.ts: resolveModel(provider:model)"]
+        MOCKM["evals/mock: fixture replay + mock judge + faults"]
+    end
+    subgraph Backends["Live vs offline backends"]
+        LIVE[("Anthropic, OpenAI, Bynara, OpenRouter, NIM")]
+        FIX[("evals/fixtures + datasets + thresholds + baselines")]
+    end
+    UI & API_C --> MW --> RT --> SUITES
+    PROBE -.-> FIX
+    CLI & CI --> SUITES
+    SUITES --> FEAT
+    FEAT --> SAN
+    SUITES --> SCORE --> STATS
+    STATS --> OUT["reports: suite JSON, summary.md, scorecard.json, exit code"]
+    FEAT --> RES & MOCKM
+    RES -. "EVAL_MODE=live" .-> LIVE
+    MOCKM -. "EVAL_MODE=mock (default)" .-> FIX
 ```
+
+### End-to-end request sequence
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor C as Client
+    participant MW as middleware.ts
+    participant R as POST /api/eval
+    participant X as executeSuite
+    participant M as Model (fixture or live)
+    participant S as Scorers + judge
+    participant G as Runner, gate, scorecard
+    participant FS as reports/
+
+    rect rgb(235, 242, 255)
+    Note over C,MW: Edge guardrails
+    C->>MW: POST /api/eval with JSON body
+    MW->>MW: Request id, sliding-window rate limit, optional token check
+    alt over limit or bad token
+        MW-->>C: 429 with Retry-After 60, or 401
+    end
+    MW->>R: Forward with X-Request-ID
+    R->>R: Content-Type 415, byte cap 413, strict Zod 400
+    end
+
+    rect rgb(236, 248, 238)
+    Note over R,G: Deterministic eval run
+    R->>X: suite, runs, mode
+    loop each case, N runs
+        X->>M: Feature prompt with untrusted text framed
+        M-->>X: Text, object or tool calls
+        X->>S: Score output (code checks, then judge if needed)
+        S-->>X: ScoreResult list
+    end
+    X->>G: Pass rate, Wilson CI, flaky cases, latency
+    G->>FS: safeId suite JSON
+    end
+
+    R-->>C: 200 summary with X-Process-Time-Ms and OWASP headers
+
+## Scorecard
+
+Offline (mock) run, N=5 runs per case, from `npm run eval:gate` (`reports/scorecard.json`):
+
+| Metric | Value | What it measures |
+|---|---|---|
+| Pass rate (mean of suites) | 94.7% | A run passes only if every scorer passes |
+| Citation recall (Recall@k, rag) | 100.0% | Expected document ids found in the returned citations |
+| Grounding rate (rag) | 100.0% | Faithfulness judge passes (mock judge: reference coverage) |
+| Guardrail pass rate (rag) | 95.0% | Correct abstention when documents lack the answer; seeded flaky case `rag/r06` |
+| Tool-call accuracy (agent) | 100.0% | Right tools, args and order |
+| Latency p50 / p95 per run | 0 ms / 2 ms | Harness overhead only in mock mode |
+
+| Suite | Pass rate | Flaky cases | Gate |
+|---|---|---|---|
+| summarize | 96.7% | 1/6 (`s05`) | ✅ |
+| classify | 83.3% | 0/6 (`c06` always fails, by design) | ✅ |
+| extract | 96.7% | 1/6 (`e04`) | ✅ |
+| rag | 96.7% | 1/6 (`r06`) | ✅ |
+| agent | 100.0% | 0/6 | ✅ |
+
+These numbers come from fixtures that include seeded failures, so they show that the harness and gate
+work. They say nothing about model quality. Run `EVAL_MODE=live npm run eval` for that.
 
 ## Quick start
 
 ```bash
 npm ci
+make check               # lint + types + tests (per-file 80% coverage) + gate self-test + eval gate
 npm test                 # unit tests (scorers, stats, runner, gate, datasets)
 npm run eval             # run all suites offline (N=5), write reports/, apply the gate
 npm run dev              # dashboard at http://localhost:3000
@@ -64,6 +161,7 @@ npm run e2e              # Playwright (builds the app, seeds reports first)
 npm run eval:calibrate   # judge vs. human labels (kappa + bootstrap CI)
 npm run eval:selftest    # proves the gate fails on injected regressions
 npm run eval:baseline    # re-record evals/baselines/mock.json (refused if the gate fails)
+docker compose up --build   # dashboard + API on :3000, non-root, read-only rootfs
 ```
 
 Useful flags: `npm run eval -- --suite rag --suite agent --runs 10 --no-gate`.
@@ -120,15 +218,29 @@ always-failing case (`classify/c06`) so the flake detector and reports are exerc
 
 ## Adding a suite
 
-1. Add `evals/suites/<name>.ts` (Zod case schema, `run`, `score`) and register it in `evals/suites/index.ts`.
-2. Add `evals/datasets/<name>.jsonl`, a manifest entry, a `evals/fixtures/<name>.json`, and a threshold entry.
-3. `tests/unit/datasets.test.ts` fails if any case lacks fixtures or a threshold is missing.
+Follow [.claude/skills/add-eval-suite/SKILL.md](.claude/skills/add-eval-suite/SKILL.md). In short: a pure feature in
+`src/lib/ai/`, a suite in `evals/suites/` registered in `index.ts`, dataset + manifest entry + fixtures, a fault in
+`evals/mock/faults.ts`, then `make check`. `tests/unit/datasets.test.ts` fails if any case lacks fixtures.
+
+## Security
+
+Details and the full threat table: [SECURITY.md](SECURITY.md).
+
+- **Edge** (`middleware.ts`, Node runtime, `/api/*`): `X-Request-ID`, sliding-window rate limit (`RATE_LIMIT_PER_MINUTE`,
+  default 120, 429 + `Retry-After: 60`; per client only via `TRUSTED_PROXY_HOPS`, forged `X-Forwarded-For` ignored), optional `API_AUTH_TOKEN` (Bearer or `X-API-Key`, constant-time compare, 401),
+  and `nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, `Cache-Control: no-store`,
+  `Content-Security-Policy: default-src none; frame-ancestors none`. `/api/health` and `/api/readyz` stay open.
+- **Route**: JSON only (415), 4 KB cap (413), strict schema (400), `X-Process-Time-Ms`, generic 500s. Live runs also need
+  `EVAL_API_ENABLED=true` + `EVAL_API_TOKEN` and run one at a time (409).
+- **Prompts**: documents, tickets and invoices reach the model inside `<untrusted_context>` boundaries with boundary tags and
+  control characters stripped. Report paths use an allowlisted `safeId()`.
+- **Lint**: `eslint-plugin-security` with zero warnings allowed. **Container**: UID 10001, read-only rootfs, all caps dropped.
 
 ## CI (`.github/workflows`)
 
-- `ci.yml`: lint → typecheck → Vitest → judge calibration (mock, report only) → gate self-test → eval gate (mock) → Playwright. Posts/updates a PR comment with the summary and uploads `reports/`.
+- `ci.yml`: judge calibration (mock, report only) → `make check` (lint, typecheck, Vitest with the per-file coverage gate, gate self-test, eval gate) → Playwright e2e → Docker build that waits for the `HEALTHCHECK` and checks the non-root user. Posts or updates a PR comment with the summary, writes coverage to the job summary and uploads `reports/`.
 - `live-eval.yml`: manual (`workflow_dispatch`) live run; needs the repo secret for each provider you pick (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `BYNARA_API_KEY`, `OPENROUTER_API_KEY`, `NVIDIA_API_KEY`). Endpoints can be overridden with the `BYNARA_BASE_URL`, `OPENROUTER_BASE_URL` and `NIM_BASE_URL` repo variables.
 
-Over HTTP, `POST /api/eval` is open in mock mode. In live mode it needs `EVAL_API_ENABLED=true` and a bearer token matching `EVAL_API_TOKEN`, and runs one suite at a time.
+Over HTTP, `POST /api/eval` is open in mock mode unless `API_AUTH_TOKEN` is set. In live mode it also needs `EVAL_API_ENABLED=true` and a bearer token matching `EVAL_API_TOKEN`, and runs one suite at a time.
 
-To make the gate block merges, mark the `checks` and `e2e` jobs as required in branch protection.
+To make the gate block merges, mark the `checks`, `e2e` and `docker` jobs as required in branch protection.

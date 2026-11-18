@@ -11,3 +11,9 @@ reports/*
 playwright-report/
 test-results/
 coverage/
+
+# Local agent/tool state
+.claude-flow/
+.serena/
+.claude/settings.local.json
+graphify-out/cache/

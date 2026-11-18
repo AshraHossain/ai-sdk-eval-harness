@@ -9,11 +9,11 @@ export function stdev(xs: number[]): number {
 
 export interface FlakyBounds {
   /** Pass rate must be strictly above this to be flaky (default 0). */
-  low: number;
+  readonly low: number;
   /** ...and strictly below this (default 1). */
-  high: number;
+  readonly high: number;
 }
-export const DEFAULT_FLAKY_BOUNDS: FlakyBounds = { low: 0, high: 1 };
+export const DEFAULT_FLAKY_BOUNDS: FlakyBounds = Object.freeze({ low: 0, high: 1 });
 
 /** A case is flaky when it neither always passes nor always fails across N runs. */
 export function isFlaky(passRate: number, bounds: FlakyBounds = DEFAULT_FLAKY_BOUNDS): boolean {
@@ -23,8 +23,8 @@ export function isFlaky(passRate: number, bounds: FlakyBounds = DEFAULT_FLAKY_BO
 export const round = (n: number, digits = 4): number => Math.round(n * 10 ** digits) / 10 ** digits;
 
 export interface Interval {
-  low: number;
-  high: number;
+  readonly low: number;
+  readonly high: number;
 }
 
 /**

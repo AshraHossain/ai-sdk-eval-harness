@@ -4,6 +4,7 @@ import { assertLiveKeys, DEFAULT_JUDGE_MODEL, DEFAULT_MODEL, resolveMode, resolv
 import { createFixtureModel, createMockJudge } from "../mock/mockModel";
 import { applyFault } from "../mock/faults";
 import { getSuite } from "../suites";
+import { safeId } from "../../src/lib/security/sanitize";
 import { loadDataset, loadFixtures } from "./load";
 import { runSuite } from "./runner";
 import type { SuiteReport } from "./types";
@@ -21,6 +22,8 @@ export interface ExecuteOptions {
 }
 
 export const REPORTS_DIR = path.join(process.cwd(), "reports");
+/** Written next to the suite reports; not a SuiteReport, so readReports skips it. */
+export const SCORECARD_FILE = "scorecard.json";
 
 /** Runs one suite end-to-end (mock fixtures or live providers) and returns its report. */
 export async function executeSuite(opts: ExecuteOptions): Promise<SuiteReport> {
@@ -64,7 +67,7 @@ export async function executeSuite(opts: ExecuteOptions): Promise<SuiteReport> {
 
 export async function writeReport(report: SuiteReport, dir = REPORTS_DIR): Promise<string> {
   await mkdir(dir, { recursive: true });
-  const file = path.join(dir, `${report.suite}.json`);
+  const file = path.join(dir, `${safeId(report.suite)}.json`);
   await writeFile(file, JSON.stringify(report, null, 2) + "\n");
   return file;
 }
@@ -72,7 +75,7 @@ export async function writeReport(report: SuiteReport, dir = REPORTS_DIR): Promi
 export async function readReports(dir = REPORTS_DIR): Promise<SuiteReport[]> {
   let files: string[];
   try {
-    files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
+    files = (await readdir(dir)).filter((f) => f.endsWith(".json") && f !== SCORECARD_FILE);
   } catch {
     return [];
   }

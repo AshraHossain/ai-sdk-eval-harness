@@ -36,21 +36,21 @@ export const calibrationItem = z.object({
 export type CalibrationItem = z.infer<typeof calibrationItem>;
 
 export interface CalibrationRow {
-  id: string;
-  human: number;
-  judge: number;
+  readonly id: string;
+  readonly human: number;
+  readonly judge: number;
 }
 
 export interface CalibrationResult {
-  n: number;
-  exactAgreement: number;
-  withinOne: number;
-  meanAbsError: number;
-  passFailKappa: number;
+  readonly n: number;
+  readonly exactAgreement: number;
+  readonly withinOne: number;
+  readonly meanAbsError: number;
+  readonly passFailKappa: number;
   /** Percentile-bootstrap 95% interval for kappa. Wide means "label more boundary cases". */
-  kappaCI95: { low: number; high: number };
-  ok: boolean;
-  rows: CalibrationRow[];
+  readonly kappaCI95: { low: number; high: number };
+  readonly ok: boolean;
+  readonly rows: readonly CalibrationRow[];
 }
 
 /** Cohen's kappa for two binary raters: 1 = perfect, 0 = chance-level. */
@@ -126,12 +126,11 @@ export async function calibrate(judge: LanguageModel, items?: CalibrationItem[])
   return scoreAgreement(rows);
 }
 
-const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
-if (isMain) {
-  const mode = resolveMode();
+/** Prints the calibration report and returns the exit code (non-zero only for a live judge below the bar). */
+export async function runCalibration(mode: "mock" | "live" = resolveMode(), items?: CalibrationItem[]): Promise<number> {
   const spec = process.env.EVAL_JUDGE_MODEL || DEFAULT_JUDGE_MODEL;
   if (mode === "live") assertLiveKeys([spec]);
-  const r = await calibrate(mode === "live" ? resolveModel(spec) : createMockJudge());
+  const r = await calibrate(mode === "live" ? resolveModel(spec) : createMockJudge(), items);
   console.log(`Judge: ${mode === "live" ? spec : "mock-judge"}`);
   console.table(r.rows);
   console.log(
@@ -144,7 +143,12 @@ if (isMain) {
     // The mock judge is a coverage heuristic, not a quality oracle: this run checks
     // the calibration plumbing and documents the heuristic's blind spots.
     console.log("ℹ mock judge: plumbing check only. Run with EVAL_MODE=live to calibrate a real judge.");
-  } else if (!r.ok) {
-    process.exit(1);
+    return 0;
   }
+  return r.ok ? 0 : 1;
 }
+
+/* v8 ignore start -- process entry point; CI runs it for real (npm run eval / eval:calibrate / eval:selftest) */
+const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (isMain) process.exitCode = await runCalibration();
+/* v8 ignore stop */

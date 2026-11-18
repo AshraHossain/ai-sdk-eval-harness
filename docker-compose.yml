@@ -1,0 +1,23 @@
+services:
+  app:
+    build: .
+    image: ai-sdk-eval-harness:local
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    environment:
+      EVAL_MODE: ${EVAL_MODE:-mock}
+      RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-120}
+      # Set to 1 behind one reverse proxy; 0 shares one bucket across all clients.
+      TRUSTED_PROXY_HOPS: ${TRUSTED_PROXY_HOPS:-0}
+      # Optional: require a token on /api/* (except /api/health and /api/readyz).
+      API_AUTH_TOKEN: ${API_AUTH_TOKEN:-}
+    read_only: true
+    tmpfs:
+      # Writable by the non-root app user (UID 10001); the rest of the filesystem is read-only.
+      - /app/reports:uid=10001,gid=10001
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped

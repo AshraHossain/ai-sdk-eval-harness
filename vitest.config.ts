@@ -4,5 +4,16 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   // Mirror the tsconfig "@/*" path so route handlers can be unit-tested.
   resolve: { alias: { "@": fileURLToPath(new URL(".", import.meta.url)) } },
-  test: { include: ["tests/unit/**/*.test.ts"], environment: "node" },
+  test: {
+    // unit: pure functions. integration: route handlers, CLI, middleware, file I/O. All offline.
+    include: ["tests/unit/**/*.test.ts", "tests/integration/**/*.test.ts"],
+    environment: "node",
+    coverage: {
+      provider: "v8",
+      include: ["src/**/*.ts", "evals/**/*.ts", "app/api/**/*.ts", "middleware.ts", "scripts/**/*.ts"],
+      reporter: ["text", "json-summary"],
+      // Every file must clear the bar on its own; a high average cannot hide an untested file.
+      thresholds: { perFile: true, lines: 80, statements: 80, functions: 80, branches: 80 },
+    },
+  },
 });

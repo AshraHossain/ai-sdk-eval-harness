@@ -84,8 +84,8 @@ describe("evaluateGate: quarantine, modes, infra", () => {
   });
 
   it("fails when too many runs hit infrastructure errors", () => {
-    const r = withCases("a", five());
-    r.summary.infraErrorRate = 0.3;
+    const base = withCases("a", five());
+    const r = { ...base, summary: { ...base.summary, infraErrorRate: 0.3 } };
     const g = evaluateGate([r], thresholds);
     expect(g.ok).toBe(false);
     expect(g.results[0]!.failures[0]).toContain("infra errors");
@@ -99,8 +99,8 @@ describe("evaluateGate: quarantine, modes, infra", () => {
 describe("evaluateGate: baseline regression", () => {
   it("passes within tolerance and fails beyond it", () => {
     const lenient = thresholdsSchema.parse({ default: { minPassRate: 0, maxFlakeRate: 1, maxRegression: 0.05 } });
-    const slight = withCases("a", five({ c5: "flaky" }));
-    slight.summary.passRate = 0.96;
+    const flaky = withCases("a", five({ c5: "flaky" }));
+    const slight = { ...flaky, summary: { ...flaky.summary, passRate: 0.96 } };
     expect(evaluateGate([slight], lenient, baseline()).results[0]!.regression).toBeCloseTo(0.04, 3);
     expect(evaluateGate([slight], lenient, baseline()).ok).toBe(true);
     const big = withCases("a", five({ c4: "flaky", c5: "flaky" }));

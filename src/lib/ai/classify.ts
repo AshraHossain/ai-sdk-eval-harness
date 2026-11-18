@@ -1,5 +1,6 @@
 import { generateObject, type LanguageModel } from "ai";
 import { z } from "zod";
+import { frameUntrusted, UNTRUSTED_NOTICE } from "../security/sanitize";
 
 export const TICKET_LABELS = ["billing", "technical", "account", "other"] as const;
 export type TicketLabel = (typeof TICKET_LABELS)[number];
@@ -15,8 +16,8 @@ export async function classifyTicket(model: LanguageModel, input: { text: string
     model,
     temperature: 0,
     schema: classificationSchema,
-    system: `Classify the support ticket into exactly one of: ${TICKET_LABELS.join(", ")}.`,
-    prompt: `TICKET:\n${input.text}`,
+    system: `Classify the support ticket into exactly one of: ${TICKET_LABELS.join(", ")}. ${UNTRUSTED_NOTICE}`,
+    prompt: frameUntrusted("ticket", input.text),
   });
   return object;
 }

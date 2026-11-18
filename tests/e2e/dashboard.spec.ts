@@ -30,3 +30,17 @@ test("API rejects unknown suites", async ({ request }) => {
   const res = await request.post("/api/eval", { data: { suite: "nope" } });
   expect(res.status()).toBe(400);
 });
+
+test("API edge: probes, security headers, request id, 415", async ({ request }) => {
+  const health = await request.get("/api/health", { headers: { "x-request-id": "e2e-1" } });
+  expect(health.status()).toBe(200);
+  const h = health.headers();
+  expect(h["x-request-id"]).toBe("e2e-1");
+  expect(h["content-security-policy"]).toBe("default-src 'none'; frame-ancestors 'none'");
+  expect(h["x-content-type-options"]).toBe("nosniff");
+  expect(h["cache-control"]).toBe("no-store");
+  expect(h["x-process-time-ms"]).toMatch(/^\d/);
+  expect((await request.get("/api/readyz")).status()).toBe(200);
+  const res = await request.post("/api/eval", { headers: { "content-type": "text/plain" }, data: "{}" });
+  expect(res.status()).toBe(415);
+});

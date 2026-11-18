@@ -40,24 +40,24 @@ export const baselineSchema = z.object({
 export type Baseline = z.infer<typeof baselineSchema>;
 
 export interface GateResult {
-  suite: string;
-  passRate: number;
-  flakeRate: number;
-  minPassRate: number;
-  maxFlakeRate: number;
-  infraErrorRate: number;
-  quarantined: string[];
+  readonly suite: string;
+  readonly passRate: number;
+  readonly flakeRate: number;
+  readonly minPassRate: number;
+  readonly maxFlakeRate: number;
+  readonly infraErrorRate: number;
+  readonly quarantined: readonly string[];
   /** Pass-rate drop vs. baseline, when a compatible baseline exists. */
-  regression?: number;
-  ok: boolean;
-  failures: string[];
+  readonly regression?: number;
+  readonly ok: boolean;
+  readonly failures: readonly string[];
 }
 
 export interface Gate {
-  ok: boolean;
-  results: GateResult[];
+  readonly ok: boolean;
+  readonly results: readonly GateResult[];
   /** Context that changes how to read the result (skipped checks, N=1). */
-  notes: string[];
+  readonly notes: readonly string[];
 }
 
 export function limitsFor(t: Thresholds, suite: string, mode: "mock" | "live"): Limits {
@@ -88,7 +88,7 @@ export function baselineMismatch(r: SuiteReport, b: Baseline): string | undefine
   return undefined;
 }
 
-const newlyFailing = (gated: CaseReport[], base: Baseline["suites"][string]) =>
+const newlyFailing = (gated: readonly CaseReport[], base: Baseline["suites"][string]) =>
   gated.filter((c) => c.stability === "stable-fail" && base.cases[c.id] === "stable-pass").map((c) => c.id);
 
 export function evaluateGate(reports: SuiteReport[], thresholds: Thresholds, baseline?: Baseline): Gate {

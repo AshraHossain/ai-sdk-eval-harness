@@ -11,7 +11,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "eval": "tsx evals/cli.ts",
@@ -20,7 +20,8 @@
     "eval:calibrate": "tsx evals/calibration/calibrate.ts",
     "eval:selftest": "tsx scripts/gate-selftest.ts",
     "eval:live": "EVAL_MODE=live tsx evals/cli.ts --runs 3",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.132",
@@ -37,7 +38,9 @@
     "@types/node": "^22.20.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "@vitest/coverage-v8": "^5.0.5",
     "eslint": "^10.12.0",
+    "eslint-plugin-security": "^4.2.1",
     "tsx": "^4.23.15",
     "typescript": "5.9",
     "typescript-eslint": "^8.71.2",

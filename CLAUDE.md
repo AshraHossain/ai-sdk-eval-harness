@@ -1,44 +1,17 @@
 # CLAUDE.md — ai-sdk-eval-harness
 
-Guidance for Claude Code when working in this repository. See [README.md](README.md) for the overview.
+Read [AGENTS.md](AGENTS.md) first: commands, layout and invariants live there.
+Scoped rules load from `.claude/rules/` by path. Repo workflows: `/add-eval-suite`, `/rebaseline`.
 
-## Commands
-
-```bash
-npm ci
-npm run lint && npm run typecheck
-npm test                       # Vitest (offline)
-npm run eval                   # all suites, mock mode, N=5, applies the gate -> reports/
-npm run eval -- --suite rag --runs 10 --no-gate
-npm run e2e                    # Playwright; set PW_CHROMIUM_PATH to use a preinstalled Chromium
-npm run eval:calibrate         # judge agreement with human labels (fails below the bar in live mode)
-npm run eval:selftest          # the gate must fail on every injected fault
-EVAL_MODE=live npm run eval    # real providers; needs keys (see .env.example)
-```
-
-## Layout and rules
-
-- `src/lib/ai/` is the system under test. Each feature is a pure function `(model: LanguageModel, input)`; no
-  provider imports and no environment access there.
-- `evals/` must not import from `app/`. Suites, scorers, runner, gate and fixtures live here.
-- Pass/fail logic, thresholds, flakiness and gating live in code (`evals/scorers`, `evals/runner`,
-  `evals/thresholds.json`), never in prompts or model output.
-- Offline mode must stay deterministic and key-free: fixtures in `evals/fixtures/<suite>.json` map case id to a
-  list of responses (run *i* uses entry `i mod len`). CI must never require secrets.
-- The mock judge is a coverage heuristic, not a quality oracle. Never assert exact live-model outputs in tests.
-- Adding a suite: Zod case schema + `run` + `score` in `evals/suites/`, register it in `evals/suites/index.ts`,
-  add dataset + manifest entry + fixtures + threshold. `tests/unit/datasets.test.ts` guards fixture coverage.
-- Changing a dataset's cases: bump its version in `evals/datasets/manifest.json`.
-- Providers: `anthropic:`, `openai:`, `bynara:` (OpenAI-compatible router). API keys come from env only;
-  never commit keys or `.env`.
-- Baselines: `evals/baselines/<mode>.json`. Re-record with `npm run eval:baseline` after an intended fixture or
-  dataset change; it refuses when the gate fails. Quarantine noisy cases in `thresholds.json`, never by editing data.
-- Gate self-test faults live in `evals/mock/faults.ts`; every suite needs one, and `npm run eval:selftest` must pass.
-- The seeded flaky cases (`summarize/s05`, `extract/e04`, `rag/r06`) and failing case (`classify/c06`) are
-  asserted in `tests/unit/mockSuites.test.ts` and `tests/e2e/dashboard.spec.ts`; change them together.
-
-## Conventions
-
-- Conventional commits: `feat|fix|test|refactor|docs|chore(scope): ...`.
-- Run lint, typecheck and tests before pushing; keep the eval gate green.
-- Do not claim production readiness.
+## Repo specifics
+- `make check` is the pre-push bar. It must be green, including the per-file 80% coverage gate.
+- Providers: `anthropic:`, `openai:`, `bynara:`, `openrouter:`, `nim:` (the last three are
+  OpenAI-compatible). `EVAL_MODEL` / `EVAL_JUDGE_MODEL` take `provider:model`.
+- The seeded flaky cases (`summarize/s05`, `extract/e04`, `rag/r06`) and the failing case
+  (`classify/c06`) are asserted in `tests/unit/mockSuites.test.ts` and `tests/e2e/dashboard.spec.ts`.
+  Change them together.
+- Process entry blocks (`isMain`) carry `v8 ignore`. Put logic in exported functions
+  (`runCli`, `runCalibration`, `selfTest`) and test those.
+- `API_AUTH_TOKEN` guards all of `/api/*` except the probes. The dashboard Run button sends no
+  token, so it stops working when the variable is set. That is intended for headless deployments.
+- The mock judge scores reference-word coverage. It is a plumbing check, not a quality oracle.
