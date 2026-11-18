@@ -1,6 +1,6 @@
 {
   "name": "ai-sdk-eval-harness",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Eval harness for Vercel AI SDK features: golden datasets, deterministic + LLM-as-judge scorers, N-run flaky detection, CI gate.",
   "type": "module",

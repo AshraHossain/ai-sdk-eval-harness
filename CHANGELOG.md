@@ -4,7 +4,13 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-18
+
 ### Added
+- Live comparison in the README: Claude Haiku 5.5 (Sonnet judge, calibrated) and Gemini 3.8 Flash, N=3.
+- Dashboard screenshot (`docs/dashboard.png`).
+- CodeQL workflow, Dependabot (npm, Actions, Docker), SPDX SBOM artifact for the container image.
+- Every GitHub Action pinned to a full commit SHA.
 - `vertex:` provider (native `@ai-sdk/google-vertex`, ADC credentials, `GOOGLE_CLOUD_PROJECT`/`GOOGLE_CLOUD_LOCATION`)
   and a measured live run of Gemini 3.8 Flash in the README.
 - Runner records the provider response body when an API error has an empty message (`errorText`).
