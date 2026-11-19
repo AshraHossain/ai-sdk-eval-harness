@@ -13,7 +13,7 @@ export default defineConfig({
       include: ["src/**/*.ts", "evals/**/*.ts", "app/api/**/*.ts", "middleware.ts", "scripts/**/*.ts"],
       reporter: ["text", "json-summary"],
       // Every file must clear the bar on its own; a high average cannot hide an untested file.
-      thresholds: { perFile: true, lines: 80, statements: 80, functions: 80, branches: 80 },
+      thresholds: { perFile: true, lines: 95, statements: 95, functions: 95, branches: 95 },
     },
   },
 });
