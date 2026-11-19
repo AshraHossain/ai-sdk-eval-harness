@@ -11,4 +11,5 @@ verified commands, the module layout and the invariants.
   (Vitest coverage gate, eslint-plugin-security, `readonly` contracts, `EVAL_MODE=mock`).
 - Relevant installed plugins: `vercel-plugin` (Next.js, AI SDK), `context7` (version-pinned docs),
   `arize-skills` (tracing and eval experiments).
+- Planning: [PLANNING.md](PLANNING.md) (GSD roadmap → Superpowers plan → Ruflo execution; backlog).
 - Security model: [SECURITY.md](SECURITY.md). Architecture: [ARCHITECTURE.md](ARCHITECTURE.md).

@@ -12,7 +12,7 @@ not a production service.
 ## Commands (all verified offline, no API keys)
 ```bash
 npm ci
-make check                 # lint + typecheck + tests (per-file 80% coverage) + gate self-test + eval gate
+make check                 # lint + typecheck + tests (per-file 95% coverage) + gate self-test + eval gate
 npm run lint               # eslint, 0 warnings allowed, includes eslint-plugin-security
 npm run typecheck
 npm test                   # Vitest: tests/unit + tests/integration
@@ -57,4 +57,5 @@ EVAL_MODE=live npm run eval -- --runs 3   # real providers; keys from env (see .
 ## Conventions
 Conventional commits (`feat|fix|test|refactor|docs|chore(scope): ...`). Run `make check` before
 pushing. Do not claim production readiness. Security model: [SECURITY.md](SECURITY.md).
-Architecture: [ARCHITECTURE.md](ARCHITECTURE.md).
+Architecture: [ARCHITECTURE.md](ARCHITECTURE.md). Roadmap and planning workflow (GSD →
+Superpowers → Ruflo): [PLANNING.md](PLANNING.md).
