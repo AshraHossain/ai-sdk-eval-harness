@@ -1,6 +1,6 @@
 {
   "name": "ai-sdk-eval-harness",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Eval harness for Vercel AI SDK features: golden datasets, deterministic + LLM-as-judge scorers, N-run flaky detection, CI gate.",
   "type": "module",
@@ -25,9 +25,10 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.132",
+    "@ai-sdk/google-vertex": "^4.0.234",
     "@ai-sdk/openai": "^3.0.129",
     "ai": "^6.0.308",
-    "next": "^15.5.28",
+    "next": "^15.5.29",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "zod": "^4.6.7"

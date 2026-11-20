@@ -57,5 +57,6 @@ EVAL_MODE=live npm run eval -- --runs 3   # real providers; keys from env (see .
 ## Conventions
 Conventional commits (`feat|fix|test|refactor|docs|chore(scope): ...`). Run `make check` before
 pushing. Do not claim production readiness. Security model: [SECURITY.md](SECURITY.md).
-Architecture: [ARCHITECTURE.md](ARCHITECTURE.md). Roadmap and planning workflow (GSD →
-Superpowers → Ruflo): [PLANNING.md](PLANNING.md).
+Architecture: [ARCHITECTURE.md](ARCHITECTURE.md). Goals, scope, backlog and the planning workflow
+(GSD → Superpowers → Ruflo): [PLANNING.md](PLANNING.md); keep it in step with any change to scope
+or architecture.

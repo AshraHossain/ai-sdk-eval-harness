@@ -21,6 +21,8 @@ to hit real providers.
 > The mock judge scores by reference-word coverage. It keeps the pipeline testable and deterministic;
 > it is **not** a quality oracle. Trust live-mode numbers for model quality.
 
+![Dashboard: gate banner, per-suite pass rate, flaky count and per-case Wilson intervals](docs/dashboard.png)
+
 ## Suites
 
 | Suite | System under test (`src/lib/ai/`) | Scorers |
@@ -70,7 +72,7 @@ flowchart LR
         MOCKM["evals/mock: fixture replay + mock judge + faults"]
     end
     subgraph Backends["Live vs offline backends"]
-        LIVE[("Anthropic, OpenAI, Bynara, OpenRouter, NIM")]
+        LIVE[("Anthropic, OpenAI, Vertex, Bynara, OpenRouter, NIM")]
         FIX[("evals/fixtures + datasets + thresholds + baselines")]
     end
     UI & API_C --> MW --> RT --> SUITES
@@ -136,7 +138,7 @@ Offline (mock) run, N=5 runs per case, from `npm run eval:gate` (`reports/scorec
 | Grounding rate (rag) | 100.0% | Faithfulness judge passes (mock judge: reference coverage) |
 | Guardrail pass rate (rag) | 95.0% | Correct abstention when documents lack the answer; seeded flaky case `rag/r06` |
 | Tool-call accuracy (agent) | 100.0% | Right tools, args and order |
-| Latency p50 / p95 per run | 0 ms / 2 ms | Harness overhead only in mock mode |
+| Latency p50 / p95 per run | 0 ms / 1-2 ms | Harness overhead only in mock mode; varies per run |
 
 | Suite | Pass rate | Flaky cases | Gate |
 |---|---|---|---|
@@ -148,6 +150,35 @@ Offline (mock) run, N=5 runs per case, from `npm run eval:gate` (`reports/scorec
 
 These numbers come from fixtures that include seeded failures, so they show that the harness and gate
 work. They say nothing about model quality. Run `EVAL_MODE=live npm run eval` for that.
+
+### Live runs: two vendors, N=3 runs per case
+
+| Suite | Claude Haiku 5.5 | Gemini 3.8 Flash |
+|---|---|---|
+| summarize | 94.5% (`s01` flaky: length) | 88.9% (`s01` flaky: keywords) |
+| classify | 100.0% | 100.0% |
+| extract | 100.0% | 100.0% |
+| rag (recall / grounding / guardrail) | 100.0% (100 / 100 / 100) | 100.0% (100 / 100 / 100) |
+| agent (tool-call accuracy) | 100.0% (100%) | 100.0% (100%) |
+| **Mean pass rate** | **98.9%** | **97.8%** |
+| Latency p50 / p95 per run, with judge | 1522 ms / 3376 ms | 3988 ms / 9912 ms |
+| Model spec | `anthropic:claude-haiku-5-5` | `vertex:gemini-3.8-flash` |
+| Judge | `anthropic:claude-sonnet-5-5` | `vertex:gemini-3.8-flash` (self) |
+| Date | 2026-11-18 | 2026-11-17 |
+
+Both gates **PASSED**. Before the Haiku run, `npm run eval:calibrate` checked the Sonnet judge against 20
+human labels: kappa 0.69 (95% CI 0.34–1.0), 95% of scores within ±1. The CI is wide, so more borderline
+labels (scores 3–4) would tighten it.
+
+What the runs found:
+- `summarize/s01` is the hardest case for both models, for different reasons. Gemini writes "rolled it
+  back" where the keyword scorer wants "rolled back". Haiku sometimes exceeds the length bound.
+- Vertex's OpenAI-compatible endpoint failed the agent suite in 5 of 6 cases with HTTP 400: Gemini 3 tool
+  calls carry a `thought_signature` that the OpenAI client drops. `vertex:` uses the native client.
+
+Limits: N=3 and six cases per suite, so a single case moves a suite by about 17 points. The two runs used
+different judges and dates, and the Haiku judge is from the same vendor. Treat this as a smoke test of
+real providers, not a benchmark.
 
 ## Quick start
 
@@ -182,8 +213,9 @@ EVAL_MODE=live npm run eval -- --runs 3
 | `bynara` | `BYNARA_API_KEY` | `https://router.bynara.id/v1` (`BYNARA_BASE_URL`) | `bynara:claude-haiku-5.5` |
 | `openrouter` | `OPENROUTER_API_KEY` | `https://openrouter.ai/api/v1` (`OPENROUTER_BASE_URL`) | `openrouter:nvidia/nemotron-3-ultra-550b-a55b:free` |
 | `nim` | `NVIDIA_API_KEY` | `https://integrate.api.nvidia.com/v1` (`NIM_BASE_URL`) | `nim:nvidia/nemotron-3-ultra-550b-a55b` |
+| `vertex` | ADC (`gcloud auth application-default login`) + `GOOGLE_CLOUD_PROJECT` | native Vertex client; `GOOGLE_CLOUD_LOCATION` (default `global`) | `vertex:gemini-3.8-flash` |
 
-`bynara`, `openrouter` and `nim` use an OpenAI-compatible chat-completions client. A bare id with a `/` and no provider prefix goes to Bynara; a bare id without one goes to Anthropic. Use the ids each provider lists (Bynara: `GET /v1/models`).
+`bynara`, `openrouter` and `nim` use an OpenAI-compatible chat-completions client. `vertex` uses the native `@ai-sdk/google-vertex` client, because Gemini 3 tool calls carry thought signatures that the OpenAI-compatible endpoint drops. A bare id with a `/` and no provider prefix goes to Bynara; a bare id without one goes to Anthropic. Use the ids each provider lists (Bynara: `GET /v1/models`).
 
 Notes from live runs:
 - When every run errors, the CLI prints `N/total runs errored. First error: ...`. "The requested model does not exist" means the model id is wrong. "Bad Gateway" means the router could not reach the upstream model, so try another model.
@@ -238,13 +270,15 @@ Details and the full threat table: [SECURITY.md](SECURITY.md).
 
 ## CI (`.github/workflows`)
 
-- `ci.yml`: judge calibration (mock, report only) → `make check` (lint, typecheck, Vitest with the per-file coverage gate, gate self-test, eval gate) → Playwright e2e → Docker build that waits for the `HEALTHCHECK` and checks the non-root user. Posts or updates a PR comment with the summary, writes coverage to the job summary and uploads `reports/`.
+- `ci.yml`: judge calibration (mock, report only) → `make check` (lint, typecheck, Vitest with the per-file coverage gate, gate self-test, eval gate) → Playwright e2e → Docker build that waits for the `HEALTHCHECK` and checks the non-root user. Posts or updates a PR comment with the summary, writes coverage to the job summary and uploads `reports/`. The container job also uploads an SPDX SBOM of the image (`sbom.spdx.json`).
 - `live-eval.yml`: manual (`workflow_dispatch`) live run; needs the repo secret for each provider you pick (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `BYNARA_API_KEY`, `OPENROUTER_API_KEY`, `NVIDIA_API_KEY`). Endpoints can be overridden with the `BYNARA_BASE_URL`, `OPENROUTER_BASE_URL` and `NIM_BASE_URL` repo variables.
+- `codeql.yml`: CodeQL `security-and-quality` queries on every PR, push to `main` and weekly.
+- `dependabot.yml`: weekly update PRs for npm (AI SDK packages grouped), GitHub Actions and the Docker base image.
+
+Every third-party Action is pinned to a full commit SHA, with the version in a comment, so a moved tag cannot change what CI runs. `main` is branch-protected: the three CI jobs must pass before a merge.
 
 Over HTTP, `POST /api/eval` is open in mock mode unless `API_AUTH_TOKEN` is set. In live mode it also needs `EVAL_API_ENABLED=true` and a bearer token matching `EVAL_API_TOKEN`, and runs one suite at a time.
 
-To make the gate block merges, mark the `checks`, `e2e` and `docker` jobs as required in branch protection.
-
 ## Roadmap
 
-Open work, its status and the planning workflow (GSD → Superpowers → Ruflo) are in [PLANNING.md](PLANNING.md).
+Goals, scope, open work, known gaps and the planning workflow (GSD → Superpowers → Ruflo) are in [PLANNING.md](PLANNING.md).

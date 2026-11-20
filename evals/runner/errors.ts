@@ -19,3 +19,11 @@ export function isInfraError(err: unknown): boolean {
     ["ECONNRESET", "ETIMEDOUT", "ECONNREFUSED", "EAI_AGAIN", "UND_ERR_CONNECT_TIMEOUT"].includes(e?.code ?? "")
   );
 }
+
+/** Readable error text. Some providers throw APICallError with an empty message and the cause in the body. */
+export function errorText(err: unknown): string {
+  if (!(err instanceof Error)) return String(err);
+  if (err.message) return err.message;
+  const body = APICallError.isInstance(err) ? err.responseBody : undefined;
+  return body ? `${err.name}: ${body.replace(/\s+/g, " ").slice(0, 500)}` : err.name;
+}
