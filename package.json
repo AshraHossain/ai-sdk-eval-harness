@@ -20,6 +20,7 @@
     "eval:calibrate": "tsx evals/calibration/calibrate.ts",
     "eval:selftest": "tsx scripts/gate-selftest.ts",
     "eval:live": "EVAL_MODE=live tsx evals/cli.ts --runs 3",
+    "readme:scorecard": "tsx scripts/readme-scorecard.ts",
     "e2e": "playwright test",
     "test:coverage": "vitest run --coverage"
   },

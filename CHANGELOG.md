@@ -4,6 +4,16 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 
 ## [Unreleased]
 
+### Changed
+- Golden datasets grow from 6 to 15 cases per suite (manifest 1.1.0): negations and bad-news
+  summaries, harder tickets, European number formats and written dates, multi-document citations, a
+  prompt-injection document, unknown orders and no-tool agent tasks. One case now moves a suite 6.7
+  points instead of ~17. Mock baseline re-recorded.
+
+### Added
+- `npm run readme:scorecard` generates the README scorecard tables from `reports/`; `make check`
+  fails when they drift (`readme-check`).
+
 ## [0.2.0] - 2026-11-19
 
 ### Fixed

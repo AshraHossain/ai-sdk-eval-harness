@@ -25,7 +25,7 @@ In scope:
 - Next.js dashboard and a hardened `POST /api/eval` with health and readiness probes.
 
 Non-goals:
-- Model benchmarking. Six cases per suite at N=3 to 5 is a smoke test, not a leaderboard.
+- Model benchmarking. Fifteen cases per suite at N=3 to 5 is a smoke test, not a leaderboard.
 - Multi-instance deployment. The rate limiter is process-local.
 - Persistent storage or user accounts. Reports are files under `reports/`.
 - Prompt optimization. The harness measures prompts; it does not tune them.
@@ -98,15 +98,15 @@ Status: ✅ done · 🔄 in progress · ⏳ blocked · 📋 planned · ➖ won't
 | 4 | API edge hardening (401/413/415/429, OWASP headers, untrusted framing) | ✅ | 0.2.0 | `tests/integration/{api,middleware}.test.ts` |
 | 5 | Agent-instruction parity (AGENTS/GEMINI/CLAUDE, rules, skills), per-file coverage gate at 95% | ✅ | 0.2.0 | every file ≥ 95% lines/branches/functions |
 | 6 | Branch protection on `main`: CI, Playwright, container build, CodeQL required | ✅ | 0.2.0 | `gh api .../branches/main/protection` |
-| 7 | Grow each dataset from 6 to 15+ cases (one case now moves a suite ~17 points); bump `manifest.json`; re-baseline | 📋 | 0.3.0 | `make check` green, new versions in `manifest.json` |
+| 7 | Grow each dataset from 6 to 15 cases (one case moves a suite 6.7 points, not ~17); manifest 1.1.0; mock baseline re-recorded | ✅ | 0.3.0 | `make check` green, new versions in `manifest.json` |
 | 8 | `vertex:` in Actions: `google-github-actions/auth` with Workload Identity Federation in `live-eval.yml`, SHA-pinned | ⏳ | 0.3.0 | needs a GCP workload identity pool and service account (owner) |
-| 9 | Judge calibration: add borderline labels (scores 3–4) until the kappa CI lower bound is ≥ 0.5 (now 0.34–1.0 on 20 labels); live κ ≥ 0.6, within±1 ≥ 0.8 | 📋 | 0.3.0 | `EVAL_MODE=live npm run eval:calibrate` exits 0 |
+| 9 | Judge calibration: add borderline labels (scores 3–4) until the kappa CI lower bound is ≥ 0.5 (now 0.34–1.0 on 20 labels); live κ ≥ 0.6, within±1 ≥ 0.8 | ⏳ needs human-scored labels (owner) | 0.3.0 | `EVAL_MODE=live npm run eval:calibrate` exits 0 |
 | 10 | Like-for-like vendor comparison: re-run Haiku and Gemini with one judge on the same day | 📋 | 0.3.0 | README live table, same judge and date |
-| 11 | First live run on NVIDIA NIM (`nim:nvidia/nemotron-3-ultra-550b-a55b`) | ⏳ | 0.3.0 | needs the `NVIDIA_API_KEY` repo secret, then the `Live eval` workflow, summarize N=1 → all suites N=3 |
+| 11 | First live run on NVIDIA NIM (`nim:nvidia/nemotron-3-ultra-550b-a55b`) | ⏳ | 0.3.0 | needs the `NVIDIA_API_KEY` (or `OPENROUTER_API_KEY`) repo secret; neither is set (run 44671069424, 2026-11-20). Then the `Live eval` workflow, summarize N=1 → all suites N=3 |
 | 12 | Capability matrix: which live models support structured output (classify/extract/rag) and tool calling (agent) | 📋 | 0.3.0 | table in README "Live mode" |
 | 13 | Diagnose live `summarize/s02`, `s04` failures (OpenRouter run: mean 0.89, 50% pass) | 📋 | 0.3.0 | scorer or dataset fix with a test, or quarantine with a reason |
 | 14 | Live baseline (`evals/baselines/live.json`) via the `rebaseline` skill | 📋 | 0.3.0 | committed after items 9–13 |
-| 15 | Generate the README scorecard table from `reports/scorecard.json` (hand-copied numbers drift) | 📋 | Backlog | README table matches `scorecard.json` |
+| 15 | Generate the README scorecard table from `reports/` (`npm run readme:scorecard`; `make check` fails on drift) | ✅ | 0.3.0 | README table matches `scorecard.json` |
 | 16 | Refresh the graphify knowledge graph after each merged phase | 🔄 | ongoing | `graphify-out/` regenerated and committed |
 | 17 | Shared rate-limit store across replicas | ➖ | — | process-local by design; see non-goals |
 | 18 | Dashboard Run button with `API_AUTH_TOKEN` set | ➖ | — | button sends no token by design (headless deployments) |
