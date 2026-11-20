@@ -9,6 +9,9 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 ### Fixed
 - Architecture diagrams in README and ARCHITECTURE.md now list Vertex among the live backends.
 
+### Security
+- `next` 15.5.29: fixes GHSA-7qx7-33qx-rqx2, GHSA-f3mh-rxg3-f5g2 and GHSA-pc58-hwjq-p385 (moderate).
+
 ### Added
 - Live comparison in the README: Claude Haiku 5.5 (Sonnet judge, calibrated) and Gemini 3.8 Flash, N=3.
 - Dashboard screenshot (`docs/dashboard.png`).
