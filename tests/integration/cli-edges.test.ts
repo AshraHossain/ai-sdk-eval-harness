@@ -6,7 +6,8 @@ import type { SuiteReport } from "../../evals/runner/types";
 
 const infraReport: SuiteReport = {
   suite: "classify", title: "classify", mode: "mock", runsPerCase: 2, datasetVersion: "1", datasetHash: "h",
-  model: "m", judgeModel: "j", startedAt: "", durationMs: 1, cases: [],
+  promptHash: "p", model: "m", judgeModel: "j", startedAt: "", durationMs: 1, cases: [],
+  usage: { model: { inputTokens: 0, outputTokens: 0 }, judge: { inputTokens: 0, outputTokens: 0 }, costUsd: 0 },
   summary: { cases: 0, passRate: 1, meanScore: 1, flakyCases: 0, flakeRate: 0, failingCases: 0, infraErrorRate: 0.25 },
 };
 

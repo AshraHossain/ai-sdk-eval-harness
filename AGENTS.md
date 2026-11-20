@@ -36,7 +36,7 @@ EVAL_MODE=live npm run eval -- --runs 3   # real providers; keys from env (see .
 | `evals/suites/` | One suite per feature: Zod case schema + `run` + `score` |
 | `evals/scorers/` | Deterministic scorers + LLM judge |
 | `evals/runner/` | Execute, N-run stats, gate, scorecard, markdown |
-| `evals/{datasets,fixtures,baselines}/`, `evals/thresholds.json` | Data, mock replies, baselines, gate config |
+| `evals/{datasets,fixtures,baselines}/`, `evals/thresholds.json`, `evals/prices.json` | Data, mock replies, baselines, gate config, token prices |
 | `evals/mock/` | Fixture-replay model, mock judge, gate fault injection |
 | `tests/unit`, `tests/integration`, `tests/e2e` | Offline Vitest; Playwright |
 
@@ -51,9 +51,13 @@ EVAL_MODE=live npm run eval -- --runs 3   # real providers; keys from env (see .
 5. Report/baseline file names derive from `safeId()`-checked ids only.
 6. Contracts (`evals/runner/types.ts`, `evals/scorers/types.ts`, gate/calibration results) are
    `readonly`. Build new objects; do not mutate reports.
-7. Changing a dataset's cases means bumping its version in `evals/datasets/manifest.json`.
+7. Prompt text lives in one `*_PROMPT` constant per feature and is listed in the suite's
+   `promptSurface`, so `promptHash` moves when a prompt changes and baseline comparisons skip.
+8. Token counting wraps the model in the runner (`evals/runner/usage.ts`). Never add metering,
+   usage or cost to `src/lib/ai/`.
+9. Changing a dataset's cases means bumping its version in `evals/datasets/manifest.json`.
    Quarantine noisy cases in `thresholds.json`, never by editing data.
-8. API keys come from env only. Never commit keys or `.env`.
+10. API keys come from env only. Never commit keys or `.env`.
 
 ## Conventions
 Conventional commits (`feat|fix|test|refactor|docs|chore(scope): ...`). Run `make check` before

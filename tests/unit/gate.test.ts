@@ -5,7 +5,8 @@ import type { CaseReport, SuiteReport } from "../../evals/runner/types";
 import { loadThresholds } from "../../evals/runner/load";
 
 const report = (suite: string, passRate: number, flakeRate: number): SuiteReport => ({
-  suite, title: suite, mode: "mock", runsPerCase: 5, datasetVersion: "1", datasetHash: "x", model: "m", judgeModel: "j",
+  suite, title: suite, mode: "mock", runsPerCase: 5, datasetVersion: "1", datasetHash: "x", promptHash: "p", model: "m", judgeModel: "j",
+  usage: { model: { inputTokens: 0, outputTokens: 0 }, judge: { inputTokens: 0, outputTokens: 0 }, costUsd: 0 },
   startedAt: "", durationMs: 1, cases: [],
   summary: { cases: 10, passRate, meanScore: passRate, flakyCases: flakeRate * 10, flakeRate, failingCases: 0, infraErrorRate: 0 },
 });

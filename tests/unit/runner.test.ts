@@ -10,13 +10,13 @@ import type { Suite } from "../../evals/runner/types";
 const caseSchema = z.object({ id: z.string(), expected: z.string() });
 type Case = z.infer<typeof caseSchema>;
 const suite: Suite<Case, string> = {
-  name: "t", title: "t", description: "t", caseSchema,
+  name: "t", title: "t", description: "t", caseSchema, promptSurface: ["system prompt", "{text}"],
   run: (model, c) => summarize(model, { text: c.id, maxWords: 5 }),
   score: async ({ case: c, output }) => [exactMatch("eq", output, c.expected)],
 };
 const cases: Case[] = [{ id: "stable", expected: "ok" }, { id: "flaky", expected: "ok" }, { id: "broken", expected: "ok" }];
 const fixtures: Record<string, string[]> = { stable: ["ok"], flaky: ["ok", "bad", "ok", "ok"], broken: ["bad"] };
-const meta = { mode: "mock" as const, datasetVersion: "1", datasetHash: "h", model: "m", judgeModel: "j" };
+const meta = { mode: "mock" as const, datasetVersion: "1", datasetHash: "h", promptHash: "p", model: "m", judgeModel: "j" };
 
 describe("runSuite", () => {
   it("runs each case N times and flags flaky / failing cases", async () => {

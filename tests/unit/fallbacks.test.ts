@@ -18,7 +18,8 @@ import { llmJudge } from "../../evals/scorers/judge";
 const failing = (err: unknown) => new MockLanguageModelV3({ doGenerate: async () => { throw err; } });
 
 const report = (over: Partial<SuiteReport> = {}): SuiteReport => ({
-  suite: "rag", title: "rag", mode: "mock", runsPerCase: 5, datasetVersion: "1", datasetHash: "h", model: "m", judgeModel: "j",
+  suite: "rag", title: "rag", mode: "mock", runsPerCase: 5, datasetVersion: "1", datasetHash: "h", promptHash: "p", model: "m", judgeModel: "j",
+  usage: { model: { inputTokens: 0, outputTokens: 0 }, judge: { inputTokens: 0, outputTokens: 0 }, costUsd: 0 },
   startedAt: "", durationMs: 1, cases: [],
   summary: { cases: 0, passRate: 1, meanScore: 1, flakyCases: 0, flakeRate: 0, failingCases: 0, infraErrorRate: 0 },
   ...over,
@@ -102,10 +103,10 @@ describe("dataset loading", () => {
 
 describe("runner fallbacks", () => {
   const caseSchema = z.object({ id: z.string() });
-  const meta = { mode: "mock" as const, datasetVersion: "1", datasetHash: "h", model: "m", judgeModel: "j" };
+  const meta = { mode: "mock" as const, datasetVersion: "1", datasetHash: "h", promptHash: "p", model: "m", judgeModel: "j" };
   it("records non-Error throws as strings", async () => {
     const suite: Suite<{ id: string }, string> = {
-      name: "t", title: "t", description: "t", caseSchema,
+      name: "t", title: "t", description: "t", caseSchema, promptSurface: ["sys", "{x}"],
       run: async () => { throw "plain string"; },
       score: async () => [],
     };
@@ -113,7 +114,7 @@ describe("runner fallbacks", () => {
     expect(r.cases[0]!.runs[0]!.error).toBe("plain string");
   });
   it("summarizes an empty case list as zero rates", async () => {
-    const suite = { name: "t", title: "t", description: "t", caseSchema, run: async () => "", score: async () => [] } as Suite<{ id: string }, string>;
+    const suite = { name: "t", title: "t", description: "t", caseSchema, promptSurface: ["sys"], run: async () => "", score: async () => [] } as Suite<{ id: string }, string>;
     const r = await runSuite({ suite, cases: [], runs: 2, judge: createMockJudge(), meta, modelFor: () => failing("x") });
     expect(r.summary).toMatchObject({ cases: 0, flakeRate: 0, infraErrorRate: 0 });
   });

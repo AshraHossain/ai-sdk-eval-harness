@@ -106,6 +106,14 @@ Status: ✅ done · 🔄 in progress · ⏳ blocked · 📋 planned · ➖ won't
 | 12 | Capability matrix: which live models support structured output (classify/extract/rag) and tool calling (agent) | 📋 | 0.3.0 | table in README "Live mode" |
 | 13 | Diagnose live `summarize/s02`, `s04` failures (OpenRouter run: mean 0.89, 50% pass) | 📋 | 0.3.0 | scorer or dataset fix with a test, or quarantine with a reason |
 | 14 | Live baseline (`evals/baselines/live.json`) via the `rebaseline` skill | 📋 | 0.3.0 | committed after items 9–13 |
+| 19 | Prompt hashing: every report carries `promptHash` (feature system prompt, user template, judge rubrics); an edited prompt skips baseline regression checks | ✅ | 0.3.0 | `tests/unit/promptHash.test.ts` |
+| 20 | Token usage and cost per run, metered in the runner; `evals/prices.json`; optional `maxCostUsd` gate budget | ✅ | 0.3.0 | `tests/unit/usage.test.ts`, scorecard rows |
+| 21 | Review governance: PR template, `CODEOWNERS`, `CONTRIBUTING.md` | ✅ | 0.3.0 | files present, template used by new PRs |
+| 22 | Mutation testing (Stryker) on `evals/scorers` and `evals/runner`: coverage proves lines run, not that a wrong `>=` would be caught | 📋 | 0.4.0 | mutation score reported in CI |
+| 23 | Paired model comparison with a confidence interval on the difference, instead of two separate pass rates | 📋 | 0.4.0 | README live table shows the paired delta and CI |
+| 24 | Release tags + GitHub release with the SBOM attached (CHANGELOG says 0.2.0; git has no tags) | 📋 | 0.4.0 | `git tag` matches CHANGELOG |
+| 25 | Supply chain: gitleaks secret scan and a Trivy image scan in CI | 📋 | 0.4.0 | both jobs green on a PR |
+| 26 | ADRs under `docs/adr/` for the mock judge, the native Vertex client and the coverage gate | 📋 | 0.4.0 | one file per decision |
 | 15 | Generate the README scorecard table from `reports/` (`npm run readme:scorecard`; `make check` fails on drift) | ✅ | 0.3.0 | README table matches `scorecard.json` |
 | 16 | Refresh the graphify knowledge graph after each merged phase | 🔄 | ongoing | `graphify-out/` regenerated and committed |
 | 17 | Shared rate-limit store across replicas | ➖ | — | process-local by design; see non-goals |
@@ -123,13 +131,17 @@ The global standards are written for Python services. This repo applies them as 
 | Ruff `S` (bandit) | `eslint-plugin-security`, 0 warnings allowed |
 | Pydantic `frozen=True` | `readonly` contracts + Zod `.strict()` at the API boundary |
 | Pure deterministic core | `evals/scorers`, `evals/runner`, `src/lib/security` (no I/O, no env) |
+| Prompt and data provenance in every result | `datasetHash` + `promptHash` on each report; baseline skips when either moves |
+| Spend governance | Tokens metered per run, priced from `evals/prices.json`, optional `maxCostUsd` gate budget |
 | `uv` Dockerfile, UID 10001 | Multi-stage `node:22-alpine`, `USER 10001`, `HEALTHCHECK` |
 
 ## 9. Risks
 
 - Provider SDK churn (AI SDK v6, Gemini thought signatures): pin versions, let Dependabot raise PRs,
   and run `make check` plus one live run before merging a provider bump.
-- Live-mode cost: live eval is `workflow_dispatch` only and never cancels a run in progress.
+- Live-mode cost: live eval is `workflow_dispatch` only and never cancels a run in progress. Each
+  report carries its token counts and estimated cost; `evals/prices.json` is hand-maintained, so a
+  stale price shows as a wrong cost, and a missing one as `unpriced` rather than zero.
 - Seeded failures (`summarize/s05`, `extract/e04`, `rag/r06`, `classify/c06`) are asserted in unit
   and e2e tests. Change them together.
 

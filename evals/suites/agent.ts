@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { runAgent, type AgentResult } from "../../src/lib/ai/agent";
+import { AGENT_PROMPT, runAgent, type AgentResult } from "../../src/lib/ai/agent";
 import { contains, lengthBudget, toolCallMatch } from "../scorers/deterministic";
 import type { Suite } from "../runner/types";
 
@@ -17,6 +17,7 @@ export const agentSuite: Suite<Case, AgentResult> = {
   title: "Tool-calling agent",
   description: "Calls the right tools with the right arguments and reports their results.",
   caseSchema: agentCase,
+  promptSurface: [AGENT_PROMPT.system, AGENT_PROMPT.user],
   run: (model, c) => runAgent(model, { task: c.task }),
   async score({ case: c, output }) {
     return [

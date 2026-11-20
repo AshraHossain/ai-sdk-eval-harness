@@ -10,7 +10,8 @@ const kase = (id: string, runs: RunReport[], extra: Partial<CaseReport> = {}): C
   id, scoredRuns: runs.length, passRate: 1, ci95: { low: 0.5, high: 1 }, stability: "stable-pass", flakyScorers: [], meanScore: 1, scoreStdev: 0, flaky: false, runs, ...extra,
 });
 const suite = (name: string, cases: CaseReport[], passRate = 1): SuiteReport => ({
-  suite: name, title: name, mode: "mock", runsPerCase: 2, datasetVersion: "1", datasetHash: "h", model: "m", judgeModel: "j", startedAt: "", durationMs: 1, cases,
+  suite: name, title: name, mode: "mock", runsPerCase: 2, datasetVersion: "1", datasetHash: "h", promptHash: "p", model: "m", judgeModel: "j",
+  usage: { model: { inputTokens: 0, outputTokens: 0 }, judge: { inputTokens: 0, outputTokens: 0 }, costUsd: 0 }, startedAt: "", durationMs: 1, cases,
   summary: { cases: cases.length, passRate, meanScore: passRate, flakyCases: 0, flakeRate: 0, failingCases: 0, infraErrorRate: 0 },
 });
 const s = (name: string, pass: boolean, score = pass ? 1 : 0, infra = false): ScoreResult => ({ name, pass, score, ...(infra ? { infra } : {}) });
