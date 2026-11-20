@@ -5,10 +5,17 @@ against it and update it in the same change when scope or architecture moves.
 Then [AGENTS.md](AGENTS.md): commands, layout and invariants live there.
 Scoped rules load from `.claude/rules/` by path. Repo workflows: `/add-eval-suite`, `/rebaseline`.
 
+## Planning
+Plan non-trivial work with GSD (roadmap) → Superpowers (`brainstorming`, `writing-plans`) →
+Ruflo (parallel execution), as set out in [PLANNING.md](PLANNING.md). Update its backlog when an
+item ships or gets blocked. If a plugin is missing in the session, follow the same steps by hand.
+
 ## Repo specifics
-- `make check` is the pre-push bar. It must be green, including the per-file 80% coverage gate.
-- Providers: `anthropic:`, `openai:`, `bynara:`, `openrouter:`, `nim:` (OpenAI-compatible) and `vertex:`
-  (native client, ADC credentials + `GOOGLE_CLOUD_PROJECT`; not the OpenAI endpoint, which drops Gemini 3 thought signatures). `EVAL_MODEL` / `EVAL_JUDGE_MODEL` take `provider:model`.
+- `make check` is the pre-push bar. It must be green, including the per-file 95% coverage gate.
+- Providers: `anthropic:`, `openai:`, `bynara:`, `openrouter:`, `nim:` (the last three are
+  OpenAI-compatible) and `vertex:` (native client, ADC credentials + `GOOGLE_CLOUD_PROJECT`; not the
+  OpenAI endpoint, which drops Gemini 3 thought signatures). `EVAL_MODEL` / `EVAL_JUDGE_MODEL` take
+  `provider:model`.
 - The seeded flaky cases (`summarize/s05`, `extract/e04`, `rag/r06`) and the failing case
   (`classify/c06`) are asserted in `tests/unit/mockSuites.test.ts` and `tests/e2e/dashboard.spec.ts`.
   Change them together.

@@ -1,8 +1,8 @@
 # ai-sdk-eval-harness
 
 [![CI](https://github.com/AshraHossain/ai-sdk-eval-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/AshraHossain/ai-sdk-eval-harness/actions/workflows/ci.yml)
-![coverage](https://img.shields.io/badge/coverage-99%25%20lines%20%C2%B7%2096%25%20branches-brightgreen)
-![per-file gate](https://img.shields.io/badge/per--file%20coverage%20gate-80%25-blue)
+![coverage](https://img.shields.io/badge/coverage-99.8%25%20lines%20%C2%B7%20100%25%20branches-brightgreen)
+![per-file gate](https://img.shields.io/badge/per--file%20coverage%20gate-95%25-blue)
 ![Node](https://img.shields.io/badge/node-%E2%89%A520.9-339933?logo=node.js&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=next.js)
@@ -184,7 +184,7 @@ real providers, not a benchmark.
 
 ```bash
 npm ci
-make check               # lint + types + tests (per-file 80% coverage) + gate self-test + eval gate
+make check               # lint + types + tests (per-file 95% coverage) + gate self-test + eval gate
 npm test                 # unit tests (scorers, stats, runner, gate, datasets)
 npm run eval             # run all suites offline (N=5), write reports/, apply the gate
 npm run dev              # dashboard at http://localhost:3000
@@ -278,3 +278,7 @@ Details and the full threat table: [SECURITY.md](SECURITY.md).
 Every third-party Action is pinned to a full commit SHA, with the version in a comment, so a moved tag cannot change what CI runs. `main` is branch-protected: the three CI jobs must pass before a merge.
 
 Over HTTP, `POST /api/eval` is open in mock mode unless `API_AUTH_TOKEN` is set. In live mode it also needs `EVAL_API_ENABLED=true` and a bearer token matching `EVAL_API_TOKEN`, and runs one suite at a time.
+
+## Roadmap
+
+Goals, scope, open work, known gaps and the planning workflow (GSD → Superpowers → Ruflo) are in [PLANNING.md](PLANNING.md).

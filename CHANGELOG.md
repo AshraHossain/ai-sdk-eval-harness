@@ -4,13 +4,10 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 
 ## [Unreleased]
 
-### Added
-- `PLANNING.md`: goals, scope, non-goals, milestones, definition of done and a known-gaps backlog.
+## [0.2.0] - 2026-11-19
 
 ### Fixed
 - Architecture diagrams in README and ARCHITECTURE.md now list Vertex among the live backends.
-
-## [0.2.0] - 2026-11-18
 
 ### Added
 - Live comparison in the README: Claude Haiku 5.5 (Sonnet judge, calibrated) and Gemini 3.8 Flash, N=3.
@@ -27,7 +24,9 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 - `<untrusted_context>` framing for documents, tickets and invoices; `safeId()` for report paths.
 - Eval scorecard (`reports/scorecard.json`, summary.md): citation recall, grounding rate, guardrail pass
   rate, tool-call accuracy, p50/p95 latency.
-- Per-file 80% coverage gate (`npm run test:coverage`), integration tests, `eslint-plugin-security`.
+- Per-file coverage gate (`npm run test:coverage`), integration tests, `eslint-plugin-security`.
+  The gate is 95% lines/branches/functions/statements; every branch is covered.
+- `PLANNING.md`: goals, scope, non-goals, GSD → Superpowers → Ruflo workflow, definition of done, backlog and known gaps, global-rule mapping.
 - `Makefile` (`make check`), multi-stage non-root Dockerfile with HEALTHCHECK, `docker-compose.yml`,
   CI docker job and runtime dependency audit.
 - `AGENTS.md`, `GEMINI.md`, `.claude/rules`, `.claude/skills` (`add-eval-suite`, `rebaseline`),

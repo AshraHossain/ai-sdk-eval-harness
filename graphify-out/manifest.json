@@ -414,9 +414,9 @@
     "semantic_hash": ""
   },
   "vitest.config.ts": {
-    "mtime": 1794960353.9161158,
-    "seen": 1794967177.182045,
-    "ast_hash": "abd7b501494e7776058c7f4f22f298ce",
+    "mtime": 1795142619.8842747,
+    "seen": 1795142716.653304,
+    "ast_hash": "3970c93f6196c17586f92e46730000da",
     "semantic_hash": ""
   },
   ".claude/rules/api-edge.md": {
@@ -450,9 +450,9 @@
     "semantic_hash": ""
   },
   ".github/workflows/ci.yml": {
-    "mtime": 1795016298.6507971,
-    "seen": 1795016926.0233998,
-    "ast_hash": "d4cc059433c81436a3117c043ec76a59",
+    "mtime": 1795142619.8822925,
+    "seen": 1795142716.653307,
+    "ast_hash": "3abaad302c63cc736663eafcbd173143",
     "semantic_hash": ""
   },
   ".github/workflows/live-eval.yml": {
@@ -462,9 +462,9 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1795024235.7145941,
-    "seen": 1795024244.079654,
-    "ast_hash": "fc928bbea36ed7f73efb189d3d7772bc",
+    "mtime": 1795142686.7484972,
+    "seen": 1795142716.6533089,
+    "ast_hash": "a036fa861ea58646eb731f17e8238795",
     "semantic_hash": ""
   },
   "ARCHITECTURE.md": {
@@ -474,27 +474,27 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1795024241.6942036,
-    "seen": 1795024244.079655,
-    "ast_hash": "35d32e093120909141a29aae751b9d48",
+    "mtime": 1795142696.8544042,
+    "seen": 1795142716.65331,
+    "ast_hash": "75a6d07875526f7171affdabf9d360b1",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1795024229.2736025,
-    "seen": 1795024244.079655,
-    "ast_hash": "8e95d01cabde6df55bdf726752ba44be",
+    "mtime": 1795142687.3579273,
+    "seen": 1795142716.65331,
+    "ast_hash": "4e36da507cde6fd778565453430eb706",
     "semantic_hash": ""
   },
   "GEMINI.md": {
-    "mtime": 1794960353.8866887,
-    "seen": 1794967177.18205,
-    "ast_hash": "e1514004d8294e1df76f921cae34d4f6",
+    "mtime": 1795142619.8833573,
+    "seen": 1795142716.65331,
+    "ast_hash": "f76270e90621cf2e07ed2e04d13e2757",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1795024237.3628986,
-    "seen": 1795024244.079657,
-    "ast_hash": "76b6b19e05faa34f5c6b069e549af213",
+    "mtime": 1795142686.1399667,
+    "seen": 1795142716.653311,
+    "ast_hash": "727106c298d61ca727386489d47ba90a",
     "semantic_hash": ""
   },
   "SECURITY.md": {
@@ -528,9 +528,21 @@
     "semantic_hash": ""
   },
   "PLANNING.md": {
-    "mtime": 1795024228.7210138,
-    "seen": 1795024244.079656,
-    "ast_hash": "52b5fd361e610055ae718af606e211b2",
+    "mtime": 1795142685.5542603,
+    "seen": 1795142716.653311,
+    "ast_hash": "f76ad031372305805a4fd7854475803b",
+    "semantic_hash": ""
+  },
+  "tests/integration/cli-edges.test.ts": {
+    "mtime": 1795142619.884054,
+    "seen": 1795142716.6532962,
+    "ast_hash": "93db68c1b984d74e222894b072a14f16",
+    "semantic_hash": ""
+  },
+  "tests/unit/fallbacks.test.ts": {
+    "mtime": 1795142619.8841462,
+    "seen": 1795142716.6532989,
+    "ast_hash": "77bcc17ec84d44c57b92940cc41ccb39",
     "semantic_hash": ""
   }
 }

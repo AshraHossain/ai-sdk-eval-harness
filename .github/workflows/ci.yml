@@ -33,7 +33,7 @@ jobs:
       - name: Judge calibration (mock, report only)
         run: npm run eval:calibrate
       # make check = lint (0 warnings, incl. eslint-plugin-security) + typecheck
-      #   + unit/integration tests with a per-file 80% coverage gate
+      #   + unit/integration tests with a per-file 95% coverage gate
       #   + gate self-test (every injected fault must fail the gate)
       #   + offline eval gate (fixtures + mock judge, no API keys) -> reports/summary.md + scorecard.json
       - name: make check
