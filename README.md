@@ -140,6 +140,8 @@ Offline (mock) run, N=5 runs per case, from `npm run eval:gate` (`reports/scorec
 | Guardrail pass rate (rag) | 98.0% | Correct abstention when documents lack the answer |
 | Tool-call accuracy (agent) | 100.0% | Right tools, args and order |
 | Latency p50 / p95 per run | see `reports/scorecard.json` | Varies per run, so it is not copied here |
+| Tokens | 4500 in / 4500 out (judge: 1250 in / 1250 out) | Counted by middleware around the model, not estimated |
+| Cost | $0.0000 | Priced from `evals/prices.json`; "unpriced" when a model is missing there |
 
 | Suite | Cases | Pass rate | Flaky cases | Seeded cases | Gate |
 |---|---|---|---|---|---|
@@ -225,6 +227,7 @@ Notes from live runs:
 - When every run errors, the CLI prints `N/total runs errored. First error: ...`. "The requested model does not exist" means the model id is wrong. "Bad Gateway" means the router could not reach the upstream model, so try another model.
 - Free tiers (for example OpenRouter `:free` models) have daily request caps. One full run at N=5 makes about 200+ model calls (target + judge), so start with `--suite summarize --runs 1`.
 - `classify`, `extract` and `rag` need structured output, and `agent` needs tool calling. Models without these will fail those suites even if `summarize` passes.
+- Every report records the tokens it spent and an estimated cost from `evals/prices.json`. That table is hand-maintained: a model missing from it reports `unpriced` rather than zero. Set `maxCostUsd` in `evals/thresholds.json` to fail the gate on an over-budget run.
 
 PowerShell:
 
@@ -241,6 +244,8 @@ The dashboard's "Run suite" button and `POST /api/eval` use live providers only 
 ## How it works
 
 - **Datasets** — `evals/datasets/<suite>.jsonl`, one Zod-validated case per line; `manifest.json` carries a version and each report records a content hash.
+- **Provenance** — each report carries a `datasetHash` and a `promptHash`. The prompt hash covers every piece of text a suite can send: the feature's system prompt and user template (one `*_PROMPT` constant per feature in `src/lib/ai/`) plus its judge rubrics, declared as the suite's `promptSurface`. Baselines record both, so editing a prompt or a case skips the regression check instead of silently changing what the numbers compare.
+- **Usage and cost** — the runner wraps the model it hands to the system under test in counting middleware, so `src/lib/ai/` stays a pure `(model, input)` function with no metering in it. Tokens are tracked per run for the model and the judge separately; cost comes from `evals/prices.json`.
 - **Scorers** — `evals/scorers/`: `exactMatch`, `contains`, `notContains`, `matchesRegex`, `schemaValid`, `numericTolerance`, `toolCallMatch`, `lengthBudget`, and `llmJudge` (rubric → structured 1–5 score + rationale via `generateObject`). A run passes only if **every** scorer passes; judge passes at ≥ 4/5 by default.
 - **Runner** — `evals/runner/`: each case runs N times; reports pass rate, a Wilson 95% interval, mean score and σ per case, plus which scorers flipped between runs. A case is **flaky** when its pass rate is strictly between 0 and 1. Infrastructure errors (429, 5xx, timeouts) are tagged `infra` and kept out of pass rates and flaky detection; a case where every run hit one is `inconclusive`.
 - **Mock replay** — `evals/fixtures/<suite>.json` maps case id → list of recorded responses; run *i* uses entry `i mod len`, which is how flaky behavior is reproduced deterministically. A fixture is text, a structured object, or `{steps: [...]}` for tool-calling agents.

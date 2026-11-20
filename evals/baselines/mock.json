@@ -1,11 +1,12 @@
 {
-  "updatedAt": "2026-11-20T04:00:33.352Z",
+  "updatedAt": "2026-11-20T19:13:59.301Z",
   "mode": "mock",
   "model": "mock-fixture",
   "judgeModel": "mock-judge",
   "suites": {
     "summarize": {
       "datasetHash": "d96335fb0570",
+      "promptHash": "38d497e615da",
       "runsPerCase": 5,
       "passRate": 0.9867,
       "cases": {
@@ -28,6 +29,7 @@
     },
     "classify": {
       "datasetHash": "d488191aa19b",
+      "promptHash": "c10c82dfb199",
       "runsPerCase": 5,
       "passRate": 0.9333,
       "cases": {
@@ -50,6 +52,7 @@
     },
     "extract": {
       "datasetHash": "2a70f931e845",
+      "promptHash": "35c371252f24",
       "runsPerCase": 5,
       "passRate": 0.9867,
       "cases": {
@@ -72,6 +75,7 @@
     },
     "rag": {
       "datasetHash": "afa44c8b134b",
+      "promptHash": "3c754479a084",
       "runsPerCase": 5,
       "passRate": 0.9867,
       "cases": {
@@ -94,6 +98,7 @@
     },
     "agent": {
       "datasetHash": "cbdb12302659",
+      "promptHash": "f9b6e1ad7510",
       "runsPerCase": 5,
       "passRate": 1,
       "cases": {
