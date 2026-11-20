@@ -9,6 +9,8 @@ const limits = z.object({
   maxInfraErrorRate: z.number().min(0).max(1).default(0.1),
   /** Max allowed pass-rate drop vs. a compatible baseline. */
   maxRegression: z.number().min(0).max(1).default(0.05),
+  /** Spend budget for one suite run. Omitted = no budget; a suite with an unpriced model never trips it. */
+  maxCostUsd: z.number().positive().optional(),
 });
 export const thresholdsSchema = z.object({
   default: limits,
@@ -31,6 +33,8 @@ export const baselineSchema = z.object({
     z.string(),
     z.object({
       datasetHash: z.string(),
+      /** Absent in baselines recorded before prompt hashing; then the prompt check is skipped. */
+      promptHash: z.string().optional(),
       runsPerCase: z.number().int().positive(),
       passRate: z.number(),
       cases: z.record(z.string(), stability),
@@ -85,6 +89,7 @@ export function baselineMismatch(r: SuiteReport, b: Baseline): string | undefine
   const s = b.suites[r.suite];
   if (!s) return "no baseline for this suite";
   if (s.datasetHash !== r.datasetHash) return "dataset changed since baseline";
+  if (s.promptHash && s.promptHash !== r.promptHash) return "prompts changed since baseline";
   return undefined;
 }
 
@@ -101,6 +106,9 @@ export function evaluateGate(reports: SuiteReport[], thresholds: Thresholds, bas
     if (flakeRate > t.maxFlakeRate) failures.push(`flake rate ${pct(flakeRate)} > ${pct(t.maxFlakeRate)}`);
     if (r.summary.infraErrorRate > t.maxInfraErrorRate) {
       failures.push(`infra errors ${pct(r.summary.infraErrorRate)} > ${pct(t.maxInfraErrorRate)}`);
+    }
+    if (t.maxCostUsd !== undefined && r.usage.costUsd !== null && r.usage.costUsd > t.maxCostUsd) {
+      failures.push(`cost $${r.usage.costUsd.toFixed(2)} > budget $${t.maxCostUsd.toFixed(2)}`);
     }
 
     let regression: number | undefined;
@@ -144,6 +152,7 @@ export function baselineFrom(reports: SuiteReport[], previous?: Baseline, quaran
   for (const r of reports) {
     suites[r.suite] = {
       datasetHash: r.datasetHash,
+      promptHash: r.promptHash,
       runsPerCase: r.runsPerCase,
       passRate: gatedRates(r, quarantine).passRate,
       cases: Object.fromEntries(r.cases.map((c) => [c.id, c.stability])),

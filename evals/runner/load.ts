@@ -5,6 +5,7 @@ import { z } from "zod";
 import type { EvalCase, Suite } from "./types";
 import type { Fixture } from "../mock/mockModel";
 import { baselineSchema, thresholdsSchema, type Baseline, type Thresholds } from "./gate";
+import type { Prices } from "./usage";
 
 export const EVALS_DIR = path.join(process.cwd(), "evals");
 
@@ -45,6 +46,13 @@ export async function loadDataset<C extends EvalCase>(suite: Suite<C, unknown>, 
 
 export async function loadFixtures(suite: string, dir = EVALS_DIR): Promise<Record<string, Fixture[]>> {
   return JSON.parse(await readFile(path.join(dir, "fixtures", `${suite}.json`), "utf8"));
+}
+
+const priceSchema = z.record(z.string(), z.object({ inputPer1MUsd: z.number().nonnegative(), outputPer1MUsd: z.number().nonnegative() }));
+
+/** Published prices per million tokens, keyed by "provider:model". Hand-maintained; may be stale. */
+export async function loadPrices(dir = EVALS_DIR): Promise<Prices> {
+  return priceSchema.parse(JSON.parse(await readFile(path.join(dir, "prices.json"), "utf8")));
 }
 
 export async function loadThresholds(dir = EVALS_DIR): Promise<Thresholds> {

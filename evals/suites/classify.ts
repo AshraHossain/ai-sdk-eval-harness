@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { classificationSchema, classifyTicket, TICKET_LABELS, type Classification } from "../../src/lib/ai/classify";
+import { classificationSchema, classifyTicket, CLASSIFY_PROMPT, TICKET_LABELS, type Classification } from "../../src/lib/ai/classify";
 import { exactMatch, schemaValid } from "../scorers/deterministic";
 import type { Suite } from "../runner/types";
 
@@ -11,6 +11,7 @@ export const classifySuite: Suite<Case, Classification> = {
   title: "Ticket classification",
   description: "Support-ticket routing into billing / technical / account / other. Fully deterministic scoring.",
   caseSchema: classifyCase,
+  promptSurface: [CLASSIFY_PROMPT.system, CLASSIFY_PROMPT.user],
   run: (model, c) => classifyTicket(model, { text: c.text }),
   async score({ case: c, output }) {
     return [schemaValid("schema", output, classificationSchema), exactMatch("label", output.label, c.label)];

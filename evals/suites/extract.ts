@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { extractInvoice, invoiceSchema, type Invoice } from "../../src/lib/ai/extract";
+import { extractInvoice, EXTRACT_PROMPT, invoiceSchema, type Invoice } from "../../src/lib/ai/extract";
 import { exactMatch, numericTolerance, schemaValid } from "../scorers/deterministic";
 import type { Suite } from "../runner/types";
 
@@ -11,6 +11,7 @@ export const extractSuite: Suite<Case, Invoice> = {
   title: "Structured extraction",
   description: "Invoice fields -> typed object. Schema validity, exact fields and numeric tolerance.",
   caseSchema: extractCase,
+  promptSurface: [EXTRACT_PROMPT.system, EXTRACT_PROMPT.user],
   run: (model, c) => extractInvoice(model, { text: c.text }),
   async score({ case: c, output }) {
     return [

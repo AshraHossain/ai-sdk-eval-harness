@@ -4,6 +4,16 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 
 ## [Unreleased]
 
+### Added
+- `promptHash` on every report: a hash of each suite's prompt surface (feature system prompt, user
+  template and judge rubrics, declared as `Suite.promptSurface`). Baselines record it, and a changed
+  prompt skips the regression check the same way a changed dataset does. Prompt text now lives in one
+  `*_PROMPT` constant per feature, so the hash cannot drift from what is sent.
+- Token usage and estimated cost per run and per suite, metered by middleware the runner wraps around
+  the model, so `src/lib/ai/` stays provider- and metering-free. Prices come from `evals/prices.json`;
+  a model with no entry reports `unpriced` instead of zero. Optional `maxCostUsd` gate budget.
+- Review governance: pull request template, `CODEOWNERS`, `CONTRIBUTING.md`.
+
 ### Changed
 - Golden datasets grow from 6 to 15 cases per suite (manifest 1.1.0): negations and bad-news
   summaries, harder tickets, European number formats and written dates, multi-document citations, a
