@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 # Multi-stage build: dev dependencies, sources and the build cache stay in the build stage.
 
-FROM node:22-alpine AS build
+FROM node:26-alpine AS build
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1 NEXT_OUTPUT=standalone
 COPY package.json package-lock.json ./
@@ -9,7 +9,7 @@ RUN npm ci --no-audit --no-fund
 COPY . .
 RUN npm run build
 
-FROM node:22-alpine AS runtime
+FROM node:26-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
