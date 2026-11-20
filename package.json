@@ -25,9 +25,9 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.132",
-    "@ai-sdk/google-vertex": "^4.0.234",
-    "@ai-sdk/openai": "^3.0.129",
-    "ai": "^6.0.308",
+    "@ai-sdk/google-vertex": "^5.0.141",
+    "@ai-sdk/openai": "^4.0.118",
+    "ai": "^7.0.173",
     "next": "^15.5.29",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
