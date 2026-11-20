@@ -23,7 +23,7 @@ test("running a suite from the UI refreshes its report", async ({ page }) => {
   const card = page.getByTestId("suite-classify");
   await card.getByRole("button", { name: "Run classify suite" }).click();
   await expect(card.getByRole("button", { name: "Run classify suite" })).toBeEnabled();
-  await expect(card.getByTestId("pass-rate")).toHaveText("83.3%");
+  await expect(card.getByTestId("pass-rate")).toHaveText("93.3%");
 });
 
 test("API rejects unknown suites", async ({ request }) => {

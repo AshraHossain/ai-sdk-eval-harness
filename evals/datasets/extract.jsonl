@@ -4,3 +4,12 @@
 {"id": "e04", "text": "Initech Ltd invoice #442, amount payable 7,300 USD, net 30 from 2026-02-01 (due 2026-03-03).", "expected": {"vendor": "Initech Ltd", "total": 7300, "currency": "USD", "dueDate": "2026-03-03"}}
 {"id": "e05", "text": "Umbrella Corp. - 56,000 JPY - due 2026-04-10.", "expected": {"vendor": "Umbrella Corp.", "total": 56000, "currency": "JPY", "dueDate": "2026-04-10"}}
 {"id": "e06", "text": "Stark Supplies invoice: total $89.99 USD, due 2026-05-01.", "expected": {"vendor": "Stark Supplies", "total": 89.99, "currency": "USD", "dueDate": "2026-05-01"}}
+{"id": "e07", "text": "Rechnung von Müller & Söhne GmbH. Gesamtbetrag: 1.234,56 EUR. Fällig am 2026-06-30.", "expected": {"vendor": "Müller & Söhne GmbH", "total": 1234.56, "currency": "EUR", "dueDate": "2026-06-30"}}
+{"id": "e08", "text": "Hooli Inc. Subtotal $2,000.00, tax $160.00, total $2,160.00 USD. Due April 2, 2026.", "expected": {"vendor": "Hooli Inc.", "total": 2160, "currency": "USD", "dueDate": "2026-04-02"}}
+{"id": "e09", "text": "Pied Piper invoice, amount 450 CHF, payable on receipt.", "expected": {"vendor": "Pied Piper", "total": 450, "currency": "CHF", "dueDate": null}}
+{"id": "e10", "text": "Wayne Logistics - £3,499.00 GBP - due 2026-07-15.", "expected": {"vendor": "Wayne Logistics", "total": 3499, "currency": "GBP", "dueDate": "2026-07-15"}}
+{"id": "e11", "text": "Soylent Foods invoice. Total: 0.99 USD. Due 2026-02-28.", "expected": {"vendor": "Soylent Foods", "total": 0.99, "currency": "USD", "dueDate": "2026-02-28"}}
+{"id": "e12", "text": "Tyrell Corporation, total due 1,250,000 JPY by 2026-09-01.", "expected": {"vendor": "Tyrell Corporation", "total": 1250000, "currency": "JPY", "dueDate": "2026-09-01"}}
+{"id": "e13", "text": "Invoice #88 from Vandelay Industries. Previous balance paid. New charges: 615.40 USD. Due 2026-08-20.", "expected": {"vendor": "Vandelay Industries", "total": 615.4, "currency": "USD", "dueDate": "2026-08-20"}}
+{"id": "e14", "text": "Oceanic Air Cargo bill, 12,880.75 EUR, due 15 October 2026.", "expected": {"vendor": "Oceanic Air Cargo", "total": 12880.75, "currency": "EUR", "dueDate": "2026-10-15"}}
+{"id": "e15", "text": "Receipt: Blue Bottle Kiosk, 6.50 USD, thank you for your purchase.", "expected": {"vendor": "Blue Bottle Kiosk", "total": 6.5, "currency": "USD", "dueDate": null}}

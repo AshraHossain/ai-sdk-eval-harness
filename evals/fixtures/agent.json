@@ -114,5 +114,202 @@
   ],
   "a06": [
     "Hello, nice to meet you!"
+  ],
+  "a07": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "convertCurrency",
+              "args": {
+                "amount": 50,
+                "from": "EUR",
+                "to": "USD"
+              }
+            }
+          ]
+        },
+        {
+          "text": "50 EUR is 55 USD."
+        }
+      ]
+    }
+  ],
+  "a08": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "convertCurrency",
+              "args": {
+                "amount": 20,
+                "from": "USD",
+                "to": "JPY"
+              }
+            }
+          ]
+        },
+        {
+          "text": "20 USD is 3000 JPY."
+        }
+      ]
+    }
+  ],
+  "a09": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "lookupOrder",
+              "args": {
+                "orderId": "A-200"
+              }
+            }
+          ]
+        },
+        {
+          "text": "Order A-200 is still processing and should arrive in about 5 days."
+        }
+      ]
+    }
+  ],
+  "a10": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "getWeather",
+              "args": {
+                "city": "Tokyo"
+              }
+            }
+          ]
+        },
+        {
+          "text": "Yes, it is sunny in Tokyo at 24C."
+        }
+      ]
+    }
+  ],
+  "a11": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "lookupOrder",
+              "args": {
+                "orderId": "A-999"
+              }
+            }
+          ]
+        },
+        {
+          "text": "Order A-999 was not found. Please check the order number."
+        }
+      ]
+    }
+  ],
+  "a12": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "lookupOrder",
+              "args": {
+                "orderId": "A-100"
+              }
+            }
+          ]
+        },
+        {
+          "toolCalls": [
+            {
+              "name": "convertCurrency",
+              "args": {
+                "amount": 100,
+                "from": "USD",
+                "to": "JPY"
+              }
+            }
+          ]
+        },
+        {
+          "text": "Order A-100 has shipped. 100 USD is 15000 JPY."
+        }
+      ]
+    }
+  ],
+  "a13": [
+    {
+      "steps": [
+        {
+          "text": "2 plus 2 is 4."
+        }
+      ]
+    }
+  ],
+  "a14": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "getWeather",
+              "args": {
+                "city": "Paris"
+              }
+            },
+            {
+              "name": "getWeather",
+              "args": {
+                "city": "Tokyo"
+              }
+            },
+            {
+              "name": "getWeather",
+              "args": {
+                "city": "Oslo"
+              }
+            }
+          ]
+        },
+        {
+          "text": "Paris is cloudy at 18C, Tokyo is sunny at 24C, and Oslo has snow at 5C."
+        }
+      ]
+    }
+  ],
+  "a15": [
+    {
+      "steps": [
+        {
+          "toolCalls": [
+            {
+              "name": "convertCurrency",
+              "args": {
+                "amount": 200,
+                "from": "USD",
+                "to": "EUR"
+              }
+            },
+            {
+              "name": "getWeather",
+              "args": {
+                "city": "Oslo"
+              }
+            }
+          ]
+        },
+        {
+          "text": "200 USD is 180 EUR, and yes, it is snowing in Oslo at 5C."
+        }
+      ]
+    }
   ]
 }

@@ -1,5 +1,5 @@
 # One entry point for local checks and CI. Offline: no API keys needed.
-.PHONY: audit install lint typecheck test coverage eval selftest calibrate check e2e docker clean
+.PHONY: audit install lint typecheck test coverage eval readme-check selftest calibrate check e2e docker clean
 
 install:
 	npm ci
@@ -28,8 +28,13 @@ calibrate:
 eval:
 	npm run eval:gate
 
+# README scorecard tables must match reports/ (regenerate with npm run readme:scorecard)
+readme-check:
+	npm run readme:scorecard -- --check
+
 # lint + types + tests with the per-file coverage gate + gate self-test + offline eval gate (writes reports/)
-check: lint typecheck coverage selftest eval
+# + README scorecard drift check
+check: lint typecheck coverage selftest eval readme-check
 
 e2e:
 	npm run e2e
