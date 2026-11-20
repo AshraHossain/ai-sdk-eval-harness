@@ -4,3 +4,12 @@
 {"id": "a04", "task": "Compare the weather in Tokyo and Oslo.", "expectedCalls": [{"name": "getWeather", "args": {"city": "Tokyo"}}, {"name": "getWeather", "args": {"city": "Oslo"}}], "ordered": false, "answerContains": ["24", "snow"]}
 {"id": "a05", "task": "Check order A-200, then tell me the weather in Oslo.", "expectedCalls": [{"name": "lookupOrder", "args": {"orderId": "A-200"}}, {"name": "getWeather", "args": {"city": "Oslo"}}], "ordered": true, "answerContains": ["processing", "snow"]}
 {"id": "a06", "task": "Say hello in one short sentence.", "expectedCalls": [], "ordered": false, "answerContains": ["hello"]}
+{"id": "a07", "task": "Convert 50 EUR to USD.", "expectedCalls": [{"name": "convertCurrency", "args": {"amount": 50, "from": "EUR", "to": "USD"}}], "ordered": false, "answerContains": ["55"]}
+{"id": "a08", "task": "How many yen is 20 USD?", "expectedCalls": [{"name": "convertCurrency", "args": {"amount": 20, "from": "USD", "to": "JPY"}}], "ordered": false, "answerContains": ["3000"]}
+{"id": "a09", "task": "What's the status of order A-200?", "expectedCalls": [{"name": "lookupOrder", "args": {"orderId": "A-200"}}], "ordered": false, "answerContains": ["processing"]}
+{"id": "a10", "task": "Is it sunny in Tokyo?", "expectedCalls": [{"name": "getWeather", "args": {"city": "Tokyo"}}], "ordered": false, "answerContains": ["sunny"]}
+{"id": "a11", "task": "Where is order A-999?", "expectedCalls": [{"name": "lookupOrder", "args": {"orderId": "A-999"}}], "ordered": false, "answerContains": ["not found"]}
+{"id": "a12", "task": "Look up order A-100, then convert 100 USD to JPY.", "expectedCalls": [{"name": "lookupOrder", "args": {"orderId": "A-100"}},{"name": "convertCurrency", "args": {"amount": 100, "from": "USD", "to": "JPY"}}], "ordered": true, "answerContains": ["shipped", "15000"]}
+{"id": "a13", "task": "What is 2 plus 2? Answer without using any tools.", "expectedCalls": [], "ordered": false, "answerContains": ["4"]}
+{"id": "a14", "task": "Give me the weather in Paris, Tokyo and Oslo.", "expectedCalls": [{"name": "getWeather", "args": {"city": "Paris"}},{"name": "getWeather", "args": {"city": "Tokyo"}},{"name": "getWeather", "args": {"city": "Oslo"}}], "ordered": false, "answerContains": ["cloudy", "sunny", "snow"]}
+{"id": "a15", "task": "Convert 200 USD to EUR and tell me if it is snowing in Oslo.", "expectedCalls": [{"name": "convertCurrency", "args": {"amount": 200, "from": "USD", "to": "EUR"}},{"name": "getWeather", "args": {"city": "Oslo"}}], "ordered": false, "answerContains": ["180", "snow"]}

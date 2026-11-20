@@ -70,5 +70,81 @@
       "answer": "I don't know",
       "citations": []
     }
+  ],
+  "r07": [
+    {
+      "answerable": true,
+      "answer": "Employees get 25 days of paid vacation per year.",
+      "citations": [
+        "h1"
+      ]
+    }
+  ],
+  "r08": [
+    {
+      "answerable": true,
+      "answer": "Employees get 25 vacation days per year and can carry unused days over until March 31.",
+      "citations": [
+        "h1",
+        "h2"
+      ]
+    }
+  ],
+  "r09": [
+    {
+      "answerable": false,
+      "answer": "I don't know",
+      "citations": []
+    }
+  ],
+  "r10": [
+    {
+      "answerable": true,
+      "answer": "Passwords must be at least 12 characters long.",
+      "citations": [
+        "s1"
+      ]
+    }
+  ],
+  "r11": [
+    {
+      "answerable": true,
+      "answer": "Accounts lock after 5 failed login attempts.",
+      "citations": [
+        "s2"
+      ]
+    }
+  ],
+  "r12": [
+    {
+      "answerable": false,
+      "answer": "I don't know",
+      "citations": []
+    }
+  ],
+  "r13": [
+    {
+      "answerable": true,
+      "answer": "Refunds are accepted within 14 days of delivery.",
+      "citations": [
+        "x2"
+      ]
+    }
+  ],
+  "r14": [
+    {
+      "answerable": true,
+      "answer": "EU customer data is hosted in the Frankfurt region.",
+      "citations": [
+        "g1"
+      ]
+    }
+  ],
+  "r15": [
+    {
+      "answerable": false,
+      "answer": "I don't know",
+      "citations": []
+    }
   ]
 }

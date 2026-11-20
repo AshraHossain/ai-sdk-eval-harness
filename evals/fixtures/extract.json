@@ -70,5 +70,77 @@
       "currency": "USD",
       "dueDate": "2026-05-01"
     }
+  ],
+  "e07": [
+    {
+      "vendor": "Müller & Söhne GmbH",
+      "total": 1234.56,
+      "currency": "EUR",
+      "dueDate": "2026-06-30"
+    }
+  ],
+  "e08": [
+    {
+      "vendor": "Hooli Inc.",
+      "total": 2160,
+      "currency": "USD",
+      "dueDate": "2026-04-02"
+    }
+  ],
+  "e09": [
+    {
+      "vendor": "Pied Piper",
+      "total": 450,
+      "currency": "CHF",
+      "dueDate": null
+    }
+  ],
+  "e10": [
+    {
+      "vendor": "Wayne Logistics",
+      "total": 3499,
+      "currency": "GBP",
+      "dueDate": "2026-07-15"
+    }
+  ],
+  "e11": [
+    {
+      "vendor": "Soylent Foods",
+      "total": 0.99,
+      "currency": "USD",
+      "dueDate": "2026-02-28"
+    }
+  ],
+  "e12": [
+    {
+      "vendor": "Tyrell Corporation",
+      "total": 1250000,
+      "currency": "JPY",
+      "dueDate": "2026-09-01"
+    }
+  ],
+  "e13": [
+    {
+      "vendor": "Vandelay Industries",
+      "total": 615.4,
+      "currency": "USD",
+      "dueDate": "2026-08-20"
+    }
+  ],
+  "e14": [
+    {
+      "vendor": "Oceanic Air Cargo",
+      "total": 12880.75,
+      "currency": "EUR",
+      "dueDate": "2026-10-15"
+    }
+  ],
+  "e15": [
+    {
+      "vendor": "Blue Bottle Kiosk",
+      "total": 6.5,
+      "currency": "USD",
+      "dueDate": null
+    }
   ]
 }

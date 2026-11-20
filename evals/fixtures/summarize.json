@@ -20,5 +20,32 @@
   ],
   "s06": [
     "The city council approved $8 million to repair the Harbor Street bridge. Work starts in September, closing one lane for about ten months, and should extend the bridge's life by 30 years."
+  ],
+  "s07": [
+    "A leaked API key exposed 1,200 customer records on May 9. It was revoked within two hours, affected customers were notified, and secret scanning is now required on every repository."
+  ],
+  "s08": [
+    "In a 400-patient trial the inhaler cut severe asthma attacks by 31 percent versus placebo, side effects were mild, and the company will file for approval next year."
+  ],
+  "s09": [
+    "From July 1 employees may work remotely up to three days a week, with Tuesday kept as a shared office day; managers will review the policy after six months."
+  ],
+  "s10": [
+    "BrightHome is recalling 15,000 space heaters sold October to December because a faulty switch can overheat. Owners should stop using them and request a free replacement online."
+  ],
+  "s11": [
+    "The Rovers beat City 3-1 on Saturday to reach the cup final, with Ana Ruiz scoring twice. The final is on May 24 in Lisbon."
+  ],
+  "s12": [
+    "A coastal storm warning starts Friday evening with winds up to 110 km/h. Ferries are cancelled until Saturday noon and residents should secure loose objects."
+  ],
+  "s13": [
+    "Retrieval-augmented models with a reranker answer 12 points more medical QA questions correctly, but only 4 points without the reranker. Code and data are released."
+  ],
+  "s14": [
+    "The team decided not to ship the beta to all users this quarter. It stays limited to 500 design partners until error rates fall below 1 percent."
+  ],
+  "s15": [
+    "Orbit Retail's quarterly sales were $310 million, down 8 percent on weak holiday demand. It cut 200 jobs and withdrew its full-year forecast."
   ]
 }

@@ -4,3 +4,12 @@
 {"id": "c04", "text": "Do you have a partnership program for design agencies?", "label": "other"}
 {"id": "c05", "text": "My invoice shows the wrong VAT number, can you reissue it?", "label": "billing"}
 {"id": "c06", "text": "How do I change the email address on my profile?", "label": "account"}
+{"id": "c07", "text": "Your website charged my card in USD but I selected EUR at checkout.", "label": "billing"}
+{"id": "c08", "text": "Webhooks to our endpoint have been timing out since this morning's update.", "label": "technical"}
+{"id": "c09", "text": "Please delete my account and all personal data you hold about me.", "label": "account"}
+{"id": "c10", "text": "Are you hiring backend engineers in Berlin?", "label": "other"}
+{"id": "c11", "text": "Can I switch from monthly to annual billing and get the discount?", "label": "billing"}
+{"id": "c12", "text": "The API returns 500 errors when I upload files larger than 10 MB.", "label": "technical"}
+{"id": "c13", "text": "I want to add two-factor authentication to my login.", "label": "account"}
+{"id": "c14", "text": "Just wanted to say your support team was fantastic, thanks!", "label": "other"}
+{"id": "c15", "text": "Two-factor codes from the authenticator app are always rejected as invalid, even right after syncing the clock.", "label": "technical"}
