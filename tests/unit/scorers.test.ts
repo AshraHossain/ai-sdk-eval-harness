@@ -20,6 +20,12 @@ describe("contains / notContains", () => {
   it("supports any-mode", () => expect(contains("x", "The cat", ["cat", "dog"], { mode: "any" }).pass).toBe(true));
   it("passes on empty needle list", () => expect(contains("x", "", []).pass).toBe(true));
   it("flags forbidden text", () => expect(notContains("x", "I am sure", ["sure"]).pass).toBe(false));
+  it("treats en/em dash as a hyphen", () => expect(contains("x", "takes 3–5 days", ["3-5 days"]).pass).toBe(true));
+  it("treats a percent sign as the word percent", () => expect(contains("x", "up 15% YoY", ["15 percent"]).pass).toBe(true));
+  it("treats rollback, roll back and rolled back as the same word", () => {
+    expect(contains("x", "a rollback at 14:12", ["rolled back"]).pass).toBe(true);
+    expect(contains("x", "we rolled back the change", ["rollback"]).pass).toBe(true);
+  });
 });
 
 describe("matchesRegex", () => {

@@ -18,10 +18,20 @@ export function exactMatch(name: string, actual: string, expected: string, opts:
   return result(name, pass, pass ? undefined : `expected "${expected}", got "${actual}"`);
 }
 
+/**
+ * Canonicalize surface variants that carry the same meaning: dash glyphs, "%" vs "percent",
+ * and "rollback"/"roll back"/"rolled back". Keeps `contains()` checking content, not formatting.
+ */
+const canonical = (s: string): string =>
+  s
+    .replace(/[‐-―−]/g, "-")
+    .replace(/(\d+)\s*%/g, "$1 percent")
+    .replace(/\broll(?:ed)?\s*back\b/gi, "rollback");
+
 /** Passes when all (default) or any needles appear in the text, case-insensitively. */
 export function contains(name: string, text: string, needles: string[], opts: { mode?: "all" | "any" } = {}): ScoreResult {
-  const hay = text.toLowerCase();
-  const hits = needles.filter((n) => hay.includes(n.toLowerCase()));
+  const hay = canonical(text).toLowerCase();
+  const hits = needles.filter((n) => hay.includes(canonical(n).toLowerCase()));
   const pass = needles.length === 0 || (opts.mode === "any" ? hits.length > 0 : hits.length === needles.length);
   const missing = needles.filter((n) => !hits.includes(n));
   return result(name, pass, pass ? undefined : `missing: ${missing.join(", ")}`, needles.length ? hits.length / needles.length : 1);
