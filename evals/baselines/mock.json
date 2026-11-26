@@ -1,63 +1,99 @@
 {
-  "updatedAt": "2026-10-29T20:16:46.089Z",
+  "updatedAt": "2026-11-20T04:00:33.352Z",
   "mode": "mock",
   "model": "mock-fixture",
   "judgeModel": "mock-judge",
   "suites": {
     "summarize": {
-      "datasetHash": "c5d7a6a5cd8f",
+      "datasetHash": "d96335fb0570",
       "runsPerCase": 5,
-      "passRate": 0.9667,
+      "passRate": 0.9867,
       "cases": {
         "s01": "stable-pass",
         "s02": "stable-pass",
         "s03": "stable-pass",
         "s04": "stable-pass",
         "s05": "flaky",
-        "s06": "stable-pass"
+        "s06": "stable-pass",
+        "s07": "stable-pass",
+        "s08": "stable-pass",
+        "s09": "stable-pass",
+        "s10": "stable-pass",
+        "s11": "stable-pass",
+        "s12": "stable-pass",
+        "s13": "stable-pass",
+        "s14": "stable-pass",
+        "s15": "stable-pass"
       }
     },
     "classify": {
-      "datasetHash": "1a054c044752",
+      "datasetHash": "d488191aa19b",
       "runsPerCase": 5,
-      "passRate": 0.8333,
+      "passRate": 0.9333,
       "cases": {
         "c01": "stable-pass",
         "c02": "stable-pass",
         "c03": "stable-pass",
         "c04": "stable-pass",
         "c05": "stable-pass",
-        "c06": "stable-fail"
+        "c06": "stable-fail",
+        "c07": "stable-pass",
+        "c08": "stable-pass",
+        "c09": "stable-pass",
+        "c10": "stable-pass",
+        "c11": "stable-pass",
+        "c12": "stable-pass",
+        "c13": "stable-pass",
+        "c14": "stable-pass",
+        "c15": "stable-pass"
       }
     },
     "extract": {
-      "datasetHash": "2177a54456b2",
+      "datasetHash": "2a70f931e845",
       "runsPerCase": 5,
-      "passRate": 0.9667,
+      "passRate": 0.9867,
       "cases": {
         "e01": "stable-pass",
         "e02": "stable-pass",
         "e03": "stable-pass",
         "e04": "flaky",
         "e05": "stable-pass",
-        "e06": "stable-pass"
+        "e06": "stable-pass",
+        "e07": "stable-pass",
+        "e08": "stable-pass",
+        "e09": "stable-pass",
+        "e10": "stable-pass",
+        "e11": "stable-pass",
+        "e12": "stable-pass",
+        "e13": "stable-pass",
+        "e14": "stable-pass",
+        "e15": "stable-pass"
       }
     },
     "rag": {
-      "datasetHash": "c60468356be1",
+      "datasetHash": "afa44c8b134b",
       "runsPerCase": 5,
-      "passRate": 0.9667,
+      "passRate": 0.9867,
       "cases": {
         "r01": "stable-pass",
         "r02": "stable-pass",
         "r03": "stable-pass",
         "r04": "stable-pass",
         "r05": "stable-pass",
-        "r06": "flaky"
+        "r06": "flaky",
+        "r07": "stable-pass",
+        "r08": "stable-pass",
+        "r09": "stable-pass",
+        "r10": "stable-pass",
+        "r11": "stable-pass",
+        "r12": "stable-pass",
+        "r13": "stable-pass",
+        "r14": "stable-pass",
+        "r15": "stable-pass"
       }
     },
     "agent": {
-      "datasetHash": "35ea59e2020d",
+      "datasetHash": "cbdb12302659",
       "runsPerCase": 5,
       "passRate": 1,
       "cases": {
@@ -66,7 +102,16 @@
         "a03": "stable-pass",
         "a04": "stable-pass",
         "a05": "stable-pass",
-        "a06": "stable-pass"
+        "a06": "stable-pass",
+        "a07": "stable-pass",
+        "a08": "stable-pass",
+        "a09": "stable-pass",
+        "a10": "stable-pass",
+        "a11": "stable-pass",
+        "a12": "stable-pass",
+        "a13": "stable-pass",
+        "a14": "stable-pass",
+        "a15": "stable-pass"
       }
     }
   }

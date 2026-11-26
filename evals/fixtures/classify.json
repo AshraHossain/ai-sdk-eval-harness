@@ -34,5 +34,59 @@
       "label": "technical",
       "confidence": 0.61
     }
+  ],
+  "c07": [
+    {
+      "label": "billing",
+      "confidence": 0.9
+    }
+  ],
+  "c08": [
+    {
+      "label": "technical",
+      "confidence": 0.9
+    }
+  ],
+  "c09": [
+    {
+      "label": "account",
+      "confidence": 0.9
+    }
+  ],
+  "c10": [
+    {
+      "label": "other",
+      "confidence": 0.9
+    }
+  ],
+  "c11": [
+    {
+      "label": "billing",
+      "confidence": 0.9
+    }
+  ],
+  "c12": [
+    {
+      "label": "technical",
+      "confidence": 0.9
+    }
+  ],
+  "c13": [
+    {
+      "label": "account",
+      "confidence": 0.9
+    }
+  ],
+  "c14": [
+    {
+      "label": "other",
+      "confidence": 0.9
+    }
+  ],
+  "c15": [
+    {
+      "label": "technical",
+      "confidence": 0.9
+    }
   ]
 }

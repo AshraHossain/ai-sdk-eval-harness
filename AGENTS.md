@@ -20,6 +20,7 @@ npm run test:coverage      # same, with the per-file coverage gate
 npm run eval:gate          # all suites, mock mode, N=5 -> reports/{<suite>,scorecard}.json, summary.md
 npm run eval:selftest      # the gate must fail on every injected fault
 npm run eval:calibrate     # judge vs. human labels (fails only for a live judge)
+npm run readme:scorecard   # regenerate the README scorecard from reports/ (make check runs --check)
 npm run e2e                # Playwright; set PW_CHROMIUM_PATH to use a preinstalled Chromium
 npm run build && make docker
 EVAL_MODE=live npm run eval -- --runs 3   # real providers; keys from env (see .env.example)
