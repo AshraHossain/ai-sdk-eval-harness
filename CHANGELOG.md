@@ -13,16 +13,14 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
   the model, so `src/lib/ai/` stays provider- and metering-free. Prices come from `evals/prices.json`;
   a model with no entry reports `unpriced` instead of zero. Optional `maxCostUsd` gate budget.
 - Review governance: pull request template, `CODEOWNERS`, `CONTRIBUTING.md`.
+- `npm run readme:scorecard` generates the README scorecard tables from `reports/`; `make check`
+  fails when they drift (`readme-check`).
 
 ### Changed
 - Golden datasets grow from 6 to 15 cases per suite (manifest 1.1.0): negations and bad-news
   summaries, harder tickets, European number formats and written dates, multi-document citations, a
   prompt-injection document, unknown orders and no-tool agent tasks. One case now moves a suite 6.7
   points instead of ~17. Mock baseline re-recorded.
-
-### Added
-- `npm run readme:scorecard` generates the README scorecard tables from `reports/`; `make check`
-  fails when they drift (`readme-check`).
 
 ### Fixed
 - `contains()` scorer now canonicalizes dash glyphs, "%" vs "percent", and rollback/roll
