@@ -14,6 +14,10 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 - `npm run readme:scorecard` generates the README scorecard tables from `reports/`; `make check`
   fails when they drift (`readme-check`).
 
+### Fixed
+- `contains()` scorer now canonicalizes dash glyphs, "%" vs "percent", and rollback/roll
+  back/rolled back before comparing, so summarize and rag cases score content, not formatting.
+
 ## [0.2.0] - 2026-11-19
 
 ### Fixed
