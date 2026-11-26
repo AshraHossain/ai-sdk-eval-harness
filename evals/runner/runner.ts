@@ -1,6 +1,7 @@
 import type { LanguageModel } from "ai";
 import { mean, round, stdev, isFlaky, classifyStability, wilsonInterval, DEFAULT_FLAKY_BOUNDS, type FlakyBounds } from "./stats";
 import { errorText, isInfraError } from "./errors";
+import { addCosts, createUsageMeter, estimateCostUsd, NO_TOKENS, type Prices, type TokenCounts } from "./usage";
 import type { CaseReport, EvalCase, RunReport, Suite, SuiteReport } from "./types";
 import type { ScoreResult } from "../scorers/types";
 
@@ -12,7 +13,9 @@ export interface RunSuiteOptions<C extends EvalCase> {
   /** Builds the model for a given case/run (mock mode replays fixtures per run). */
   modelFor: (c: C, run: number) => LanguageModel;
   judge: LanguageModel;
-  meta: { mode: "mock" | "live"; datasetVersion: string; datasetHash: string; model: string; judgeModel: string };
+  meta: { mode: "mock" | "live"; datasetVersion: string; datasetHash: string; promptHash: string; model: string; judgeModel: string };
+  /** "provider:model" -> price per million tokens. Missing entries make cost null, never zero. */
+  prices?: Prices;
   flakyBounds?: FlakyBounds;
   concurrency?: number;
 }
@@ -23,9 +26,12 @@ async function runOnce<C extends EvalCase>(o: RunSuiteOptions<C>, c: C, run: num
   let output: unknown;
   let error: string | undefined;
   let infra = false;
+  // A meter per run, because runSuite works several cases at once.
+  const modelMeter = createUsageMeter();
+  const judgeMeter = createUsageMeter();
   try {
-    output = await o.suite.run(o.modelFor(c, run), c);
-    scores = await o.suite.score({ case: c, output, judge: o.judge });
+    output = await o.suite.run(modelMeter.meter(o.modelFor(c, run)), c);
+    scores = await o.suite.score({ case: c, output, judge: judgeMeter.meter(o.judge) });
   } catch (err) {
     error = errorText(err);
     infra = isInfraError(err);
@@ -41,6 +47,7 @@ async function runOnce<C extends EvalCase>(o: RunSuiteOptions<C>, c: C, run: num
     error,
     ...(infra ? { infra } : {}),
     latencyMs: Math.round(performance.now() - t0),
+    usage: { model: modelMeter.counts(), judge: judgeMeter.counts() },
   };
 }
 
@@ -102,6 +109,17 @@ export async function runSuite<C extends EvalCase>(o: RunSuiteOptions<C>): Promi
 
   const flaky = cases.filter((c) => c.flaky).length;
   const allRuns = cases.flatMap((c) => c.runs);
+  const prices = o.prices ?? {};
+  const totalTokens = (pick: (r: RunReport) => TokenCounts | undefined): TokenCounts =>
+    allRuns.reduce<TokenCounts>(
+      (acc, r) => ({
+        inputTokens: acc.inputTokens + (pick(r)?.inputTokens ?? 0),
+        outputTokens: acc.outputTokens + (pick(r)?.outputTokens ?? 0),
+      }),
+      NO_TOKENS,
+    );
+  const modelTokens = totalTokens((r) => r.usage?.model);
+  const judgeTokens = totalTokens((r) => r.usage?.judge);
   // Cases with no scored runs carry no quality signal; leave them out of the means.
   const scoredCases = cases.filter((c) => c.scoredRuns > 0);
   return {
@@ -111,6 +129,7 @@ export async function runSuite<C extends EvalCase>(o: RunSuiteOptions<C>): Promi
     runsPerCase: o.runs,
     datasetVersion: o.meta.datasetVersion,
     datasetHash: o.meta.datasetHash,
+    promptHash: o.meta.promptHash,
     model: o.meta.model,
     judgeModel: o.meta.judgeModel,
     startedAt: started.toISOString(),
@@ -123,6 +142,11 @@ export async function runSuite<C extends EvalCase>(o: RunSuiteOptions<C>): Promi
       flakeRate: round(cases.length ? flaky / cases.length : 0),
       failingCases: cases.filter((c) => c.stability === "stable-fail").length,
       infraErrorRate: round(allRuns.length ? allRuns.filter((r) => r.infra).length / allRuns.length : 0),
+    },
+    usage: {
+      model: modelTokens,
+      judge: judgeTokens,
+      costUsd: addCosts(estimateCostUsd(o.meta.model, modelTokens, prices), estimateCostUsd(o.meta.judgeModel, judgeTokens, prices)),
     },
     cases,
   };

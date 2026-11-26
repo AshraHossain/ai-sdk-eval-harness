@@ -2,6 +2,7 @@ import type { ZodType } from "zod";
 import type { LanguageModel } from "ai";
 import type { ScoreResult } from "../scorers/types";
 import type { Interval, Stability } from "./stats";
+import type { TokenCounts } from "./usage";
 
 export interface EvalCase {
   readonly id: string;
@@ -12,6 +13,11 @@ export interface Suite<C extends EvalCase = EvalCase, O = unknown> {
   readonly title: string;
   readonly description: string;
   readonly caseSchema: ZodType<C>;
+  /**
+   * Every piece of prompt text this suite can send: feature system prompt, user template and any
+   * judge rubric. Hashed into each report as `promptHash`, so editing a prompt is visible.
+   */
+  readonly promptSurface: readonly string[];
   /** Runs the system under test for one case. */
   run(model: LanguageModel, c: C): Promise<O>;
   /** Scores one output. `judge` is always provided; scorers decide whether to use it. */
@@ -29,6 +35,8 @@ export interface RunReport {
   /** Failed for infrastructure reasons; excluded from pass rates and flaky detection. */
   readonly infra?: boolean;
   readonly latencyMs: number;
+  /** Tokens this run spent on the system under test and, separately, on the judge. */
+  readonly usage?: { readonly model: TokenCounts; readonly judge: TokenCounts };
 }
 
 export interface CaseReport {
@@ -65,10 +73,18 @@ export interface SuiteReport {
   readonly runsPerCase: number;
   readonly datasetVersion: string;
   readonly datasetHash: string;
+  /** Hash of the suite's prompt surface; see evals/runner/prompts.ts. */
+  readonly promptHash: string;
   readonly model: string;
   readonly judgeModel: string;
   readonly startedAt: string;
   readonly durationMs: number;
   readonly summary: SuiteSummary;
+  /** Tokens and cost for the whole suite. `costUsd` is null when a model has no price entry. */
+  readonly usage: {
+    readonly model: TokenCounts;
+    readonly judge: TokenCounts;
+    readonly costUsd: number | null;
+  };
   readonly cases: readonly CaseReport[];
 }

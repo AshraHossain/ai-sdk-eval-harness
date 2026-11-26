@@ -1,0 +1,21 @@
+# Every change needs a review from the owner. Paths are listed so GitHub shows
+# which part of the system a PR touches, not to spread ownership.
+* @AshraHossain
+
+# System under test and its security helpers.
+/src/                       @AshraHossain
+/middleware.ts              @AshraHossain
+
+# Pass/fail authority: scorers, runner, gate, thresholds, baselines.
+/evals/                     @AshraHossain
+/scripts/                   @AshraHossain
+
+# Supply chain and CI.
+/.github/                   @AshraHossain
+/Dockerfile                 @AshraHossain
+/package-lock.json          @AshraHossain
+
+# Source of truth for scope and invariants.
+/PLANNING.md                @AshraHossain
+/AGENTS.md                  @AshraHossain
+/SECURITY.md                @AshraHossain

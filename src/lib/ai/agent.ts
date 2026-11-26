@@ -1,5 +1,6 @@
 import { generateText, stepCountIs, tool, type LanguageModel } from "ai";
 import { z } from "zod";
+import { render, type FeaturePrompt } from "./prompt";
 
 const WEATHER: Record<string, { tempC: number; conditions: string }> = {
   paris: { tempC: 18, conditions: "cloudy" },
@@ -39,14 +40,19 @@ export interface AgentResult {
   toolCalls: { name: string; args: Record<string, unknown> }[];
 }
 
+export const AGENT_PROMPT: FeaturePrompt = {
+  system: "You are a helpful assistant. Use tools when they help; never invent tool results.",
+  user: "{task}",
+};
+
 export async function runAgent(model: LanguageModel, input: { task: string }): Promise<AgentResult> {
   const result = await generateText({
     model,
     temperature: 0,
     tools: agentTools,
     stopWhen: stepCountIs(5),
-    system: "You are a helpful assistant. Use tools when they help; never invent tool results.",
-    prompt: input.task,
+    system: AGENT_PROMPT.system,
+    prompt: render(AGENT_PROMPT.user, { task: input.task }),
   });
   const toolCalls = result.steps.flatMap((s) =>
     s.toolCalls.map((c) => ({ name: c.toolName, args: c.input as Record<string, unknown> })),

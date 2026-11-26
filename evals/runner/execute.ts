@@ -5,7 +5,8 @@ import { createFixtureModel, createMockJudge } from "../mock/mockModel";
 import { applyFault } from "../mock/faults";
 import { getSuite } from "../suites";
 import { safeId } from "../../src/lib/security/sanitize";
-import { loadDataset, loadFixtures } from "./load";
+import { loadDataset, loadFixtures, loadPrices } from "./load";
+import { promptHash } from "./prompts";
 import { runSuite } from "./runner";
 import type { SuiteReport } from "./types";
 
@@ -30,7 +31,8 @@ export async function executeSuite(opts: ExecuteOptions): Promise<SuiteReport> {
   const suite = getSuite(opts.suite);
   const mode = opts.mode ?? resolveMode();
   const runs = opts.runs ?? 5;
-  const ds = await loadDataset(suite);
+  const [ds, prices] = await Promise.all([loadDataset(suite), loadPrices()]);
+  const prompt = promptHash(suite);
 
   if (mode === "mock") {
     const fixtures = await loadFixtures(suite.name);
@@ -46,7 +48,8 @@ export async function executeSuite(opts: ExecuteOptions): Promise<SuiteReport> {
         return createFixtureModel(applyFault(fault, suite.name, list[run % list.length]!));
       },
       judge: createMockJudge(),
-      meta: { mode, datasetVersion: ds.version, datasetHash: ds.hash, model: "mock-fixture", judgeModel: "mock-judge" },
+      meta: { mode, datasetVersion: ds.version, datasetHash: ds.hash, promptHash: prompt, model: "mock-fixture", judgeModel: "mock-judge" },
+      prices,
     });
   }
 
@@ -60,7 +63,8 @@ export async function executeSuite(opts: ExecuteOptions): Promise<SuiteReport> {
     runs,
     modelFor: () => sut,
     judge: resolveModel(judgeModel),
-    meta: { mode, datasetVersion: ds.version, datasetHash: ds.hash, model, judgeModel },
+    meta: { mode, datasetVersion: ds.version, datasetHash: ds.hash, promptHash: prompt, model, judgeModel },
+    prices,
     concurrency: 2,
   });
 }

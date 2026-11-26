@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { groundedAnswerSchema, groundedQa, type GroundedAnswer } from "../../src/lib/ai/groundedQa";
+import { groundedAnswerSchema, groundedQa, GROUNDED_QA_PROMPT, type GroundedAnswer } from "../../src/lib/ai/groundedQa";
 import { contains, schemaValid } from "../scorers/deterministic";
 import { llmJudge } from "../scorers/judge";
 import type { Suite } from "../runner/types";
@@ -15,11 +15,15 @@ export const ragCase = z.object({
 });
 type Case = z.infer<typeof ragCase>;
 
+export const FAITHFULNESS_RUBRIC =
+  "5 = every claim in the output is supported by the reference answer and nothing is invented. Subtract for unsupported claims.";
+
 export const ragSuite: Suite<Case, GroundedAnswer> = {
   name: "rag",
   title: "Grounded QA (RAG)",
   description: "Answers only from supplied documents, cites sources, abstains when unanswerable.",
   caseSchema: ragCase,
+  promptSurface: [GROUNDED_QA_PROMPT.system, GROUNDED_QA_PROMPT.user, FAITHFULNESS_RUBRIC],
   run: (model, c) => groundedQa(model, { question: c.question, documents: c.documents }),
   async score({ case: c, output, judge }) {
     const base = [
@@ -36,7 +40,7 @@ export const ragSuite: Suite<Case, GroundedAnswer> = {
       contains("citations", output.citations.join(" "), c.citations),
       await llmJudge(judge, {
         name: "faithfulness",
-        rubric: "5 = every claim in the output is supported by the reference answer and nothing is invented. Subtract for unsupported claims.",
+        rubric: FAITHFULNESS_RUBRIC,
       }, { input: c.question, output: output.answer, reference: c.reference }),
     ];
   },
