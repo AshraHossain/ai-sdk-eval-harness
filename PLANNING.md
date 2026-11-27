@@ -4,7 +4,7 @@ Source of truth for goals, scope, the planning workflow, the backlog and known g
 ARCHITECTURE.md, AGENTS.md and CLAUDE.md must not contradict this file. Change it in the same
 commit as any change to scope, architecture or the backlog.
 
-Status: **v0.2.0** (2026-11-19).
+Status: **v0.3.0** (2026-11-27).
 
 ## 1. Goal
 
@@ -34,7 +34,8 @@ Non-goals:
 
 The layered flowchart and the request sequence diagram live in [ARCHITECTURE.md](ARCHITECTURE.md)
 and the [README](README.md#architecture). They are not copied here, so there is one copy to keep
-current. Threat model: [SECURITY.md](SECURITY.md).
+current. Threat model: [SECURITY.md](SECURITY.md). Decisions that the code does not explain on
+its own: [docs/adr/](docs/adr/README.md).
 
 ## 4. Planning workflow: GSD → Superpowers → Ruflo
 
@@ -84,7 +85,8 @@ them, follow the same steps by hand and record the result in the backlog.
 |---|---|---|
 | 0.1.0 | Done | Five suites, scorers, judge, N-run flakes, Wilson CI, baseline gate, calibration, self-test, dashboard, CI |
 | 0.2.0 | Done | API edge hardening, scorecard, per-file coverage gate (95%), Docker, CodeQL, SBOM, SHA-pinned actions, `vertex:` provider, two-vendor live run |
-| 0.3.0 | Planned | Backlog items marked 0.3.0 |
+| 0.3.0 | Done | 15-case datasets, generated README scorecard, prompt hashing, token cost metering, review governance, release workflow, supply-chain scans, ADRs |
+| 0.4.0 | Planned | Backlog items marked 0.4.0; the live-run items once a provider secret exists |
 
 ## 7. Backlog and known gaps
 
@@ -111,9 +113,9 @@ Status: ✅ done · 🔄 in progress · ⏳ blocked · 📋 planned · ➖ won't
 | 21 | Review governance: PR template, `CODEOWNERS`, `CONTRIBUTING.md` | ✅ | 0.3.0 | files present, template used by new PRs |
 | 22 | Mutation testing (Stryker) on `evals/scorers` and `evals/runner`: coverage proves lines run, not that a wrong `>=` would be caught | 📋 | 0.4.0 | mutation score reported in CI |
 | 23 | Paired model comparison with a confidence interval on the difference, instead of two separate pass rates | 📋 | 0.4.0 | README live table shows the paired delta and CI |
-| 24 | Release tags + GitHub release with the SBOM attached (CHANGELOG says 0.2.0; git has no tags) | 📋 | 0.4.0 | `git tag` matches CHANGELOG |
-| 25 | Supply chain: gitleaks secret scan and a Trivy image scan in CI | 📋 | 0.4.0 | both jobs green on a PR |
-| 26 | ADRs under `docs/adr/` for the mock judge, the native Vertex client and the coverage gate | 📋 | 0.4.0 | one file per decision |
+| 24 | Release tags + GitHub release with the SBOM attached, notes from the CHANGELOG, tag/version agreement enforced | ✅ | 0.3.0 | `.github/workflows/release.yml`; `git tag` matches CHANGELOG |
+| 25 | Supply chain: gitleaks secret scan (full history) and a Trivy image scan in CI | ✅ | 0.3.0 | `secret scan` job and the Trivy step in the container job green on a PR |
+| 26 | ADRs under `docs/adr/` for the mock judge, the native Vertex client and the coverage gate | ✅ | 0.3.0 | `docs/adr/0001`–`0003` |
 | 15 | Generate the README scorecard table from `reports/` (`npm run readme:scorecard`; `make check` fails on drift) | ✅ | 0.3.0 | README table matches `scorecard.json` |
 | 16 | Refresh the graphify knowledge graph after each merged phase | 🔄 | ongoing | `graphify-out/` regenerated and committed |
 | 17 | Shared rate-limit store across replicas | ➖ | — | process-local by design; see non-goals |
@@ -139,6 +141,9 @@ The global standards are written for Python services. This repo applies them as 
 
 - Provider SDK churn (AI SDK v6, Gemini thought signatures): pin versions, let Dependabot raise PRs,
   and run `make check` plus one live run before merging a provider bump.
+- Supply-chain scanners pin to an exact digest or action SHA, so they never move under us. The
+  flip side is that they go stale: Dependabot raises the action bumps, and the gitleaks digest is
+  updated by hand (gitleaks itself is feature-complete upstream, security patches only).
 - Live-mode cost: live eval is `workflow_dispatch` only and never cancels a run in progress. Each
   report carries its token counts and estimated cost; `evals/prices.json` is hand-maintained, so a
   stale price shows as a wrong cost, and a missing one as `unpriced` rather than zero.
