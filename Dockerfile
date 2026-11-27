@@ -17,6 +17,12 @@ ENV NODE_ENV=production \
     HOSTNAME=0.0.0.0 \
     PORT=3000
 RUN addgroup -S -g 10001 appuser && adduser -S -D -H -u 10001 -G appuser appuser
+# No package manager in the runtime image. The app starts with `node server.js`, and npm's own
+# bundled dependencies were the only vulnerable packages Trivy found in this base image (10 HIGH,
+# all under /usr/local/lib/node_modules/npm). They cannot be patched from here, and a package
+# manager in a production image is attack surface we do not need.
+RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/bin/npm /usr/local/bin/npx \
+    /usr/local/lib/node_modules/corepack /usr/local/bin/corepack /usr/local/bin/yarn /usr/local/bin/yarnpkg
 # Traced standalone server: only the node_modules the app actually imports.
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static

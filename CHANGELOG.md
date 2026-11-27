@@ -17,6 +17,11 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 - Review governance: pull request template, `CODEOWNERS`, `CONTRIBUTING.md`.
 - Supply chain in CI: a gitleaks secret scan over full history (CLI image pinned by digest) and a
   Trivy image scan that fails on fixable CRITICAL/HIGH findings.
+
+### Security
+- The runtime image no longer ships npm, npx or corepack. The app starts with `node server.js`, and
+  npm'''s bundled dependencies were the only vulnerable packages in the image (10 HIGH, unpatchable
+  from here). Removing the package manager clears them and drops attack surface the image never used.
 - Architecture decision records under `docs/adr/`: the offline judge as a plumbing check, the native
   Vertex client, and the per-file coverage gate.
 - `npm run readme:scorecard` generates the README scorecard tables from `reports/`; `make check`
