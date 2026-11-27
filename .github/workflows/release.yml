@@ -1,0 +1,68 @@
+name: Release
+
+# Tag-driven: pushing v<x.y.z> publishes a GitHub release with the SBOM attached.
+# Release notes are the matching CHANGELOG section, so the tag, the changelog and the
+# release cannot disagree.
+on:
+  push:
+    tags: ["v[0-9]+.[0-9]+.[0-9]+"]
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: publish release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Check the tag matches package.json and the CHANGELOG
+        id: version
+        env:
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          version="${REF_NAME#v}"
+          pkg=$(node -p "require('./package.json').version")
+          if [ "$version" != "$pkg" ]; then
+            echo "::error::tag $REF_NAME does not match package.json version $pkg"
+            exit 1
+          fi
+          if ! grep -q "^## \[$version\]" CHANGELOG.md; then
+            echo "::error::CHANGELOG.md has no '## [$version]' section"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Extract the CHANGELOG section for this version
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          awk -v v="$VERSION" '
+            $0 ~ "^## \\[" v "\\]" { found = 1; next }
+            found && /^## \[/ { exit }
+            found { print }
+          ' CHANGELOG.md > release-notes.md
+          test -s release-notes.md
+          cat release-notes.md
+
+      - name: Build the image the SBOM describes
+        run: docker build -t ai-sdk-eval-harness:${{ steps.version.outputs.version }} .
+
+      - name: SBOM (SPDX) for the image
+        uses: anchore/sbom-action@66cbf4bc1f1c0d2edc94016e65bc221b6bb0ad6c # v0.24.3
+        with:
+          image: ai-sdk-eval-harness:${{ steps.version.outputs.version }}
+          format: spdx-json
+          output-file: sbom.spdx.json
+          upload-artifact: false
+          upload-release-assets: false
+
+      # gh is preinstalled on GitHub runners, so this needs no third-party action.
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: gh release create "$TAG" --title "$TAG" --notes-file release-notes.md --verify-tag sbom.spdx.json

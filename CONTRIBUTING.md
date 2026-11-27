@@ -45,6 +45,20 @@ per-file 95% coverage gate → gate self-test → offline eval gate → README s
   N you used and link the run.
 - Do not claim production readiness, in code, docs or a PR description.
 
+## Releasing
+
+1. Move the `[Unreleased]` entries in `CHANGELOG.md` under a new `## [x.y.z] - YYYY-MM-DD`.
+2. Bump `version` in `package.json` to match.
+3. Merge, then tag the merge commit `vx.y.z` and push the tag. The release workflow refuses a tag
+   that disagrees with `package.json` or has no CHANGELOG section, then publishes the release with
+   those notes and the image SBOM attached.
+
+## Recording a decision
+
+If a choice is non-obvious, was reversed, or cost a live run to establish, add a record under
+[`docs/adr/`](docs/adr/README.md) and link it from the index. Context, decision, consequences —
+including the bad ones.
+
 ## Reporting a vulnerability
 
 See [SECURITY.md](SECURITY.md). Do not open a public issue for a security problem.

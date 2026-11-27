@@ -4,6 +4,8 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-27
+
 ### Added
 - `promptHash` on every report: a hash of each suite's prompt surface (feature system prompt, user
   template and judge rubrics, declared as `Suite.promptSurface`). Baselines record it, and a changed
@@ -13,10 +15,17 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
   the model, so `src/lib/ai/` stays provider- and metering-free. Prices come from `evals/prices.json`;
   a model with no entry reports `unpriced` instead of zero. Optional `maxCostUsd` gate budget.
 - Review governance: pull request template, `CODEOWNERS`, `CONTRIBUTING.md`.
+- Supply chain in CI: a gitleaks secret scan over full history (CLI image pinned by digest) and a
+  Trivy image scan that fails on fixable CRITICAL/HIGH findings.
+- Architecture decision records under `docs/adr/`: the offline judge as a plumbing check, the native
+  Vertex client, and the per-file coverage gate.
 - `npm run readme:scorecard` generates the README scorecard tables from `reports/`; `make check`
   fails when they drift (`readme-check`).
 
 ### Changed
+- Release tags are the source of truth: pushing `v<x.y.z>` publishes a GitHub release whose notes
+  are the matching CHANGELOG section, with the image SBOM attached. The workflow refuses a tag that
+  disagrees with `package.json` or has no CHANGELOG section.
 - Golden datasets grow from 6 to 15 cases per suite (manifest 1.1.0): negations and bad-news
   summaries, harder tickets, European number formats and written dates, multi-document citations, a
   prompt-injection document, unknown orders and no-tool agent tasks. One case now moves a suite 6.7
